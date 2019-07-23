@@ -1,0 +1,32 @@
+{"contacts":[
+	{
+		"name": "Cassio",
+	        "surname":"Zen",
+		"email": "cassiozen@gmail.com"
+	},
+	{
+		"name": "Dan",
+	        "surname":"Abramov",
+		"email": "gaearon@somewhere.com"
+	},
+	{
+		"name": "Pete",
+	        "surname":"Hunt",
+		"email": "floydophone@somewhere.com"
+	},
+	{
+		"name": "Paul",
+	        "surname":"Shannessy",
+		"email": "zpao@somewhere.com"
+	},
+	{
+		"name": "Ryan",
+	        "surname":"Florence",
+		"email": "rpflorence@somewhere.com"
+	},
+	{
+		"name": "Sebastian",
+	        "surname":"Markbage",
+		"email": "sebmarkbage@here.com"
+	}
+]}
