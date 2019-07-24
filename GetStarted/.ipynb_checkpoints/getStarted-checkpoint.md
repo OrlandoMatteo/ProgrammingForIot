@@ -147,6 +147,7 @@ Press 's' tho show the list of contacts
 Press 'n' to add a contact
 Press 'f' to find a contact
 Press 'd' to delete a contact
+Press 'q' to quit
  s
 Name:Cassio, Surname:Zen, mail:cassiozen@gmail.com
 
@@ -164,14 +165,16 @@ Press 's' tho show the list of contacts
 Press 'n' to add a contact
 Press 'f' to find a contact
 Press 'd' to delete a contact
+Press 'q' to quit
  g
 Command not available
 Press 's' tho show the list of contacts
 Press 'n' to add a contact
 Press 'f' to find a contact
 Press 'd' to delete a contact
+Press 'q' to quit
  q
  ~~~
-<font color='red'>test blue color font</font>
+
 
 
