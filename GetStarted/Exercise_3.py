@@ -6,7 +6,10 @@ class Contact():
 		self.surname=surname
 		self.mail=mail
 	def __repr__(self):
-		return "Name:{}, Surname:{}, mail:{}\n".format(self.name,self.surname,self.mail)
+		return "{Name:{}, Surname:{}, mail:{}}".format(self.name,self.surname,self.mail)
+	def jsonify(self):
+		contact={'name':self.name,'surname':self.surname,'mail':self.mail}
+		return contact
 
 class AddressBook():
 	def __init__(self):
@@ -40,12 +43,19 @@ class AddressBook():
 		"""remove_contact(name)"""
 		contact=[contact for contact in self.contacts if contact.name==name]
 		self.contacts.pop(self.contacts.index(contact[0]))
-		
+	def save(self):
+		"""save()"""
+		fp=open('contacts.json','w')
+		content={'contacts':[]}
+		for c in self.contacts:
+			content['contacts'].append(c.jsonify())
+		json.dump(content,fp)
+		fp.close()
 def main():
 	book=AddressBook()
 	print('Welcome to the application to manage your contacts')
 	c=''
-	helpMessage="Press 's' tho show the list of contacts\nPress 'n' to add a contact\nPress 'f' to find a contact\nPress 'd' to delete a contact"
+	helpMessage="Press 's' tho show the list of contacts\nPress 'n' to add a contact\nPress 'f' to find a contact\nPress 'd' to delete a contact\nPress 'q'to save end exit"
 	while True:
 		print(helpMessage)
 		command=input()
@@ -61,6 +71,7 @@ def main():
 			name=input('Write the name of the contact you want to delete : ')
 			book.remove_contact('name')
 		elif command=='q':
+			book.save()
 			break
 		else:
 			print('Command not available')
