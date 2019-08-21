@@ -1,51 +1,80 @@
+import random
 import requests
 import time
 import threading
-import random
-
-def factorial(n):
-	f=1
-	for i in range(1,n+1):
-		f=f*n
-	return f
-start = time.time()
-
-numbers=[random.randint(80,150) for i in range(120)]
-for n in numbers:
-	f=factorial(n)
-stop=time.time()
-x=stop-start
-print ("Elapsed Time: {}".format(x))
-
-
+import string
 class MyThread(threading.Thread):
-	def __init__(self, threadID, host):
-		threading.Thread.__init__(self)
-		self.threadID = threadID
-		self.host = host
-
-		
+	def __init__(self, threadID, shift,c_sentence,og_sentence):
+	    threading.Thread.__init__(self)
+            self.threadID = threadID
+            self.shift = shift
+            self.crypted_sentence=c_sentence
+            self.og_sentence=og_sentence		
 	def run(self):
-		f=factorial(n)
+            shifted_alphabet=create_dict(self.shift)
+            test_uncrypt=decrypt(self.crypted_sentence,shifted_alphabet)
+            if test_uncrypt==self.og_sentence:
+                print('DECRYPTED!!! Shifted of {} letter'.format(shift))
+
+def create_dict(shift):
+    alphabet=list(string.ascii_lowercase)
+    for i in range(shift):
+        alphabet.append(alphabet.pop(0))
+    return dict(zip(string.ascii_lowercase,alphabet))
+def crypt(sentence,shifted_alphabet):
+    crypto_list=[]
+    for c in sentence :
+        if c!=' ':
+            crypto_list.append(shifted_alphabet[c])
+        else:
+            crypto_list.append(' ')
+    return ''.join(crypto_list)
+
+def decrypt(crypted_sentence,test_dict):
+    uncrypted_list=[]
+    for c in crypted_sentence :
+        if c!=' ':
+            uncrypted_list.append(test_dict[c])
+        else:
+            uncrypted_list.append(' ')
+    return ''.join(uncrypted_list)
+
+text=open('wordlist.txt','r').read()
+words_list=text.lower().splitlines()
+print (words_list[:5])
+c_words=[]
+for w in words_list:
+    a=create_dict(random.randint(0,26))
+    c_w=crypt(w,a)
+    c_words.append(c_w)
 
 
+#og_sentence='frase di prova per controllare che vada tutto brne in questo programma'
+#shift=2
+#shifted_alphabet=create_dict(shift)
+#crypted_sentence=crypt(og_sentence,shifted_alphabet)
 threads=[]
-i=0
-for n in numbers:
-	threads.append(MyThread(i,n))
-	i+=1
-start = time.time()
+for j in range(len(c_words)):
+    for i in range(len(string.ascii_lowercase)):
+        threads.append(MyThread(i,i,c_words[j],words_list[j]))
+
+inizio=time.time()
 for t in threads:
-	t.start()
-for t in threads:
-	t.join()
+     t.start()
+threads[-1].join()
 stop=time.time()
-x=stop-start
-
-print("Elapsed Time: {}".format(x))
-
+done=stop-inizio
+print('Done in {}'.format(done))
 
 
+inizio=time.time()
+for w in c_words:
+    for i in range(len(string.ascii_lowercase)):
+        test_dict=create_dict(i)
+        test_decrypt=decrypt(crypted_sentence,test_dict)
+        if test_decrypt==og_sentence:
+            print('Decripted {}'.format(i))
 
-
-
+stop=time.time()
+done=stop-inizio
+print('Done in {}'.format(done))
