@@ -3,7 +3,7 @@ import time
 
 
 class MySubscriber:
-		def __init__(self, clientID):
+		def __init__(self, clientID,topic,broker):
 			self.clientID = clientID
 			# create an instance of paho.mqtt.client
 			self._paho_mqtt = PahoMQTT.Client(clientID, False) 
@@ -12,9 +12,8 @@ class MySubscriber:
 			self._paho_mqtt.on_connect = self.myOnConnect
 			self._paho_mqtt.on_message = self.myOnMessageReceived
 
-			self.topic = 'my/test/topic'
-			self.messageBroker = 'localhost'
-
+			self.topic = topic
+			self.messageBroker =broker 
 
 		def start (self):
 			#manage connection to broker
@@ -38,7 +37,7 @@ class MySubscriber:
 
 
 if __name__ == "__main__":
-	test = MySubscriber("MySubscriber 1")
+	test = MySubscriber("MySubscriber 1","my/test/topic",'localhost')
 	test.start()
 
 	a = 0

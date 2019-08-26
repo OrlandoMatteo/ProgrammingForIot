@@ -32,17 +32,16 @@ class MyPublisher:
 
 
 if __name__ == "__main__":
-	test = MyPublisher("MyPublisher")
-	test.start()
+    test = MyPublisher("MyPublisher")
+    test.start()
 
-	a = 0
-	while (a < 20):
-		message = ('whatever message, also in JSON %d' % (a))
-		print ("Publishing: '%s'" % (message))
-		test.myPublish ('my/test/topic', message) 	
-		a += 1
-		time.sleep(1)
+    a = 0
+    while (a < 20):
+        message = ('{"command":"on"}')
+        test.myPublish ('led', message) 	
+        a += 1
+        time.sleep(1)
 
-	test.stop()
+    test.stop()
 
 
