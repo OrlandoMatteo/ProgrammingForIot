@@ -1,2 +1,3 @@
-cherrypy==17.4.0
-
+requests==2.18.4
+CherryPy==18.1.2
+paho_mqtt==1.4.0
