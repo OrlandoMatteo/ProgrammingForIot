@@ -11,8 +11,8 @@ class Line(object):
 		return "Line: y={}x+{}".format(self.m,self.q)
 	
 	def line_from_points(self,pointA,pointB):
-		m=(pointB.y-pointA.y)/(pointB.x+pointA.y)
-		q=-((pointB.y-pointA.y)/(pointB.x+pointA.y))*pointA.x+pointA.y
+		m=(pointB.y-pointA.y)/(pointB.x-pointA.x)
+		q=-((pointB.y-pointA.y)/(pointB.x-pointA.x))*pointA.x+pointA.y
 		#self.m=(pointB.y-pointA.y)/(pointB.x+pointA.y)
 		#self.q=-((pointB.y-pointA.y)/(pointB.x+pointA.y))*pointA.x+pointA.y
 		return Line(m,q)
