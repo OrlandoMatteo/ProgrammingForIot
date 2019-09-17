@@ -1,87 +1,59 @@
 import random
-import requests
-import time
 import threading
-import string
-class MyThread(threading.Thread):
-	def __init__(self, threadID, shift,c_sentence,og_sentence):
-		threading.Thread.__init__(self)
-		self.threadID = threadID
-		self.shift = shift
-		self.crypted_sentence=c_sentence
-		self.og_sentence=og_sentence		
+import time
+import numpy as np
+
+#CONFIG
+N_OF_CUSTOMERS=30
+NUM_OF_DESKS=5
+CASH_DESKS=[i for i in range(NUM_OF_DESKS)]
+CASH_SPEED=[np.random.poisson(5) for i in range(len(CASH_DESKS))]
+
+#VARIABLE FOR STATS
+SERVED=[0 for i in range(len(CASH_DESKS))]
+TOTAL_SERVING_TIME=0
+MEAN_SERVING_TIME=0
+
+
+class CustomerThread(threading.Thread):
+	def __init__(self, customerID, semaphore):
+		"Initialize the thread"
+		threading.Thread.__init__(self,name=customerID)
+		self.threadSemaphore=semaphore
+
 	def run(self):
-		shifted_alphabet=create_dict(self.shift)
-		test_uncrypt=decrypt(self.crypted_sentence,shifted_alphabet)
-		if test_uncrypt==self.og_sentence:
-			pass
-			#print(self.crypted_sentence+'=>'+self.og_sentence)
-			#print('DECRYPTED!!! Shifted of {} letter'.format(self.shift))
+		#Aquire the sempahore	
+		self.threadSemaphore.acquire()
+		#Pick the first available cash desk
+		servedBy=CASH_DESKS.pop()
+		#Increease the number of people served by that desk 
+		SERVED[servedBy]+=1
+		#Serve the customer
+		time.sleep(CASH_SPEED[servedBy])
+		#Free the desk
+		CASH_DESKS.append(servedBy)
+		self.threadSemaphore.release()
+		
+if __name__=="__main__":
+	#Empty queue
+	customers=[]
+	#Define the semaphore
+	threadSemaphore=threading.Semaphore(len(CASH_DESKS))
+	#Fill the queue
+	for i in range(N_OF_CUSTOMERS):
+		customers.append(CustomerThread(i,threadSemaphore))
+	#Start serving the customers
+	start=time.time()
+	for x in customers:
+		x.start()
+	for x in customers:
+		x.join()
+	end=time.time()
 
-def create_dict(shift):
-	alphabet=list(string.ascii_lowercase)
-	for i in range(shift):
-		alphabet.append(alphabet.pop(0))
-	return dict(zip(string.ascii_lowercase,alphabet))
-def crypt(sentence):
-	shifted_alphabet=create_dict(random.randint(0,26))
-	crypto_list=[]
-	for c in sentence :
-		if c!=' ':
-			crypto_list.append(shifted_alphabet[c])
-		else:
-			crypto_list.append(' ')
-	return ''.join(crypto_list)
+	#Calculate stats
+	TOTAL_SERVING_TIME=end-start
+	MEAN_SERVING_TIME=sum([SERVED[i]*CASH_SPEED[i] for i in range(NUM_OF_DESKS)])/N_OF_CUSTOMERS
+	#Show stats
+	print(f"STATS:\nClient served: {N_OF_CUSTOMERS}\nCustomer served by each desk: {SERVED}\nTotal serving time: {TOTAL_SERVING_TIME}\nMean serving time: {MEAN_SERVING_TIME}")
 
-def decrypt(crypted_sentence,test_dict):
-	uncrypted_list=[]
-	for c in crypted_sentence :
-		if c!=' ':
-			uncrypted_list.append(test_dict[c])
-		else:
-			uncrypted_list.append(' ')
-	return ''.join(uncrypted_list)
-
-def main():
-	text=open('wordlist.txt','r').read()
-	words_list=text.lower().splitlines()
-
-	c_words=[]
-	for w in words_list[:5000]:
-		c_w=crypt(w)
-		c_words.append(c_w)
-
-
-	#og_sentence='frase di prova per controllare che vada tutto brne in questo programma'
-	#shift=2
-	#shifted_alphabet=create_dict(shift)
-	#crypted_sentence=crypt(og_sentence,shifted_alphabet)
-	threads=[]
-	for j in range(len(c_words)):
-		for i in range(len(string.ascii_lowercase)):
-			threads.append(MyThread(i,i,c_words[j],words_list[j]))
-
-	inizio=time.time()
-	for t in threads:
-		 t.start()
-	threads[-1].join()
-	stop=time.time()
-	done=stop-inizio
-	print('Done in {}'.format(done))
-
-
-	inizio=time.time()
-	j=0
-	for w in c_words:
-		for i in range(len(string.ascii_lowercase)):
-			test_dict=create_dict(i)
-			test_decrypt=decrypt(w,test_dict)
-			if test_decrypt==words_list[j]:
-				pass
-				#print(w+'=>'+words_list[j])
-				#print('Decripted {}'.format(i))
-		j+=1
-
-	stop=time.time()
-	done=stop-inizio
-	print('Done in {}'.format(done))
+		
