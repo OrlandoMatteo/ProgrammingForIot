@@ -80,7 +80,7 @@
 				} else {
 					$('#led').html('Off');
 				}
-				var queryResult = $.ajax({
+				var setLed= $.ajax({
 					method: 'PUT',
 					url: '/' + $('#led').html(),
 					dataType: 'json',
