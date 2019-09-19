@@ -48,7 +48,10 @@ class MyMQTT:
         #manage connection to broker
         self._paho_mqtt.connect(self.broker , self.port)
         self._paho_mqtt.loop_start()
- 
+    def unsubscribe(self):
+        if (self._isSubscriber):
+            # remember to unsuscribe if it is working also as subscriber 
+            self._paho_mqtt.unsubscribe(self._topic)
     def stop (self):
         if (self._isSubscriber):
             # remember to unsuscribe if it is working also as subscriber 

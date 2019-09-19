@@ -6,7 +6,7 @@ class LedClient():
         self.clientID=clientID
         self.topic=topic
         self.client=MyMQTT('LedClient','localhost',1883,self)
-        self.message={'command':''}
+        self.message={'client': clientID,'n':'switch','value':'', 'timestamp':''}
     def run(self):
         self.client.start()
         print('{} has started'.format(self.clientID))
@@ -17,8 +17,9 @@ class LedClient():
     def notify(self,topic,msg):
         pass
     def publish(self,value):
-        self.message['command']=value
-        self.client.myPublish(self.topic,json.dumps(self.message))
+        self.message['timestamp']=str(time.time())
+        self.message['value']=value
+        self.client.myPublish(self.topic,str(self.message))
 
 def main():
     led_client=LedClient('ledClient','led') 

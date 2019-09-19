@@ -14,8 +14,10 @@ class Led():
         print('{} has stopped'.format(self.clientID))
     def notify(self,topic,msg):
         d=json.loads(msg)
-        self.status=d['command']
-        print('The led has been set to {}'.format(self.status))
+        self.status=d['value']
+        client=d['client']
+        timestamp=d['timestamp']
+        print(f'The led has been set to {self.status} at time {timestamp} by the client {client}')
     def publish(self,value):
         pass
     def subscribe(self):
