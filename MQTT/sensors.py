@@ -1,3 +1,4 @@
+
 import random
 import json
 from MyMQTT import *
@@ -16,7 +17,7 @@ class Sensor(object):
 			'buildingID':self.buildingID,
 			'floorID':self.floorID,
 			'roomID':self.roomID,
-			'sensor':self.sensorID,
+			'bn':self.sensorID,
 			'e':
 				[
 					{'n':'temperature','value':'', 'timestamp':'','unit':'C'},
@@ -33,6 +34,7 @@ class Sensor(object):
 	def sendData(self):
 		self.message['e'][0]['value']=random.randint(10,30)
 		self.message['e'][1]['value']=random.randint(50,90)
+		self.message['e'][0]['timestamp']=str(time.time())
 		self.message['e'][1]['timestamp']=str(time.time())
 		self.client.myPublish(self.topic,json.dumps(self.message))
 
