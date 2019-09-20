@@ -1,32 +1,88 @@
-def get_players(file_content):
-	return file_content['players']
+import json
+class Contact():
+	def __init__(self,name,surname,mail):
+		super(Contact,self).__init__()
+		self.name=name
+		self.surname=surname
+		self.mail=mail
+	def __repr__(self):
+		return "{Name:{}, Surname:{}, mail:{}}".format(self.name,self.surname,self.mail)
+	def jsonify(self):
+		contact={'name':self.name,'surname':self.surname,'mail':self.mail}
+		return contact
 
-def average_heigth(file_content):
-	players=get_players(file_content)
-	heigths=[p['hgt']/39.37 for p in players]
-	return sum(heigths)/len(heigths)
-
-def average_weigth(file_content):
-	players=get_players(file_content)
-	weigths=[p['weight']/2.205 for p in players]
-	return sum(weigths)/len(weigths)
-
-def average_ratings(file_content):
-	players=get_players(file_content)
-	num_players=len(players)
-	avg_ratings=dict.fromkeys(players[0]['ratings'][0],0)
-	for player in players:
-		player_ratings=player['ratings'][0]
-		for key in player_ratings.keys():
-			avg_ratings[key]+=player_ratings[key]/num_players
-	return avg_ratings
-			
-def average_age(file_content):
-	players=get_players(file_content)
-	ages=[2020-p['born']['year'] for p in players]
-	return sum(ages)/len(ages)
+class AddressBook():
+	def __init__(self):
+		super(AddressBook,self).__init__()
+		file_content=json.load(open('contacts.json'))
+		self.contacts=[]
+		for contact in file_content.get('contacts'):
+			self.contacts.append(Contact(contact.get('name'),contact.get('surname'),contact.get('email')))
 	
+	def show(self):
+		for contact in self.contacts:
+			print(contact)
 	
-
+	def find_by_name(self,name):
+		results=[contact for contact in self.contacts if contact.name==name]
+		print("I found the following results:\n")
+		for x in results:
+			print(x)
+	def find_by_surname(self,surname):
+		results=[contact for contact in self.contacts if contact.surname==surname]
+		print("I found the following results:\n")
+		for x in results:
+			print(x)
+	def add_contact(self,name,surname,mail):
+		"""
+		new_contact(name,surname,mail):
+		"""
+		self.contacts.append(Contact(name,surname,mail))
+		
+	def remove_contact(self,name):
+		"""remove_contact(name)"""
+		contact=[contact for contact in self.contacts if contact.name==name]
+		self.contacts.pop(self.contacts.index(contact[0]))
+	def save(self):
+		"""save()"""
+		fp=open('contacts.json','w')
+		content={'contacts':[]}
+		for c in self.contacts:
+			content['contacts'].append(c.jsonify())
+		json.dump(content,fp)
+		fp.close()
+def main():
+	book=AddressBook()
+	print('Welcome to the application to manage your contacts')
+	c=''
+	helpMessage="Press 's' tho show the list of contacts\nPress 'n' to add a contact\nPress 'f' to find a contact\nPress 'd' to delete a contact\nPress 'q'to save end exit"
+	while True:
+		print(helpMessage)
+		command=input()
+		if command=='s':
+			book.show()
+		elif command=='n':
+			name=input('Write the name of the contact : ')
+			surname=input('Write the surname of the contact : ')
+			mail=input('Write the mail of the contact : ')
+			book.add_contact(name,surname,mail)
+			print('Contact Added')
+		elif command=='d':
+			name=input('Write the name of the contact you want to delete : ')
+			book.remove_contact('name')
+		elif command=='q':
+			book.save()
+			break
+		else:
+			print('Command not available')
+if __name__=="__main__":
+	main()
 	
 		
+			
+		
+		
+	
+		
+	
+	
