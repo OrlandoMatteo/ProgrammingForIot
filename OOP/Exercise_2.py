@@ -9,7 +9,7 @@ class Line(object):
 		
 	def __repr__(self):
 		
-		return "Line: y={}x+{}".format(self.m,self.q)
+		return "Line: y={self.m}x+{self.q}"
 	
 	def line_from_points(self,pointA,pointB):
 		""" line_from_points(A,B)

@@ -1,0 +1,3 @@
+Edoardo,Patti,edoardo.patti@polito.it
+Matteo,Orlando,matteo.orlando@polito.it
+New,Contact,random@mail.com

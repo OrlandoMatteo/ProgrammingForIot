@@ -1,24 +1,19 @@
-import json
 class Contact():
 	def __init__(self,name,surname,mail):
-		super(Contact,self).__init__()
 		self.name=name
 		self.surname=surname
 		self.mail=mail
 	def __repr__(self):
-		return "{Name:{}, Surname:{}, mail:{}}".format(self.name,self.surname,self.mail)
-	def jsonify(self):
-		contact={'name':self.name,'surname':self.surname,'mail':self.mail}
-		return contact
+		return "{},{},{}".format(self.name,self.surname,self.mail)
 
 class AddressBook():
 	def __init__(self):
-		super(AddressBook,self).__init__()
-		file_content=json.load(open('contacts.json'))
+		fileContent=open('contacts.txt').read()
 		self.contacts=[]
-		for contact in file_content.get('contacts'):
-			self.contacts.append(Contact(contact.get('name'),contact.get('surname'),contact.get('email')))
-	
+		lines=fileContent.splitlines()
+		for line in lines:
+			contact_raw=line.split(',')
+			self.add_contact(contact_raw[0],contact_raw[1],contact_raw[2])
 	def show(self):
 		for contact in self.contacts:
 			print(contact)
@@ -41,17 +36,17 @@ class AddressBook():
 		
 	def remove_contact(self,name):
 		"""remove_contact(name)"""
-		contact=[contact for contact in self.contacts if contact.name==name]
-		self.contacts.pop(self.contacts.index(contact[0]))
+		for i in range(len(self.contacts)):
+			if self.contacts[i].name==name:
+				self.contacts.pop(i)
 	def save(self):
 		"""save()"""
-		fp=open('contacts.json','w')
-		content={'contacts':[]}
+		fp=open('contacts.txt','w')
 		for c in self.contacts:
-			content['contacts'].append(c.jsonify())
-		json.dump(content,fp)
-		fp.close()
-def main():
+			s=c.name+','+c.surname+','+c.mail+'\n'
+			fp.write(s)
+			
+if __name__=="__main__":
 	book=AddressBook()
 	print('Welcome to the application to manage your contacts')
 	c=''
@@ -69,20 +64,9 @@ def main():
 			print('Contact Added')
 		elif command=='d':
 			name=input('Write the name of the contact you want to delete : ')
-			book.remove_contact('name')
+			book.remove_contact(name)
 		elif command=='q':
 			book.save()
 			break
 		else:
 			print('Command not available')
-if __name__=="__main__":
-	main()
-	
-		
-			
-		
-		
-	
-		
-	
-	

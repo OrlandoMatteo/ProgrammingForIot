@@ -6,7 +6,7 @@ class Point(object):
 		self.x = x
 		self.y = y
 	def __repr__(self):
-		return "({},{})".format(self.x,self.y)
+		return "{},{}".format(self.x,self.y)
 	def move(self,vectorX=0,vectorY=0):
 		"""
 		Insert the x and the y component of the vector you want to apply to the point
