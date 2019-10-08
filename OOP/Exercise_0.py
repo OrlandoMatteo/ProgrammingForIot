@@ -1,6 +1,6 @@
 class Calculator(object):
-	def __init__ (self):
-		pass
+	def __init__ (self,brand):
+		self.brand=brand
 	def add(self,a,b):
 		print(f"{a} + {b} = {a+b}")
 	def sub(self,a,b):
