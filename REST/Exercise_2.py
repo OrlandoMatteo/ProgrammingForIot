@@ -6,11 +6,10 @@ class ParamsReverser(object):
 	def __init__(self):
 		pass
 	def GET(self, **params):
-		reversed={}
-		print (params.keys())
+		reverse={}
 		for key in params.keys():
-			reversed[key]=params[key][::-1]
-		return json.dumps(reversed)
+			reverse[key]=params[key][::-1]
+		return json.dumps(reverse)
 
 
 if __name__ == '__main__':

@@ -5,8 +5,11 @@ class UriReverser(object):
 	def __init__(self):
 		pass
 	def GET(self, *uri):
-		reversed=uri[0]
-		return reversed[::-1]
+		if len(uri)!=0:
+			reverse=uri[0]
+			return reverse[::-1]
+		else:
+			return ''
 
 
 if __name__ == '__main__':
