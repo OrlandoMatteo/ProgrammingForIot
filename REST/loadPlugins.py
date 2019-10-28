@@ -16,7 +16,6 @@ if __name__ == '__main__':
 				'request.dispatch':cherrypy.dispatch.MethodDispatcher(),
 				'tools.staticdir.root': os.path.abspath(os.getcwd()),
 			},
-		###If you remove the content below you will have a nicer look and the functions for the html page
 		 '/css':{
 		 'tools.staticdir.on': True,
 		 'tools.staticdir.dir':'./css'
