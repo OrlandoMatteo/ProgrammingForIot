@@ -13,11 +13,11 @@ class SensorREST(object):
 			if uri[0]=='hum':
 				value=random.randint(60,80)
 			if uri[0]=='temp':
-				value=random.randint(15,25)
+				value=random.randint(10,25)
 			output={'deviceID':self.settings['ID'],str(uri[0]):value}
 			return json.dumps(output)
 		else:
-			return json.dumps({})
+			return json.dumps(self.settings)
 
 
 if __name__ == '__main__':
