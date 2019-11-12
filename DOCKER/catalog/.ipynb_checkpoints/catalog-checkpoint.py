@@ -1,11 +1,9 @@
 import cherrypy
 import requests
-import json 
-import time
+import json
 class Catalog(object):
 	def __init__(self):
 		self.devices=[]
-		self.actualTime=time.time()
 	def addDevice(self,devicesInfo):
 		self.devices.append(devicesInfo)
 	def updateDevice(self,deviceID,devicesInfo):
@@ -18,35 +16,34 @@ class Catalog(object):
 			device=self.devices[i]
 			if device['ID']==deviceID:
 				self.devices.pop(i)
-	def removeInactive(self):
-		self.actualTime=time.time()
-		for device in self.devices:
-			if self.actualTime-device['last_update']>4:
-				self.devices.remove(device)
-
 class CatalogREST(object):
 	exposed=True
 	def __init__(self,clientID):
 		self.ID=clientID
 		self.catalog=Catalog()
 	def GET(self,*uri,**params):
-		output={'devices':self.catalog.devices,"updated":self.catalog.actualTime}
+		output={'devices':self.catalog.devices}
 		return json.dumps(output)
 	def PUT(self):
 		body=cherrypy.request.body.read()
 		json_body=json.loads(body.decode('utf-8'))
 		if not any(d['ID']==json_body['ID'] for d in self.catalog.devices):
-			last_update=time.time()
-			json_body['last_update']=last_update
 			self.catalog.addDevice(json_body)
 			output=f"Device with ID {json_body['ID']} has been added"
 			print (output)
 			return output
 		else:
-			last_update=time.time()
-			json_body['last_update']=last_update
-			self.catalog.updateDevice(json_body['ID'],json_body)
-			return json_body
+			output=f"Device with ID {json_body['ID']} already in list"
+			print (output)
+			return output
+
+	def POST(self):
+		body=cherrypy.request.body.read()
+		json_body=json.loads(body.decode('utf-8'))
+		self.catalog.updateDevice(json_body['ID'],json_body)
+		output=f"Device with ID {json_body['ID']} has been updated"
+		print (output)
+		return output
 
 	def DELETE(self,*uri):
 		self.catalog.removeDevices(uri[0])
@@ -55,7 +52,6 @@ class CatalogREST(object):
 
 
 if __name__ == '__main__':
-	catalogClient=CatalogREST('Catalog')
 	conf={
 		'/':{
 				'request.dispatch':cherrypy.dispatch.MethodDispatcher(),
@@ -63,11 +59,7 @@ if __name__ == '__main__':
 		}
 	}
 	cherrypy.config.update({'server.socket_host': '0.0.0.0','server.socket_port': 8080})
-	cherrypy.tree.mount(catalogClient,'/',conf)
+	cherrypy.tree.mount(CatalogREST('Catalog'),'/',conf)
 	cherrypy.engine.start()
-	while True:
-		catalogClient.catalog.removeInactive()
-		time.sleep(5)
-	cherrypy.engine.exit()
-	
+	cherrypy.engine.block()
 

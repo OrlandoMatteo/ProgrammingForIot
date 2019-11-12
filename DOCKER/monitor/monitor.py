@@ -9,7 +9,7 @@ class Viewer(object):
 	
 	def getDevices(self):
 		response=requests.get(self.catalogInfo['catalogURL']).json()
-		print('List of abailable devices obtained')
+		print('List of available devices obtained')
 		return  response['devices']
 	
 	def listDevices(self):
