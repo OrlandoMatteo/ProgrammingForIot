@@ -5,7 +5,7 @@ class Led():
     def __init__(self,clientID,topic):
         self.clientID=clientID
         self.topic=topic
-        self.client=MyMQTT('Led','localhost',1883,self)
+        self.client=MyMQTT('Led','mqtt.eclipse.org',1883,self)
     def run(self):
         self.client.start()
         print('{} has started'.format(self.clientID))
@@ -22,11 +22,14 @@ class Led():
         pass
     def subscribe(self):
         self.client.mySubscribe(self.topic)
+        print("done")
 
 if __name__ == "__main__":
-    led=Led('Led','led')
+    led=Led('Led','Led')
     led.run()
     led.subscribe()
+    a=3
     while True:
+        a+=1
         time.sleep(1)
 

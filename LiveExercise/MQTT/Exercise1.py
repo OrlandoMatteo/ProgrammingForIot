@@ -1,9 +1,10 @@
 import paho.mqtt.client as PahoMQTT
 import time
 
-class MyPublisher:
-	def __init__(self, clientID):
+class LedCommander:
+	def __init__(self, clientID, topic):
 		self.clientID = clientID
+		self.topic=topic
 
 		# create an instance of paho.mqtt.client
 		self._paho_mqtt = PahoMQTT.Client(self.clientID, False) 
@@ -11,7 +12,7 @@ class MyPublisher:
 		self._paho_mqtt.on_connect = self.myOnConnect
 
 		#self.messageBroker = 'iot.eclipse.org'
-		self.messageBroker = 'pc-orlando-lab4.polito.it'
+		self.messageBroker = 'localhost'
 
 	def start (self):
 		#manage connection to broker
@@ -22,9 +23,9 @@ class MyPublisher:
 		self._paho_mqtt.loop_stop()
 		self._paho_mqtt.disconnect()
 
-	def myPublish(self, topic, message):
+	def myPublish(self, message):
 		# publish a message with a certain topic
-		self._paho_mqtt.publish(topic, message, 2)
+		self._paho_mqtt.publish(self.topic, message, 2)
 
 	def myOnConnect (self, paho_mqtt, userdata, flags, rc):
 		print ("Connected to %s with result code: %d" % (self.messageBroker, rc))
@@ -32,17 +33,23 @@ class MyPublisher:
 
 
 if __name__ == "__main__":
-    test = MyPublisher("MyPublisher")
-    test.start()
+	led_client = LedCommander("LedCommander",'ledCommand')
+	led_client.start()
 
-    a = 0
-    while (a < 20):
-        message = ('{"command":"on"}')
-        test.myPublish ("my/test/topic", message)
-        print("published")	
-        a += 1
-        time.sleep(1)
-
-    test.stop()
+	print('Welcome to the client to switch on/off the lamp\n')
+	done=False
+	command_list='Type:\n"on" to set the light on\n"off" to set it off\n"q" to quit\n'
+	while not done:
+		print(command_list)
+		user_input=input()
+		if user_input=="on":
+			led_client.myPublish(user_input)
+		elif user_input=="off":
+			led_client.myPublish(user_input)
+		elif user_input=='q':
+			done=True
+		else:
+			print('Unknown command')
+	led_client.end()   
 
 

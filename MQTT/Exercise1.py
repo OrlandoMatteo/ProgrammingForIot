@@ -5,7 +5,7 @@ class LedClient():
     def __init__(self,clientID,topic):
         self.clientID=clientID
         self.topic=topic
-        self.client=MyMQTT('LedClient','localhost',1883,self)
+        self.client=MyMQTT('LedClient','mqtt.eclipse.org',1883,self)
         self.message={'client': clientID,'n':'switch','value':'', 'timestamp':''}
     def run(self):
         self.client.start()
@@ -22,7 +22,7 @@ class LedClient():
         self.client.myPublish(self.topic,str(self.message))
 
 def main():
-    led_client=LedClient('ledClient','led') 
+    led_client=LedClient('ledClient','Led') 
     led_client.run()
     print('Welcome to the client to switch on/off the lamp\n')
     done=False
