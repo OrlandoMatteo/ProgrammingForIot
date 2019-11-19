@@ -1,6 +1,6 @@
 import paho.mqtt.client as PahoMQTT
 import time
-
+import json
 
 class Led:
 	def __init__(self, clientID,topic,broker):
@@ -14,6 +14,8 @@ class Led:
 
 		self.topic = topic
 		self.messageBroker =broker 
+
+		self.status=""
 
 	def start (self):
 		#manage connection to broker
@@ -32,14 +34,20 @@ class Led:
 
 	def myOnMessageReceived (self, paho_mqtt , userdata, msg):
 		# A new message is received
-		print ("Topic:'" + msg.topic+"', QoS: '"+str(msg.qos)+"' Message: '"+str(msg.payload) + "'")
-
+		#print ("Topic:'" + msg.topic+"', QoS: '"+str(msg.qos)+"' Message: '"+str(msg.payload) + "'")
+		d=json.loads(msg.payload)
+		self.status=d['value']
+		client=d['client']
+		timestamp=d['timestamp']
+		print(f'The led has been set to {self.status} at time {timestamp} by the client {client}')
 
 
 if __name__ == "__main__":
-	test = Led("MyLed","ledCommand",'localhost')
+	broker=json.load(open("settings1.json"))['broker']
+	test = Led("MyLed","ledCommand",broker)
 	test.start()
 
-	input()
+	while True:
+		time.sleep(1)
 
 	test.stop()
