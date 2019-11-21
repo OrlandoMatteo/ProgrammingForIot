@@ -43,7 +43,7 @@ class Led:
 
 
 if __name__ == "__main__":
-	broker=json.load(open("settings1.json"))['broker']
+	broker=json.load(open("settings.json"))['broker']
 	test = Led("MyLed","ledCommand",broker)
 	test.start()
 

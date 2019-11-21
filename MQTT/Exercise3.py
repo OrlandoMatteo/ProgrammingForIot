@@ -3,12 +3,12 @@ import json
 from MyMQTT import *
 import time
 
-class DataCollector(object):
+class DataCollector():
 	"""docstring for Sensor"""
 	def __init__(self,clientID):
 		self.clientID=clientID
-		self.client=MyMQTT(self.clientID,'localhost',1883,self)
 		self.baseTopic='IoT s.p.a.'
+
 	def run(self):
 		self.client.start()
 		print('{} has started'.format(self.clientID))

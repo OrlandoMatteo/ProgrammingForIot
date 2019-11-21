@@ -34,7 +34,7 @@ class LedCommander:
 
 
 if __name__ == "__main__":
-	broker=json.load(open("settings1.json"))['broker']
+	broker=json.load(open("settings.json"))['broker']
 	led_client = LedCommander("LedCommander",'ledCommand',broker)
 	led_client.start()
 
