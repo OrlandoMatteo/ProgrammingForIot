@@ -19,18 +19,17 @@ class MyMQTT:
  
  
     def myOnConnect (self, paho_mqtt, userdata, flags, rc):
-        print ("Connected to %s with result code: %d" % (self.broker, rc))
- 
+        #print ("Connected to %s with result code: %d" % (self.broker, rc))
+        pass
     def myOnMessageReceived (self, paho_mqtt , userdata, msg):
         # A new message is received
         self.notifier.notify (msg.topic, msg.payload)
-        print("Message Received")
  
  
     def myPublish (self, topic, msg):
         # if needed, you can do some computation or error-check before publishing
         #uncomment the line below for debugging
-        print ("publishing '%s' with topic '%s'" % (msg, topic))
+        #print ("publishing '%s' with topic '%s'" % (msg, topic))
         # publish a message with a certain topic
         self._paho_mqtt.publish(topic, msg, 2)
  

@@ -5,10 +5,10 @@ import time
 
 class DataCollector():
 	"""docstring for Sensor"""
-	def __init__(self,clientID):
+	def __init__(self,clientID,broker):
 		self.clientID=clientID
 		self.baseTopic='IoT s.p.a.'
-
+		self.client=MyMQTT(clientID,broker,1883, self)
 	def run(self):
 		self.client.start()
 		print('{} has started'.format(self.clientID))
@@ -22,7 +22,7 @@ class DataCollector():
 		print(json.dumps(payload,indent=4))
 
 if __name__ == '__main__':
-	coll=DataCollector('dc'+str(random.randint(1,10**5)))
+	coll=DataCollector('dc'+str(random.randint(1,10**5)),'127.0.0.1')
 	coll.run()
 	print(f'This is the client to follow the data coming from the sensors of the building of {coll.baseTopic}')
 	choice=''
