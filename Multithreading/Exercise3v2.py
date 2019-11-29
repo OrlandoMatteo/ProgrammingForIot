@@ -30,14 +30,7 @@ class myThread(threading.Thread):
 		
 
 if __name__ == '__main__':
-	#print(f"Original array:\n{ARRAY}")
-	#s=SortThread(0,ARRAY[0])
-	#f=BinarySearchThread(0,ARRAY[0])
-	#s.start()
-	#f.start()
-	#f.join()
 	array1=copy.deepcopy(ARRAY)
-
 	array2=copy.deepcopy(ARRAY)
 	Threads=[]
 	for i in range(nOfArrays):
