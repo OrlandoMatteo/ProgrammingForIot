@@ -58,14 +58,14 @@ if __name__ == '__main__':
 
 
 
-	tic=time.time()
-	for i in range(nOfArrays):
-		tofind=random.choice(array2[i])
-		bubbleSort(array2[i])
-		position=binarySearch(tofind,array2[i])
+	# tic=time.time()
+	# for i in range(nOfArrays):
+	# 	tofind=random.choice(array2[i])
+	# 	bubbleSort(array2[i])
+	# 	position=binarySearch(tofind,array2[i])
 
-	toc=time.time()
-	print(f"Execution time = {toc-tic}")
+	# toc=time.time()
+	# print(f"Execution time = {toc-tic}")
 
 	
 	
