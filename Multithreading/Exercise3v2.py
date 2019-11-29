@@ -41,7 +41,7 @@ if __name__ == '__main__':
 	for i in range(nOfArrays):
 		Threads[i].join()
 	toc=time.time()
-	print(f"Execution time mt = {toc-tic}")
+	print(f"Execution time multithreading = {toc-tic}")
 
 	processes=[]
 	for i in range(nOfArrays):
@@ -54,7 +54,7 @@ if __name__ == '__main__':
 		s.join()
 
 	toc=time.time()
-	print(f"Execution time mt = {toc-tic}")
+	print(f"Execution time multiptocessing = {toc-tic}")
 
 
 
