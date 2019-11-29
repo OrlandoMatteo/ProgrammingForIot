@@ -54,7 +54,7 @@ if __name__ == '__main__':
 		s.join()
 
 	toc=time.time()
-	print(f"Execution time multiptocessing = {toc-tic}")
+	print(f"Execution time multiprocessing = {toc-tic}")
 
 
 
