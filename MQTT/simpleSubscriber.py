@@ -37,7 +37,7 @@ class MySubscriber:
 
 
 if __name__ == "__main__":
-	test = MySubscriber("MySubscriber 1","my/test/topic",'localhost')
+	test = MySubscriber("MySubscriber 1","#",'localhost')
 	test.start()
 
 	a = 0

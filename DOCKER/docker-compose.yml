@@ -1,0 +1,14 @@
+version: '3'
+services:
+    catalog:
+      image: catalog:latest
+      expose:
+        - "80"
+      ports: 
+        - "8080:80"
+    sensor:
+      image: sensor:latest
+      expose:
+        - "80"
+      ports: 
+        - "9090:80"    
