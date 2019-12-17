@@ -32,10 +32,10 @@ if __name__ == '__main__':
 	}
 	s=SensorREST()
 	cherrypy.config.update({'server.socket_host': '0.0.0.0','server.socket_port': s.settings['port']})	
-	cherrypy.tree.mount(SensorREST(),'/',conf)
+	cherrypy.tree.mount(s,'/',conf)
 	cherrypy.engine.start()
 	while True:
 		print('sleeping')
-		s.pingCatalog()
 		time.sleep(10)
+		s.pingCatalog()
 	cherrypy.engine.exit()
