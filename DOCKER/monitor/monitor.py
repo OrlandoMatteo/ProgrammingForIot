@@ -9,6 +9,7 @@ class Viewer(object):
 	
 	def getDevices(self):
 		response=requests.get(self.catalogInfo['catalogURL']).json()
+		self.devices=response['devices']
 		print('List of available devices obtained')
 		return  response['devices']
 	
@@ -31,8 +32,8 @@ class Viewer(object):
 		print("Temp (C)\tHum(%)")
 		end_time=time.time()+4
 		while time.time()<end_time:
-			temp=requests.get(device["IP"]+':'+str(device['port'])+'/temp').json()['temp']
-			hum=requests.get(device["IP"]+':'+str(device['port'])+'/hum').json()['hum']
+			temp=requests.get('http://'+device["IP"]+':'+str(device['port'])+'/temp').json()['temp']
+			hum=requests.get('http://'+device["IP"]+':'+str(device['port'])+'/hum').json()['hum']
 			print(str(temp)+'\t\t'+str(hum),end="\r")
 			time.sleep(0.5)
 		self.listDevices()

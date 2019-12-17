@@ -21,7 +21,7 @@ class Catalog(object):
 	def removeInactive(self):
 		self.actualTime=time.time()
 		for device in self.devices:
-			if self.actualTime-device['last_update']>4:
+			if self.actualTime-device['last_update']>10:
 				self.devices.remove(device)
 
 class CatalogREST(object):

@@ -36,6 +36,6 @@ if __name__ == '__main__':
 	cherrypy.engine.start()
 	while True:
 		print('sleeping')
-		time.sleep(10)
+		time.sleep(20)
 		s.pingCatalog()
 	cherrypy.engine.exit()

@@ -5,19 +5,12 @@ import json
 import time
 from multiprocessing import Process
 Nucleotides = ['A', 'T', 'C', 'G']
-humanGenomeURL = 'https://api.genome.ucsc.edu/list/chromosomes?genome=hg38'
-humanGenome = requests.get(humanGenomeURL).json()
-chromosomeList = list(humanGenome['chromosomes'].keys())
+# humanGenomeURL = 'https://api.genome.ucsc.edu/list/chromosomes?genome=hg38'
+# humanGenome = requests.get(humanGenomeURL).json()
+# chromosomeList = list(humanGenome['chromosomes'].keys())
 chromosomeBaseURL = 'https://api.genome.ucsc.edu/getData/sequence?genome=hg38;chrom='
 availableChromosome = []
-# for x in chromosomeList[1:160]:
-#     chromo = requests.get(chromosomeBaseURL+x).json()
-#     dna = chromo['dna']
-#     if 'n' and 'N' not in dna:
-#         availableChromosome.append(x)
-# fp = open('chromosomes.json', 'w')
-# json.dump({'chromosomes': availableChromosome}, fp)
-availableChromosome=json.load(open('chromosomes.json'))['chromosomes'][:10]
+availableChromosome=json.load(open('chromosomes.json'))['chromosomes'][:20]
 
 
 codonDict = {
@@ -75,16 +68,13 @@ def main():
     # MultiThread
     Threads = []
     for chromo in availableChromosome:
-        # dnaSequenceDict=requests.get(chromosomeBaseURL+chromo).json()
-        # dnaSequence=dnaSequenceDict['dna'].upper()
         Threads.append(dnaTranslate(chromo))
     tic = time.time()
     for t in Threads:
         t.start()
     for t in Threads:
         t.join()
-    # for t in Threads:
-    #    print(t.proteinSequence)
+
     toc = time.time()
     print(f"Multithread execution time : {toc-tic}")
 
@@ -97,17 +87,19 @@ def main():
     print(f"For-loop execution time : {toc-tic}")
 
     # Multiprocess
-    processes = []
-    for chromo in availableChromosome:
-        p = Process(target=translate, args=(chromo,))
-        processes.append(p)
-    tic = time.time()
-    for p in processes:
-        p.start()
-    for p in processes:
-        p.join()
-    toc = time.time()
-    print(f"Multiprocessing execution time : {toc-tic}")
+    ## YOU CAN UNCOMMENT THIS PART TO CHECK THE PERFORMANCE BUT
+    ## THIS IS NOT PART OF THE COURSE
+    # processes = []
+    # for chromo in availableChromosome:
+    #     p = Process(target=translate, args=(chromo,))
+    #     processes.append(p)
+    # tic = time.time()
+    # for p in processes:
+    #     p.start()
+    # for p in processes:
+    #     p.join()
+    # toc = time.time()
+    # print(f"Multiprocessing execution time : {toc-tic}")
 
 
 if __name__ == "__main__":
