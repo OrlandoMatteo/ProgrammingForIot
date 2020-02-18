@@ -7,7 +7,8 @@ class Echo(object):
 		pass
 	def PUT(self, **params):
 		body=cherrypy.request.body.read()
-		json_body=json.loads(body.decode('utf-8'))
+		#json_body=json.loads(body.decode('utf-8'))
+		json_body=json.loads(body)
 		response="The keys are {}, and the values are {}".format([x for x in json_body.keys()],[x for x in json_body.values()])
 		return response
 

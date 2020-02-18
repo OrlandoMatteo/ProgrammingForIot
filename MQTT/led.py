@@ -44,7 +44,7 @@ class Led:
 
 if __name__ == "__main__":
 	broker=json.load(open("mosquitto.json"))['broker']
-	test = Led("MyLed","ledCommand",'127.0.0.1')
+	test = Led("MyLed","ledCommand",'mqtt.eclipse.org')
 	test.start()
 
 	while True:

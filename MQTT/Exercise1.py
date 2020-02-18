@@ -34,7 +34,7 @@ class LedCommander:
 
 
 if __name__ == "__main__":
-	led_client = LedCommander("LedCommander",'ledCommand','127.0.0.1')
+	led_client = LedCommander("LedCommander",'ledCommand','mqtt.eclipse.org')
 	led_client.start()
 
 	print('Welcome to the client to switch on/off the lamp\n')
