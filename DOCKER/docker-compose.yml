@@ -1,16 +1,16 @@
 version: '3'
 services:
     catalog:
-      image: catalog:latest
+      build: ./catalog
       expose:
         - "80"
       ports: 
         - "8080:80"
     sensor:
-      image: sensor:latest
+      build: ./sensor
       expose:
         - "80"
       ports: 
-        - "9090:80"    
+        - "9080-9090:80"    
       links:
         - catalog
