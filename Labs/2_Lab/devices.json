@@ -1,0 +1,1 @@
+{"deviceList": [{"deviceID": "1", "deviceName": "pippo", "measureType": "temp", "unit": "C"}, {"deviceID": "2", "deviceName": "topolino", "measureType": "hum", "unit": "%"}, {"deviceID": "3", "deviceName": "pluto", "measureType": "motion", "unit": "bool"}]}

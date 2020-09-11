@@ -12,15 +12,17 @@ class Server(object):
 
 	def POST(self,*uri,**params):
 		body=cherrypy.request.body.read()
-		newUser=json.loads(body)
-		print(newUser)
-		with open('users.json','r') as fp:
-			users=json.load(fp)
-			users["usersList"].append(newUser)
-		with open('users.json','w') as fp:
-			json.dump(users,fp)
+		device=json.loads(body)
+		print(device)
+		with open('devices.json','r') as fp:
+			devices=json.load(fp)
+			if not devices.get("deviceList"):
+				devices["deviceList"]=[]
+			devices["deviceList"].append(device)
+		with open('devices.json','w') as fp:
+			json.dump(devices,fp)
 
-		return 'Logged!'
+		return json.dumps(devices)
 
 
 if __name__ == '__main__':
