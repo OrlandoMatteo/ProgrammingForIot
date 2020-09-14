@@ -8,7 +8,7 @@ class Server(object):
 		self.name=name
 
 	def GET(self):
-		return open('login.html')
+		return open('index.html')
 
 	def POST(self,*uri,**params):
 		body=cherrypy.request.body.read()
