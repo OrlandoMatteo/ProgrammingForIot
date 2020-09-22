@@ -1,6 +1,11 @@
 ---
 marp: true
+
+paginate: true
+footer: 'programming for iot'
+theme : dracula
 ---
+<!-- _class: lead -->
 
 # How to install Python3
 
@@ -11,7 +16,7 @@ marp: true
 - Download the latest Python release installer for your OS  from [here](https://www.python.org/downloads/)
 - Launch the installer
 - **Pay Attention to select add Python to path**  
- ![Python path](images/pythonpath.png)
+ ![Python path bg right height:400px](images/pythonpath.png)
 - Wait until it's done :sweat_smile:
 
 ---
@@ -24,7 +29,7 @@ You've two alternatives:
 2. If you've brew installed just open a terminal and write "*brew install python3*"
 
 ---
-# For Linux ![width:40px](https://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Folders-OS-Linux-Metro-icon.png)
+# For Linux![width:40px](https://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Folders-OS-Linux-Metro-icon.png)
 
 Python3 should be already available on most Linux of distribution, in the rare case you don't have it you can install it by writing on a terminal "*sudo |name of the packet manager| install python3*" (For example in Ubuntu "*sudo apt-get install python3*")
 
@@ -188,9 +193,9 @@ My name is Python and I'm 28 years old, I was born the 20/02/1991
 # Exercise 3
 
 **Math operators**  
-In python we can use a lot of mathematical operators let's check which they are:
+In python we can use a lot of mathematical operators let's check which they are :arrow_right:
 
-![operators](images/operators.png)
+![operators bg right height:80%](images/operators.png)
 
 ---
 
@@ -212,16 +217,15 @@ if __name__=="__main__":
 # Exercise 4
 
 **Ask user input**  
-The function to ask inputs from user in Python is simply "_input()_". For example if we want to ask to the user to insert  anumber we would write:  
+The function to ask inputs from user in Python is simply "_input()_". For example:  
 
-```
+``` python
 number=input(" Please write a number")
 ```  
 
-
 That is quite easy so let's try to write a script that ask the user his name and his age and his height and reply somthing like:  
 
-```
+``` Markdown
 So you're Mt. Everest you're 60000 years old and you're tall 8848 m...
 ```
 
@@ -324,12 +328,12 @@ As exercise create 2 file: "original.txt" with some random conten and an empty f
 
 _original.txt_  
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."  
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."  
 
 _copyt.txt_  
 
 "The content of the original file is:  
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 
 ---
 
@@ -371,6 +375,10 @@ As exercise write a script that takes as input a number and chech whether it's a
 
 As you've seen in the slides in python the "array" type is called "list" and there it has some particular function related to it:  
 
+---
+
+# List functions 1/3
+
 - _list\[i]_  
   Return the i-th element of the list
   
@@ -382,13 +390,18 @@ As you've seen in the slides in python the "array" type is called "list" and the
 
 ---
 
-# 
+# List functions 2/3
 
 - _list.remove(x)_  
   Remove the first item from the list whose value is x. It is an error if there is no such item.
 
 - _list.pop([i])_  
-  Remove the item at the given position in the list, and return it. If no index is specified, a.pop() removes and returns the last item in the list. 
+  Remove the item at the given position in the list, and return it. If no index is specified, a.pop() removes and returns the last item in the list.
+
+  ---
+
+# List functions 3/3
+
 
 - _list.index(x)_  
   Return the index in the list of the first item whose value is x. It is an error if there is no such item.
@@ -401,9 +414,12 @@ As you've seen in the slides in python the "array" type is called "list" and the
 
 ---
 
-# Important
+# 
 
-**Remember that list in python start at 0**
+
+## :warning: Remember that list in python start at 0
+
+
 
 ---
 
@@ -427,21 +443,26 @@ if __name__=="__main__":
         sum_of_numbers=sum_of_numbers+numbers[i]
         #the more "pythonic" way to do it is
         #sum_of_numbers+=numbers[i]
-        
-    ##While-loop for the product
-    #set counter to 0
+    print(f"The sum of the numbers in the list is {sum_of_numbers}")
+```
+---
+
+# While-loop
+
+```python
+if __name__=="__main__":
+    numbers=[1,2,3,4,5]
+    list_len=len(numbers)
+    #set counter to 0 an product to 1
     i=0
-    #Set product to 1
     product_of_numbers=1
     while i<list_len:
         #Multiply the old value for the number at place i
         product_of_numbers=product_of_numbers*numbers[i]
-        #Update counter
-        i=i+1
         #the more "pythonic" way to do it is
         #product_of_numbers*=numbers[i]
-        #i+=1
-    print(f"The sum of the numbers in the list is {sum_of_numbers}")
+        #Update counter
+        i=i+1
     print(f"The product of the numbers in the list in {product_of_numbers}")
 ```
 
