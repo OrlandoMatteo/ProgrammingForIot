@@ -3,9 +3,17 @@ marp: true
 
 paginate: true
 footer: 'programming for iot'
-theme : dracula
+theme: dracula
+size: 16:9
+style: |
+  section h1{
+    color: orange
+  }
+  
+
+
 ---
-<!-- _class: lead -->
+
 
 # How to install Python3
 
@@ -16,7 +24,7 @@ theme : dracula
 - Download the latest Python release installer for your OS  from [here](https://www.python.org/downloads/)
 - Launch the installer
 - **Pay Attention to select add Python to path**  
- ![Python path bg right height:400px](images/pythonpath.png)
+ ![Python path bg right 100%](images/pythonpath.png)
 - Wait until it's done :sweat_smile:
 
 ---

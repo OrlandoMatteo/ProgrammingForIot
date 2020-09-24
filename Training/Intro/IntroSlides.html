@@ -1,0 +1,770 @@
+<!DOCTYPE html><html lang="en-US"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><style>.bespoke-marp-note,.bespoke-marp-osc,.bespoke-progress-parent{display:none;transition:none}@media screen{body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:transparent;border:0;color:inherit;cursor:pointer;font-size:inherit;opacity:.8;outline:none;padding:0;transition:opacity .2s linear;-webkit-tap-highlight-color:transparent}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:disabled{cursor:not-allowed;opacity:.15!important}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover{opacity:1}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:active{opacity:.6}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:not(:disabled){transition:none}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-prev{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNNjggOTBMMjggNTBsNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-next{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNMzIgOTBsNDAtNDAtNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen]{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IGNsYXNzPSJhIiB4PSIxMCIgeT0iMjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgcng9IjUuNjciLz48cGF0aCBjbGFzcz0iYSIgZD0iTTQwIDcwSDIwVjUwbTIwIDBMMjAgNzBtNDAtNDBoMjB2MjBtLTIwIDBsMjAtMjAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button.exit[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button.exit[data-bespoke-marp-osc=fullscreen]{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IGNsYXNzPSJhIiB4PSIxMCIgeT0iMjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgcng9IjUuNjciLz48cGF0aCBjbGFzcz0iYSIgZD0iTTIwIDUwaDIwdjIwbS0yMCAwbDIwLTIwbTQwIDBINjBWMzBtMjAgMEw2MCA1MCIvPjwvc3ZnPg==")}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter]{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS13aWR0aDo1cHh9PC9zdHlsZT48L2RlZnM+PHBhdGggY2xhc3M9ImEiIGQ9Ik0yMCA2MGgtNWE1IDUgMCAwMS01LTVWMjBhNSA1IDAgMDE1LTVoNjBhNSA1IDAgMDE1IDV2NU0zMCA4NWg2MCIvPjxyZWN0IHg9IjMwIiB5PSIzNSIgd2lkdGg9IjYwIiBoZWlnaHQ9IjQwIiByeD0iNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIi8+PHJlY3QgY2xhc3M9ImEiIHg9IjMwIiB5PSIzNSIgd2lkdGg9IjYwIiBoZWlnaHQ9IjQwIiByeD0iNSIvPjxwYXRoIGNsYXNzPSJhIiBkPSJNNDAgNTBoNDBNNDAgNjBoMzAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body,html{height:100%;margin:0}body{background:#000;overflow:hidden}svg.bespoke-marp-slide{content-visibility:hidden;z-index:-1;pointer-events:none;opacity:0}svg.bespoke-marp-slide.bespoke-marp-active{content-visibility:visible;z-index:0;pointer-events:auto;opacity:1}svg.bespoke-marp-slide.bespoke-marp-active.bespoke-marp-active-ready *{-webkit-animation-name:__bespoke_marp__!important;animation-name:__bespoke_marp__!important}@supports not (content-visibility:hidden){svg.bespoke-marp-slide[data-bespoke-marp-load=hideable]{display:none}svg.bespoke-marp-slide[data-bespoke-marp-load=hideable].bespoke-marp-active{display:block}}[data-bespoke-marp-fragment=inactive]{visibility:hidden}body[data-bespoke-view=""] .bespoke-marp-parent,body[data-bespoke-view=next] .bespoke-marp-parent{bottom:0;left:0;position:absolute;right:0;top:0}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc{background:rgba(0,0,0,.65);border-radius:7px;bottom:50px;color:#fff;display:block;font-family:Helvetica,Arial,sans-serif;font-size:16px;left:50%;line-height:0;opacity:1;padding:12px;position:absolute;touch-action:manipulation;transform:translateX(-50%);transition:opacity .2s linear;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;white-space:nowrap;z-index:1;will-change:transform}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>*,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>*{margin-left:6px}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>:first-child,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>:first-child{margin-left:0}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>span,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>span{opacity:.8}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>span[data-bespoke-marp-osc=page],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>span[data-bespoke-marp-osc=page]{display:inline-block;min-width:140px;text-align:center}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev]{height:32px;line-height:32px;width:32px}body[data-bespoke-view=""] .bespoke-marp-parent.bespoke-marp-inactive,body[data-bespoke-view=next] .bespoke-marp-parent.bespoke-marp-inactive{cursor:none}body[data-bespoke-view=""] .bespoke-marp-parent.bespoke-marp-inactive>.bespoke-marp-osc,body[data-bespoke-view=next] .bespoke-marp-parent.bespoke-marp-inactive>.bespoke-marp-osc{opacity:0;pointer-events:none}body[data-bespoke-view=""] svg.bespoke-marp-slide,body[data-bespoke-view=next] svg.bespoke-marp-slide{height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent{background:#222;display:flex;height:5px;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent+.bespoke-marp-parent{top:5px}body[data-bespoke-view=""] .bespoke-progress-parent .bespoke-progress-bar{flex:0 0 0;background:#0288d1;transition:flex-basis .2s cubic-bezier(0,1,1,1)}body[data-bespoke-view=next]{background:transparent}body[data-bespoke-view=presenter]{background:#161616}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container{font-family:Helvetica,Arial,sans-serif;height:100%;left:0;position:absolute;top:0;width:100%;display:grid;grid-template-columns:2fr 1fr;grid-template-rows:minmax(140px,1fr) 2fr 3em;grid-template-areas:"current next" "current note" "info    note"}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent{grid-area:current;position:relative;overflow:hidden}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent svg.bespoke-marp-slide{height:calc(100% - 40px);left:20px;position:absolute;pointer-events:none;top:20px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent svg.bespoke-marp-slide.bespoke-marp-active{filter:drop-shadow(0 3px 10px rgba(0,0,0,.5))}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container{background:#222;cursor:pointer;display:none;grid-area:next;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container iframe.bespoke-marp-presenter-next{background:transparent;border:0;display:block;filter:drop-shadow(0 3px 10px rgba(0,0,0,.5));height:calc(100% - 40px);left:20px;position:absolute;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;top:20px;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container{background:#222;color:#eee;grid-area:note}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note{margin:20px;width:calc(100% - 40px);height:calc(100% - 40px);box-sizing:border-box;font-size:1.1em;overflow:auto;padding-right:3px;white-space:pre-wrap;word-wrap:break-word;scrollbar-width:thin;scrollbar-color:hsla(0,0%,93.3%,.5) transparent}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar{width:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-track{background:transparent}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-thumb{background:hsla(0,0%,93.3%,.5);border-radius:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note:empty{pointer-events:none}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:first-child{margin-top:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:last-child{margin-bottom:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container{align-items:center;box-sizing:border-box;color:#eee;display:flex;flex-wrap:nowrap;grid-area:info;justify-content:center;padding:0 10px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-time,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer{display:block;box-sizing:border-box;padding:0 10px;white-space:nowrap;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button{height:1.5em;line-height:1.5em;width:1.5em}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page{order:2;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page .bespoke-marp-presenter-info-page-text{display:inline-block;min-width:120px;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-time{color:#999;order:1;text-align:left}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer{color:#999;order:3;text-align:right}}@media print{.bespoke-marp-presenter-info-container,.bespoke-marp-presenter-next-container,.bespoke-marp-presenter-note-container{display:none}}</style><style>@charset "UTF-8";@import url("https://fonts.googleapis.com/css?family=Lato:400,900|IBM+Plex+Sans:400,700");div#p>svg>foreignObject>section{width:1280px;height:720px;box-sizing:border-box;overflow:hidden;position:relative;scroll-snap-align:center center}div#p>svg>foreignObject>section:after{bottom:0;content:attr(data-marpit-pagination);padding:inherit;pointer-events:none;position:absolute;right:0}div#p>svg>foreignObject>section:not([data-marpit-pagination]):after{display:none}/* Normalization */div#p>svg>foreignObject>section h1{font-size:2em;margin:0.67em 0}div#p>svg>foreignObject>section video::-webkit-media-controls{will-change:transform}@page{size:1280px 720px;margin:0}@media print{body,html{background-color:#fff;margin:0;page-break-inside:avoid;break-inside:avoid-page}div#p>svg>foreignObject>section{page-break-before:always;break-before:page}div#p>svg>foreignObject>section,div#p>svg>foreignObject>section *{-webkit-print-color-adjust:exact!important;animation-delay:0s!important;animation-duration:0s!important;color-adjust:exact!important;transition:none!important}div#p>svg[data-marpit-svg]{display:block;height:100vh;width:100vw}}div#p>svg>foreignObject>section svg[data-marp-fitting=svg]{display:block;height:auto;width:100%}@supports (-ms-ime-align:auto){div#p>svg>foreignObject>section svg[data-marp-fitting=svg]{position:static}}div#p>svg>foreignObject>section svg[data-marp-fitting=svg].__reflow__{content:""}@supports (-ms-ime-align:auto){div#p>svg>foreignObject>section svg[data-marp-fitting=svg].__reflow__{position:relative}}div#p>svg>foreignObject>section [data-marp-fitting-svg-content]{display:table;white-space:nowrap}div#p>svg>foreignObject>section [data-marp-fitting-svg-content-wrap]{white-space:pre}div#p>svg>foreignObject>section img[data-marp-twemoji]{background:transparent;height:1em;margin:0 .05em 0 .1em;vertical-align:-.1em;width:1em}
+/*!
+ * Marp Dracula theme.
+ * @theme dracula
+ * @author Daniel Nicolas Gisolfi
+ *
+ * @auto-scaling true
+ * @size 4:3 960px 720px
+ * @size 16:9 1280px 720px
+ */div#p>svg>foreignObject>section:not(\9){--dracula-background:#282a36;--dracula-current-line:#44475a;--dracula-foreground:#f8f8f2;--dracula-comment:#6272a4;--dracula-cyan:#8be9fd;--dracula-green:#50fa7b;--dracula-orange:#ffb86c;--dracula-pink:#ff79c6;--dracula-purple:#bd93f9;--dracula-red:#ff5555;--dracula-yellow:#f1fa8c}div#p>svg>foreignObject>section .hljs{display:block;overflow-x:auto;padding:0.5em;background:var(--dracula-background)}
+
+/* Dracula Foreground */div#p>svg>foreignObject>section .hljs,div#p>svg>foreignObject>section .hljs-subst,div#p>svg>foreignObject>section .hljs-template-variable,div#p>svg>foreignObject>section .hljs-typing,div#p>svg>foreignObject>section .hljs-variable{color:var(--dracula-foreground)}
+
+/* Dracula Comment */div#p>svg>foreignObject>section .hljs-comment,div#p>svg>foreignObject>section .hljs-deletion,div#p>svg>foreignObject>section .hljs-quote{color:var(--dracula-comment)}
+
+/* Dracula Cyan */div#p>svg>foreignObject>section .hljs-built_in,div#p>svg>foreignObject>section .hljs-class,div#p>svg>foreignObject>section .hljs-link,div#p>svg>foreignObject>section .hljs-meta .hljs-doctag,div#p>svg>foreignObject>section .hljs-section,div#p>svg>foreignObject>section .hljs-selector-tag{color:var(--dracula-cyan)}
+
+
+/* Dracula Green */div#p>svg>foreignObject>section .hljs-title{color:var(--dracula-green)}
+
+/* Dracula Orange */div#p>svg>foreignObject>section .hljs-params{color:var(--dracula-orange)}
+
+/* Dracula Pink */div#p>svg>foreignObject>section .hljs-keyword{color:var(--dracula-pink)}
+
+/* Dracula Purple */div#p>svg>foreignObject>section .hljs-literal,div#p>svg>foreignObject>section .hljs-number{color:var(--dracula-purple)}
+
+/* Dracula Red */div#p>svg>foreignObject>section .hljs-regexp{color:var(--dracula-red)}
+
+/* Dracula Yellow */div#p>svg>foreignObject>section .hljs-addition,div#p>svg>foreignObject>section .hljs-attr,div#p>svg>foreignObject>section .hljs-bullet,div#p>svg>foreignObject>section .hljs-name,div#p>svg>foreignObject>section .hljs-string,div#p>svg>foreignObject>section .hljs-symbol,div#p>svg>foreignObject>section .hljs-template-tag,div#p>svg>foreignObject>section .hljs-type{color:var(--dracula-yellow)}div#p>svg>foreignObject>section .hljs-doctag,div#p>svg>foreignObject>section .hljs-keyword,div#p>svg>foreignObject>section .hljs-literal,div#p>svg>foreignObject>section .hljs-name,div#p>svg>foreignObject>section .hljs-section,div#p>svg>foreignObject>section .hljs-selector-tag,div#p>svg>foreignObject>section .hljs-strong,div#p>svg>foreignObject>section .hljs-title,div#p>svg>foreignObject>section .hljs-type{font-weight:bold}div#p>svg>foreignObject>section .hljs-emphasis,div#p>svg>foreignObject>section .hljs-params{font-style:italic}div#p>svg>foreignObject>section svg[data-marp-fitting=svg]{max-height:580px}div#p>svg>foreignObject>section h1,div#p>svg>foreignObject>section h2,div#p>svg>foreignObject>section h3,div#p>svg>foreignObject>section h4,div#p>svg>foreignObject>section h5,div#p>svg>foreignObject>section h6{margin:0.5em 0 0 0;color:var(--dracula-pink)}div#p>svg>foreignObject>section h1 strong,div#p>svg>foreignObject>section h2 strong,div#p>svg>foreignObject>section h3 strong,div#p>svg>foreignObject>section h4 strong,div#p>svg>foreignObject>section h5 strong,div#p>svg>foreignObject>section h6 strong{font-weight:inherit}div#p>svg>foreignObject>section h1{font-size:1.8em}div#p>svg>foreignObject>section h2{font-size:1.5em}div#p>svg>foreignObject>section h3{font-size:1.3em}div#p>svg>foreignObject>section h4{font-size:1.1em}div#p>svg>foreignObject>section h5{font-size:1em}div#p>svg>foreignObject>section h6{font-size:0.9em}div#p>svg>foreignObject>section blockquote,div#p>svg>foreignObject>section p{margin:1em 0 0 0}div#p>svg>foreignObject>section ol>li,div#p>svg>foreignObject>section ul>li{margin:0.3em 0 0 0;color:var(--dracula-cyan)}div#p>svg>foreignObject>section ol>li>p,div#p>svg>foreignObject>section ul>li>p{margin:0.6em 0 0 0}div#p>svg>foreignObject>section code{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:0.8em;letter-spacing:0;margin:-0.1em 0.15em;padding:0.1em 0.2em;vertical-align:baseline;color:var(--dracula-green)}div#p>svg>foreignObject>section pre{display:block;margin:1em 0 0 0;min-height:1em;overflow:visible}div#p>svg>foreignObject>section pre code{box-sizing:border-box;margin:0;min-width:100%;padding:0.5em;font-size:0.7em}div#p>svg>foreignObject>section pre code svg[data-marp-fitting=svg]{max-height:calc(580px - 1em)}div#p>svg>foreignObject>section blockquote{margin:1em 0 0 0;padding:0 1em;position:relative;color:var(--dracula-orange)}div#p>svg>foreignObject>section blockquote:after,div#p>svg>foreignObject>section blockquote:before{content:"“";display:block;font-family:"Times New Roman",serif;font-weight:bold;position:absolute;color:var(--dracula-green)}div#p>svg>foreignObject>section blockquote:before{top:0;left:0}div#p>svg>foreignObject>section blockquote:after{right:0;bottom:0;transform:rotate(180deg)}div#p>svg>foreignObject>section blockquote>:first-child{margin-top:0}div#p>svg>foreignObject>section mark{background:transparent}div#p>svg>foreignObject>section table{border-spacing:0;border-collapse:collapse;margin:1em 0 0 0}div#p>svg>foreignObject>section table td,div#p>svg>foreignObject>section table th{padding:0.2em 0.4em;border-width:1px;border-style:solid}div#p>svg>foreignObject>section{font-size:35px;font-family:"IBM Plex Sans";line-height:1.35;letter-spacing:1.25px;padding:70px;color:var(--dracula-foreground);background-color:var(--dracula-background)}div#p>svg>foreignObject>section{--marpit-root-font-size:35px}div#p>svg>foreignObject>section>:first-child,div#p>svg>foreignObject>section>header:first-child+*{margin-top:0}div#p>svg>foreignObject>section a,div#p>svg>foreignObject>section mark{color:var(--dracula-red)}div#p>svg>foreignObject>section code{background:var(--dracula-current-line);color:var(--dracula-current-green)}div#p>svg>foreignObject>section h1 strong,div#p>svg>foreignObject>section h2 strong,div#p>svg>foreignObject>section h3 strong,div#p>svg>foreignObject>section h4 strong,div#p>svg>foreignObject>section h5 strong,div#p>svg>foreignObject>section h6 strong{color:var(--dracula-current-line)}div#p>svg>foreignObject>section pre>code{background:var(--dracula-current-line)}div#p>svg>foreignObject>section blockquote:after,div#p>svg>foreignObject>section blockquote:before,div#p>svg>foreignObject>section footer,div#p>svg>foreignObject>section header,div#p>svg>foreignObject>section section:after{color:var(--dracula-comment)}div#p>svg>foreignObject>section table td,div#p>svg>foreignObject>section table th{border-color:var(--dracula-current-line)}div#p>svg>foreignObject>section table thead th{background:var(--dracula-current-line);color:var(--dracula-yellow)}div#p>svg>foreignObject>section table tbody>tr:nth-child(2n) td,div#p>svg>foreignObject>section table tbody>tr:nth-child(2n) th{background:var(--dracula-current-line)}div#p>svg>foreignObject>section:after,div#p>svg>foreignObject>section footer,div#p>svg>foreignObject>section header{box-sizing:border-box;font-size:66%;height:70px;line-height:50px;overflow:hidden;padding:10px 25px;position:absolute;color:var(--dracula-comment)}div#p>svg>foreignObject>section:after{--marpit-root-font-size:66%}div#p>svg>foreignObject>section header{left:0;right:0;top:0}div#p>svg>foreignObject>section footer{left:0;right:0;bottom:0}div#p>svg>foreignObject>section:after{right:0;bottom:0;font-size:80%}div#p>svg>foreignObject>section:after{--marpit-root-font-size:80%}div#p>svg>foreignObject>section h1{color:orange}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]{display:block!important;padding:0!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:before,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:before{display:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]{all:initial;display:flex;flex-direction:row;height:100%;overflow:hidden;width:100%}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction=vertical]{flex-direction:column}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split]>div[data-marpit-advanced-background-container]{width:var(--marpit-advanced-background-split,50%)}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split=right]>div[data-marpit-advanced-background-container]{margin-left:calc(100% - var(--marpit-advanced-background-split, 50%))}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]>figure{all:initial;background-position:center;background-repeat:no-repeat;background-size:cover;flex:auto;margin:0}div#p>svg>foreignObject>section[data-marpit-advanced-background=content],div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo]{background:transparent!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo],div#p>svg[data-marpit-svg]>foreignObject[data-marpit-advanced-background=pseudo]{pointer-events:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background-split]{width:100%;height:100%}</style></head><body><div class="bespoke-marp-osc"><button data-bespoke-marp-osc="prev" tabindex="-1" title="Previous slide">Previous slide</button><span data-bespoke-marp-osc="page"></span><button data-bespoke-marp-osc="next" tabindex="-1" title="Next slide">Next slide</button><button data-bespoke-marp-osc="fullscreen" tabindex="-1" title="Toggle fullscreen (f)">Toggle fullscreen</button><button data-bespoke-marp-osc="presenter" tabindex="-1" title="Open presenter view (p)">Open presenter view</button></div><div id="p"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="1" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="1" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>How to install Python3</h1>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="2" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;--marpit-advanced-background-split:50%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="right"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;images/pythonpath.png&quot;);background-size:100%;"></figure></div></section></foreignObject><foreignObject width="50%" height="720"><section id="2" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="2" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;--marpit-advanced-background-split:50%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="right">
+<h1>For Windows <img src="https://icons.iconarchive.com/icons/martz90/circle/256/windows-8-icon.png" alt="width:40px" style="width:40px;" /></h1>
+<ul>
+<li>Download the latest Python release installer for your OS  from <a href="https://www.python.org/downloads/">here</a></li>
+<li>Launch the installer</li>
+<li><strong>Pay Attention to select add Python to path</strong><br />
+</li>
+<li>Wait until it's done <img class="emoji" draggable="false" alt="😅" src="https://twemoji.maxcdn.com/2/svg/1f605.svg" data-marp-twemoji=""/></li>
+</ul>
+<footer>programming for iot</footer>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="2" data-marpit-pagination-total="51"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="3" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>For macOS <img src="https://icons.iconarchive.com/icons/danleech/simple/256/apple-icon.png" alt="width:40px" style="width:40px;" /></h1>
+<p>You've two alternatives:</p>
+<ol>
+<li>Proceed as indicated with windows (but obviously download the installer for mac)</li>
+<li>If you've brew installed just open a terminal and write &quot;<em>brew install python3</em>&quot;</li>
+</ol>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="4" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>For Linux<img src="https://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Folders-OS-Linux-Metro-icon.png" alt="width:40px" style="width:40px;" /></h1>
+<p>Python3 should be already available on most Linux of distribution, in the rare case you don't have it you can install it by writing on a terminal &quot;<em>sudo |name of the packet manager| install python3</em>&quot; (For example in Ubuntu &quot;<em>sudo apt-get install python3</em>&quot;)</p>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="5" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>ReadyCheck</h1>
+<p>In any case to check Python wheter has been correctly installed open a terminal and type &quot;<em>python3</em>&quot; you should see something like this</p>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>matteo@matteo-desktop ~&gt; python3
+Python 3.6.8 (default, Aug 20 2019, 17:12:48) 
+[GCC 8.3.0] on linux
+Type <span class="hljs-string">&quot;help&quot;</span>, <span class="hljs-string">&quot;copyright&quot;</span>, <span class="hljs-string">&quot;credits&quot;</span> or <span class="hljs-string">&quot;license&quot;</span> <span class="hljs-keyword">for</span> more information.
+&gt;&gt;&gt;
+</span></span></foreignObject></svg></code></pre>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="6" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>How to install VS Code <img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_vscode_icon_130084.png" alt="width:40px" style="width:40px;" /></h1>
+<p>Go on the <a href="https://code.visualstudio.com/">VS Code website</a> and follow the installation guide for your OS</p>
+<p><strong>Optional</strong></p>
+<p>In the <em>Extensions</em> tab ( on the left side ) search for &quot;python&quot; an install the extension</p>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="7" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>How to launch a Python script</h1>
+<p>Launching a Python script is quite easy, these are the steps to follow:</p>
+<ol>
+<li>Open a new terminal (Command line for Windows)</li>
+<li>Navigate to the folder , &quot;<em>cd name of the folder</em>&quot; to open a folder , &quot;<em>dir</em>&quot; to list the file in the folder (&quot;<em>ls</em>&quot; for MacOS and Linux)</li>
+<li>type &quot;<em>python |name of the <a href="http://file%7C.py">file|.py</a></em>&quot;</li>
+</ol>
+<p>For the rest of the course we will always launch our Python scripts in this way</p>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="8" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>Exercise 0</h1>
+<p>Before anything you want to define the &quot;main&quot; as you would do in C. In Python we can do this like it's shown below</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&quot;__main__&quot;</span>:
+    <span class="hljs-comment">#This is the main</span>
+    <span class="hljs-keyword">pass</span>
+
+</span></span></foreignObject></svg></code></pre>
+<p><strong>Remember that in Python indentation take places of the bracket</strong>, we will see going on with the exercise what this means</p>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="9" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>Main example</h1>
+<p><strong>Print</strong><br />
+Printing in python is really easy, you've just to type</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">print</span> (<span class="hljs-string">&quot;what you want to print&quot;</span>)
+</span></span></foreignObject></svg></code></pre>
+<p>An example is shown below</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&quot;__main__&quot;</span>:
+    <span class="hljs-comment">#This is the main</span>
+    <span class="hljs-keyword">print</span> (<span class="hljs-string">&quot;Sentence to print&quot;</span>)
+</span></span></foreignObject></svg></code></pre>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="10" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>Exercise 1</h1>
+<p>Now try to write and launch your Python script and print some words/sentences, you will see that contrarily to C python will print the content of each <em>print()</em> in a new line</p>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="11" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>Print with Python</h1>
+<p><strong>Print with placeholder</strong><br />
+In a lot of case you want to print things like</p>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>the average of the values is: 5.4
+</span></span></foreignObject></svg></code></pre>
+<p>In general you would like to print a string and the value of a variable or multiple variable. There a lot of way to print in Python, we will see just 2 of them.</p>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="12" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>First Method</h1>
+<p>The first method consists in using placeholder with &quot;%&quot; like you would do in C, there are different type of plceholder, you will mainly use the following:</p>
+<ul>
+<li>%s to print string</li>
+<li>%d to print integer</li>
+<li>%f to print float</li>
+<li>%e to print in exponential form</li>
+</ul>
+<p>So an example could be:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>print(<span class="hljs-string">&quot;My name is %s&quot;</span> %myName)
+</span></span></foreignObject></svg></code></pre>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="13" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>Special cases</h1>
+<p>In case of floating point number you can specify the number of digits after the comma by writing &quot;<em>%.<strong>n</strong>f</em>&quot; where n is the number of digits so for example if we want to have 3 digits we would write &quot;%.3f&quot;. This method will work also with &quot;%s&quot; but in that case the number will specify the number of <strong>characters</strong> that will be used (including the &quot;.&quot;). If you want to specify multiple variable you will write</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>print(<span class="hljs-string">&quot; %s  %d %f&quot;</span> %(a,b,c))
+</span></span></foreignObject></svg></code></pre>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="14" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>Second method</h1>
+<p>The second method use the letter &quot;f&quot;, in this case the placeholder is the same for every type of variable and is &quot;<em>{variable}</em>&quot;, so the example we saw before would become:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>print(<span class="hljs-string">f&quot;My name is <span class="hljs-subst">{myname}</span>&quot;</span>)
+</span></span></foreignObject></svg></code></pre>
+<p>In this case if we want to print multiple variable we would write:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>print(<span class="hljs-string">f&quot;<span class="hljs-subst">{a}</span> <span class="hljs-subst">{b}</span> <span class="hljs-subst">{c}</span>&quot;</span>)
+</span></span></foreignObject></svg></code></pre>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="15" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>Special cases</h1>
+<p>With this method you can also specify the total number of digits by writing &quot;<em>{:.<strong>n</strong>}</em>&quot; where n is the <strong>total</strong> number of digits so if for example we want to write pi with 3 decimal digits we would write</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>pi=<span class="hljs-number">3.15169265</span>
+print(<span class="hljs-string">f&quot;<span class="hljs-subst">{pi:<span class="hljs-number">.4</span>}</span>&quot;</span>).  
+</span></span></foreignObject></svg></code></pre>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="16" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>Exercise 2</h1>
+<p>Now try to use both this method to write a Python script that give as output your nam, your age and your birthday in this way:</p>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>My name is Python and I<span class="hljs-string">&#x27;m 28 years old, I was born the 20/02/1991
+</span></span></span></foreignObject></svg></code></pre>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="17" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;--marpit-advanced-background-split:50%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="right"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;images/operators.png&quot;);background-size:auto 80%;"></figure></div></section></foreignObject><foreignObject width="50%" height="720"><section id="17" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="17" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;--marpit-advanced-background-split:50%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="right">
+<h1>Exercise 3</h1>
+<p><strong>Math operators</strong><br />
+In python we can use a lot of mathematical operators let's check which they are <img class="emoji" draggable="false" alt="➡️" src="https://twemoji.maxcdn.com/2/svg/27a1.svg" data-marp-twemoji=""/></p>
+<footer>programming for iot</footer>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="17" data-marpit-pagination-total="51"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="18" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1></h1>
+<p>To try to understand what they do let's write a python script with one operation for each of them, something like the one below:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&quot;__main__&quot;</span>:
+    <span class="hljs-keyword">print</span> (<span class="hljs-string">f&quot;2+3=<span class="hljs-subst">{<span class="hljs-number">2</span>+<span class="hljs-number">3</span>}</span>&quot;</span>)
+</span></span></foreignObject></svg></code></pre>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>    2+3=5
+</span></span></foreignObject></svg></code></pre>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="19" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>Exercise 4</h1>
+<p><strong>Ask user input</strong><br />
+The function to ask inputs from user in Python is simply &quot;<em>input()</em>&quot;. For example:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>number=input(<span class="hljs-string">&quot; Please write a number&quot;</span>)
+</span></span></foreignObject></svg></code></pre>
+<p>That is quite easy so let's try to write a script that ask the user his name and his age and his height and reply somthing like:</p>
+<pre><code class="language-Markdown"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>So you&#x27;re Mt. Everest you&#x27;re 60000 years old and you&#x27;re tall 8848 m...
+</span></span></foreignObject></svg></code></pre>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="20" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>How to work on files</h1>
+<p>Reading and writing file in Python is really easy, the function you need are the following:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>open()
+read()
+readline()
+write()
+close()
+</span></span></foreignObject></svg></code></pre>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="21" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>Open a file</h1>
+<p><em><strong>open()</strong></em><br />
+this function returns an oject of the type file</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment">#Open file in reading mode</span>
+f=open(<span class="hljs-string">&#x27;myFile.txt&#x27;</span>)
+
+<span class="hljs-comment">#Open file in writing mode</span>
+f=open(<span class="hljs-string">&#x27;myFile.txt&#x27;</span>,<span class="hljs-string">&#x27;w&#x27;</span>)
+
+<span class="hljs-comment">#Open file in append mode</span>
+f=open(<span class="hljs-string">&#x27;myFile.txt&#x27;</span>,<span class="hljs-string">&#x27;a&#x27;</span>)
+</span></span></foreignObject></svg></code></pre>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="22" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>Read a file</h1>
+<p><em><strong>read()</strong></em><br />
+this function return the whole content  of the file as a string</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>
+<span class="hljs-comment">#Open and read the content of the file &quot;myFile.txt&quot;</span>
+f=open(<span class="hljs-string">&#x27;myFile.txt&#x27;</span>)
+fileContent=f.read()
+</span></span></foreignObject></svg></code></pre>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="23" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>Read a line</h1>
+<p><em><strong>readline()</strong></em><br />
+this function return one line of the file as a string</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>
+<span class="hljs-comment">#Open the file &quot;myFile.txt&quot; and read one line</span>
+f=open(<span class="hljs-string">&#x27;myFile.txt&#x27;</span>)
+fileLine=f.readline()
+</span></span></foreignObject></svg></code></pre>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="24" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>Write a file</h1>
+<p><em><strong>write()</strong></em><br />
+this function write on a file</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment">#Open the file &quot;myFile.txt&quot; and write one line</span>
+f=open(<span class="hljs-string">&#x27;myFile.txt&#x27;</span>,<span class="hljs-string">&#x27;w&#x27;</span>)
+f.write(<span class="hljs-string">&#x27;line to write&#x27;</span>)
+</span></span></foreignObject></svg></code></pre>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="25" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>Close a file</h1>
+<p><em><strong>close()</strong></em><br />
+this function closes the file</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment">#Open the file &quot;myFile.txt&quot;, write one line and close the file</span>
+f=open(<span class="hljs-string">&#x27;myFile.txt&#x27;</span>,<span class="hljs-string">&#x27;w&#x27;</span>)
+f.write(<span class="hljs-string">&#x27;line to write&#x27;</span>)
+f.close()
+</span></span></foreignObject></svg></code></pre>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="26" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>Exercise 5</h1>
+<p>As exercise create 2 file: &quot;original.txt&quot; with some random conten and an empty file called &quot;copy.txt&quot;, then write a python script to open the first file, shows its content on the terminal and write the content of &quot;original.txt&quot; in &quot;copy.txt&quot; but add at the beginning &quot;the content of the original file is:&quot;. So the result should look like this.</p>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="27" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1></h1>
+<p><em>original.txt</em></p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&quot;</p>
+<p><em>copyt.txt</em></p>
+<p>&quot;The content of the original file is:<br />
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&quot;</p>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="28" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>If-elif-else</h1>
+<p>The easiest way to show how <em>if-elif-else</em> works is by making an example. So let's see a script that asks to the user two number and tells if the first is greater, smaller or equal to the second</p>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="29" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1></h1>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&quot;__main__&quot;</span>:
+    <span class="hljs-comment">#Receive two number as input</span>
+    a=int(input(<span class="hljs-string">&#x27;Write a number\n&#x27;</span>))
+    b=int(input(<span class="hljs-string">&#x27;Write another number\n&#x27;</span>))
+    <span class="hljs-comment">#First case a&gt;b</span>
+    <span class="hljs-keyword">if</span> a&gt;b:
+        print(<span class="hljs-string">f&quot;<span class="hljs-subst">{a}</span> is greater than <span class="hljs-subst">{b}</span>&quot;</span>)
+    <span class="hljs-comment">#Second case a&lt;b</span>
+    <span class="hljs-keyword">elif</span> a&lt;b:
+        print(<span class="hljs-string">f&quot;<span class="hljs-subst">{a}</span> is smaller than <span class="hljs-subst">{b}</span>&quot;</span>)
+    <span class="hljs-comment">#All the other case</span>
+    <span class="hljs-keyword">else</span>:
+        print(<span class="hljs-string">f&quot;<span class="hljs-subst">{a}</span> equals <span class="hljs-subst">{b}</span>&quot;</span>)
+</span></span></foreignObject></svg></code></pre>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="30" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>Exercise 6</h1>
+<p>We can annidate multiple <em>if-elif-else</em> just remember to use the correct indentation, most code editors will do it for you but pay attention to it. You can create complex condition with &quot;and&quot; and &quot;or&quot;.<br />
+As exercise write a script that takes as input a number and chech whether it's a multiple of 2 and 3.</p>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="31" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>List, for-loop, while-loop</h1>
+<p>As you've seen in the slides in python the &quot;array&quot; type is called &quot;list&quot; and there it has some particular function related to it:</p>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="32" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>List functions 1/3</h1>
+<ul>
+<li>
+<p><em>list[i]</em><br />
+Return the i-th element of the list</p>
+</li>
+<li>
+<p><em>list.append(x)</em><br />
+Add an item to the end of the list.</p>
+</li>
+<li>
+<p><em>list.insert(i, x)</em><br />
+Insert an item at a given position. The first argument is the index of the element before which to insert</p>
+</li>
+</ul>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="33" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>List functions 2/3</h1>
+<ul>
+<li>
+<p><em>list.remove(x)</em><br />
+Remove the first item from the list whose value is x. It is an error if there is no such item.</p>
+</li>
+<li>
+<p><em>list.pop([i])</em><br />
+Remove the item at the given position in the list, and return it. If no index is specified, a.pop() removes and returns the last item in the list.</p>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="34" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+</li>
+</ul>
+<h1>List functions 3/3</h1>
+<ul>
+<li>
+<p><em>list.index(x)</em><br />
+Return the index in the list of the first item whose value is x. It is an error if there is no such item.</p>
+</li>
+<li>
+<p><em>list.count(x)</em><br />
+Return the number of times x appears in the list.</p>
+</li>
+<li>
+<p><em>len(list)</em><br />
+Return the number of element in the list</p>
+</li>
+</ul>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="35" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1></h1>
+<h2><img class="emoji" draggable="false" alt="⚠️" src="https://twemoji.maxcdn.com/2/svg/26a0.svg" data-marp-twemoji=""/> Remember that list in python start at 0</h2>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="36" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>How to use the lists?</h1>
+<p>The easiest way to show how the <em>for-loop</em>  and the <em>while-loop</em> works is by making an example. So let's see a script that creates a list with some number and calculates their sum and their product:</p>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="37" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>For-loop</h1>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&quot;__main__&quot;</span>:
+    numbers=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]
+    list_len=len(numbers)
+    
+    <span class="hljs-comment">##For-loop for the sum</span>
+    <span class="hljs-comment">#set sum to 0</span>
+    sum_of_numbers=<span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(list_len):
+        <span class="hljs-comment">#takes the previous value of the sum and add the number at the place i</span>
+        sum_of_numbers=sum_of_numbers+numbers[i]
+        <span class="hljs-comment">#the more &quot;pythonic&quot; way to do it is</span>
+        <span class="hljs-comment">#sum_of_numbers+=numbers[i]</span>
+    print(<span class="hljs-string">f&quot;The sum of the numbers in the list is <span class="hljs-subst">{sum_of_numbers}</span>&quot;</span>)
+</span></span></foreignObject></svg></code></pre>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="38" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>While-loop</h1>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&quot;__main__&quot;</span>:
+    numbers=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]
+    list_len=len(numbers)
+    <span class="hljs-comment">#set counter to 0 an product to 1</span>
+    i=<span class="hljs-number">0</span>
+    product_of_numbers=<span class="hljs-number">1</span>
+    <span class="hljs-keyword">while</span> i&lt;list_len:
+        <span class="hljs-comment">#Multiply the old value for the number at place i</span>
+        product_of_numbers=product_of_numbers*numbers[i]
+        <span class="hljs-comment">#the more &quot;pythonic&quot; way to do it is</span>
+        <span class="hljs-comment">#product_of_numbers*=numbers[i]</span>
+        <span class="hljs-comment">#Update counter</span>
+        i=i+<span class="hljs-number">1</span>
+    print(<span class="hljs-string">f&quot;The product of the numbers in the list in <span class="hljs-subst">{product_of_numbers}</span>&quot;</span>)
+</span></span></foreignObject></svg></code></pre>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="39" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>For in the &quot;pythonic&quot; way</h1>
+<p>There is another method to write the <em>for-loop</em> that is a little easier that is</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> list:
+</span></span></foreignObject></svg></code></pre>
+<p>Using this method for the previous example it becomes</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&quot;__main__&quot;</span>:
+    numbers=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]
+    sum_of_numbers=<span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> numbers:
+        sum_of_numbers+=item
+    print(<span class="hljs-string">f&quot;The sum of the numbers in the list is <span class="hljs-subst">{sum_of_numbers}</span>&quot;</span>)
+</span></span></foreignObject></svg></code></pre>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="40" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>Exercise 7</h1>
+<p>As exercise write a script to calculate the average, the max and the min of a list of number</p>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="41" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="41" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>Dictionaries</h1>
+<p>An really useful datatype of python is &quot;dict&quot;. Dictionaries are collections of couples of key/value, key are of type string and they are unique for each dict, the value of a dict can be of whatever type :int,float,string,list or even other dict. Let's see an example of dict and what function can be used on a dict.</p>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="42" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="42" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1></h1>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&quot;__main__&quot;</span>:
+    building={ <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;House&quot;</span>, 
+              <span class="hljs-string">&quot;properties&quot;</span>: {
+                  <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-number">1</span>, 
+                  <span class="hljs-string">&quot;RCODE&quot;</span>: <span class="hljs-string">&quot;RM3&quot;</span>, 
+                  <span class="hljs-string">&quot;NAME&quot;</span>: <span class="hljs-string">&quot;Mezzanone&quot;</span>, 
+                  <span class="hljs-string">&quot;TOWN&quot;</span>: <span class="hljs-string">&quot;Borgo Mezzanone&quot;</span>,
+                  <span class="hljs-string">&quot;website&quot;</span>: <span class="hljs-string">&quot;https://www.ruritage.eu/RHH/Apulia&quot;</span>,
+              },
+              <span class="hljs-string">&quot;geometry&quot;</span>: { 
+                  <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;Point&quot;</span>, 
+                  <span class="hljs-string">&quot;coordinates&quot;</span>:[ <span class="hljs-number">15.7094462</span>, <span class="hljs-number">41.4205881</span> ] 
+              } 
+             }
+    <span class="hljs-comment">#Get the building type</span>
+    building_type=building[<span class="hljs-string">&#x27;type&#x27;</span>]
+    <span class="hljs-comment">#or</span>
+    building_type=building.get(<span class="hljs-string">&#x27;type&#x27;</span>)
+
+    print(<span class="hljs-string">f&quot;The building type is <span class="hljs-subst">{building_type}</span>&quot;</span>)
+
+    <span class="hljs-comment">#Get the properties of the building</span>
+    building_properties=building[<span class="hljs-string">&#x27;properties&#x27;</span>]
+    print(<span class="hljs-string">f&quot;building properties:<span class="hljs-subst">{building_properties}</span>&quot;</span>)
+    <span class="hljs-comment">#to print it pretty you can  do</span>
+    <span class="hljs-comment">#print(&quot;Building properties&quot;)</span>
+    <span class="hljs-comment">#for key,value in building_properties.items():</span>
+    <span class="hljs-comment">#    print(f&quot;\t{key}: {value}&quot;)</span>
+
+    <span class="hljs-comment">#Get the coordinates of the building</span>
+    building_coordinates=building[<span class="hljs-string">&#x27;geometry&#x27;</span>][<span class="hljs-string">&#x27;coordinates&#x27;</span>]
+    print(<span class="hljs-string">f&quot;The coordinates of the building are:\nX:<span class="hljs-subst">{building_coordinates[<span class="hljs-number">0</span>]}</span>\nY:<span class="hljs-subst">{building_coordinates[<span class="hljs-number">1</span>]}</span>&quot;</span>)
+</span></span></foreignObject></svg></code></pre>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="43" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>Exercise 8</h1>
+<p>As exercise write a script that ask as input the data needed to fill the dict defined below and print the dict as output</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>personal_data={<span class="hljs-string">&quot;Name&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,
+              <span class="hljs-string">&quot;Surname&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,
+              <span class="hljs-string">&quot;Birth&quot;</span>:{
+                  <span class="hljs-string">&quot;Place of birth&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,
+                  <span class="hljs-string">&quot;Birthday&quot;</span>:<span class="hljs-string">&quot;&quot;</span>
+              },
+               <span class="hljs-string">&quot;age&quot;</span>:<span class="hljs-string">&quot;&quot;</span>
+              }
+</span></span></foreignObject></svg></code></pre>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="44" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="44" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>JSON files</h1>
+<p>For all te course we will use <em>.json</em> files a json is essentialy a dictionary saved on a file, it is easy for humans to read and write. It is easy for machines to parse and generate. Python has a module (i.e. library) called <em>json</em> that contains all the function we need to read and write json files.<br />
+The function we will use are</p>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="45" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="45" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>json.load(fp)</h1>
+<p>the output is a dictionary that filled with the content of from te file pointer fp (fp is the result ofthe function open(&quot;&lt;name_of_the_file&gt;.json&quot;)). What we will usually write is <code>dictionaryName=json.load(open(&quot;&lt;name_of_the_file&gt;.json&quot;))</code></p>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="46" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="46" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>json.dump(d,fp)</h1>
+<p>this is used to write the dictionary <em>d</em> on the file pointer fp. What we uually write could be <code>json.dump(dictionaryName,open(&quot;&lt;name_of_the_file&gt;.json&quot;,&quot;w&quot;))</code></p>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="47" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="47" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>json.loads(myString)</h1>
+<p>this will return a dictionary obtained by converting the string <em>myString</em>. We eill use this function later in the course</p>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="48" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="48" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>json.dump(d)</h1>
+<p>this will return a string by converting the dictionary <em>d</em>. Also this function will be useful later in the course</p>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="49" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="49" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>Exercise 9</h1>
+<p>As exercise try to save the variable <em>personal_data</em> from the exercise 8 into a json file</p>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="50" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="50" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>Functions</h1>
+<p>Functions are usefule to repeat the same operation multiple times without writing the same code multiple times. Let's see an example of a function</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">useless_function</span>(<span class="hljs-params">argument</span>):</span>
+    argument_v2=argument+argument
+    <span class="hljs-keyword">return</span> argument_v2
+<span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&quot;__main__&quot;</span>:
+    x=useless_function(<span class="hljs-number">0</span>)
+    print(x)
+    y=useless_function(<span class="hljs-string">&quot;IoT&quot;</span>)
+    print(y)
+    z=useless_function([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])
+    print(z)
+</span></span></foreignObject></svg></code></pre>
+<footer>programming for iot</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="51" data-paginate="true" data-footer="programming for iot" data-theme="dracula" data-style="section h1{
+  color: orange
+}
+" data-marpit-pagination="51" data-marpit-pagination-total="51" style="--paginate:true;--footer:programming for iot;--theme:dracula;
+;">
+<h1>Exercise 10</h1>
+<p>As we see in this example we don't need to specify the type of the input of the function, python will understand it by itself (by the way this is a special case due to the fact that int,string and list all support the operator &quot;+&quot; in does <strong>not</strong> work)</p>
+<p>As exercise write 4 function to: add, subtract, multiply and divide two given numbers and print the result</p>
+<footer>programming for iot</footer>
+</section>
+<script>!function(){"use strict";const t="marpitSVGPolyfill:setZoomFactor,",e=Symbol();let o,r;function n(n){const i="object"==typeof n&&n.target||document,a="object"==typeof n?n.zoom:n;window[e]||(Object.defineProperty(window,e,{configurable:!0,value:!0}),window.addEventListener("message",({data:e,origin:o})=>{if(o===window.origin)try{if(e&&"string"==typeof e&&e.startsWith(t)){const[,t]=e.split(","),o=Number.parseFloat(t);Number.isNaN(o)||(r=o)}}catch(t){console.error(t)}}));let l=!1;Array.from(i.querySelectorAll("svg[data-marpit-svg]"),t=>{var e,n,i,s;t.style.transform||(t.style.transform="translateZ(0)");const c=a||r||t.currentScale||1;o!==c&&(o=c,l=c);const d=t.getBoundingClientRect(),{length:u}=t.children;for(let o=0;o<u;o+=1){const r=t.children[o],a=r.getScreenCTM();if(a){const t=null!==(n=null===(e=r.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==n?n:0,o=null!==(s=null===(i=r.y)||void 0===i?void 0:i.baseVal.value)&&void 0!==s?s:0,l=r.firstChild,{style:u}=l;u.transformOrigin||(u.transformOrigin=`${-t}px ${-o}px`),u.transform=`scale(${c}) matrix(${a.a}, ${a.b}, ${a.c}, ${a.d}, ${a.e-d.left}, ${a.f-d.top}) translateZ(0.0001px)`}}}),!1!==l&&Array.from(i.querySelectorAll("iframe"),({contentWindow:e})=>{null==e||e.postMessage(`${t}${l}`,"null"===window.origin?"*":window.origin)})}o=1,r=void 0;const i=(t,e,o)=>{if(t.getAttribute(e)!==o)return t.setAttribute(e,o),!0};function a(t={}){const e="boolean"==typeof t?(t=>{const e=!t;return console.warn(`[DEPRECATION WARNING] Usage of observer() with boolean option has been deprecated. Please replace with the usage of option object: observer({ once: ${e?"true":"false"} }).`),{once:e}})(t):t,{once:o=!1,target:r=document}=e,a="Apple Computer, Inc."===navigator.vendor?[n]:[];let l=!o;const s=()=>{for(const t of a)t({target:r});!function(t=document){Array.from(t.querySelectorAll('svg[data-marp-fitting="svg"]'),t=>{var e;const o=t.firstChild,r=o.firstChild,{scrollWidth:n,scrollHeight:a}=r;let l,s=1;if(t.hasAttribute("data-marp-fitting-code")&&(l=null===(e=t.parentElement)||void 0===e?void 0:e.parentElement),t.hasAttribute("data-marp-fitting-math")&&(l=t.parentElement),l){const t=getComputedStyle(l),e=Math.ceil(l.clientWidth-parseFloat(t.paddingLeft||"0")-parseFloat(t.paddingRight||"0"));e&&(s=e)}const c=Math.max(n,s),d=Math.max(a,1),u=`0 0 ${c} ${d}`;i(o,"width",""+c),i(o,"height",""+d),i(t,"preserveAspectRatio",getComputedStyle(t).getPropertyValue("--preserve-aspect-ratio")||"xMinYMin meet"),i(t,"viewBox",u)&&t.classList.toggle("__reflow__")})}(r),l&&window.requestAnimationFrame(s)};return s(),()=>{l=!1}}const l=Symbol(),s=document.currentScript;((t=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(t[l])return t[l];const e=a({target:t}),o=()=>{e(),delete t[l]};Object.defineProperty(t,l,{configurable:!0,value:o})})(s?s.getRootNode():document)}();
+</script></foreignObject></svg></div><script>!function(){"use strict";var e=function(e,t){var n,r=1===(e.parent||e).nodeType?e.parent||e:document.querySelector(e.parent||e),a=[].filter.call("string"==typeof e.slides?r.querySelectorAll(e.slides):e.slides||r.children,(function(e){return"SCRIPT"!==e.nodeName})),s={},i=function(e,t){return(t=t||{}).index=a.indexOf(e),t.slide=e,t},o=function(e,t){s[e]=(s[e]||[]).filter((function(e){return e!==t}))},l=function(e,t){return(s[e]||[]).reduce((function(e,n){return e&&!1!==n(t)}),!0)},c=function(e,t){a[e]&&(n&&l("deactivate",i(n,t)),n=a[e],l("activate",i(n,t)))},d=function(e,t){var r=a.indexOf(n)+e;l(e>0?"next":"prev",i(n,t))&&c(r,t)},u={off:o,on:function(e,t){return(s[e]||(s[e]=[])).push(t),o.bind(null,e,t)},fire:l,slide:function(e,t){if(!arguments.length)return a.indexOf(n);l("slide",i(a[e],t))&&c(e,t)},next:d.bind(null,1),prev:d.bind(null,-1),parent:r,slides:a,destroy:function(e){l("destroy",i(n,e)),s={}}};return(t||[]).forEach((function(e){e(u)})),n||c(0),u};function t(e){e.parent.classList.add("bespoke-marp-parent"),e.slides.forEach(e=>e.classList.add("bespoke-marp-slide")),e.on("activate",t=>{const n=t.slide,r=!n.classList.contains("bespoke-marp-active");e.slides.forEach(e=>{e.classList.remove("bespoke-marp-active"),e.setAttribute("aria-hidden","true")}),n.classList.add("bespoke-marp-active"),n.removeAttribute("aria-hidden"),r&&(n.classList.add("bespoke-marp-active-ready"),document.body.clientHeight,n.classList.remove("bespoke-marp-active-ready"))})}function n(e){let t=0,n=0;Object.defineProperty(e,"fragments",{enumerable:!0,value:e.slides.map(e=>[null,...e.querySelectorAll("[data-marpit-fragment]")])});const r=r=>void 0!==e.fragments[t][n+r],a=(r,a)=>{t=r,n=a,e.fragments.forEach((e,t)=>{e.forEach((e,n)=>{if(null==e)return;const s=t<r||t===r&&n<=a;e.setAttribute("data-bespoke-marp-fragment",s?"active":"inactive"),t===r&&n===a?e.setAttribute("data-bespoke-marp-current-fragment","current"):e.removeAttribute("data-bespoke-marp-current-fragment")})}),e.fragmentIndex=a;const s={slide:e.slides[r],index:r,fragments:e.fragments[r],fragmentIndex:a};e.fire("fragment",s)};e.on("next",({fragment:s=!0})=>{if(s){if(r(1))return a(t,n+1),!1;const s=t+1;e.fragments[s]&&a(s,0)}else{const r=e.fragments[t].length;if(n+1<r)return a(t,r-1),!1;const s=e.fragments[t+1];s&&a(t+1,s.length-1)}}),e.on("prev",({fragment:s=!0})=>{if(r(-1)&&s)return a(t,n-1),!1;const i=t-1;e.fragments[i]&&a(i,e.fragments[i].length-1)}),e.on("slide",({index:t,fragment:n})=>{let r=0;if(void 0!==n){const a=e.fragments[t];if(a){const{length:e}=a;r=-1===n?e-1:Math.min(Math.max(n,0),e-1)}}a(t,r)}),a(0,0)}var r,a,s=(function(e){
+/*!
+* screenfull
+* v5.0.2 - 2020-02-13
+* (c) Sindre Sorhus; MIT License
+*/
+!function(){var t="undefined"!=typeof window&&void 0!==window.document?window.document:{},n=e.exports,r=function(){for(var e,n=[["requestFullscreen","exitFullscreen","fullscreenElement","fullscreenEnabled","fullscreenchange","fullscreenerror"],["webkitRequestFullscreen","webkitExitFullscreen","webkitFullscreenElement","webkitFullscreenEnabled","webkitfullscreenchange","webkitfullscreenerror"],["webkitRequestFullScreen","webkitCancelFullScreen","webkitCurrentFullScreenElement","webkitCancelFullScreen","webkitfullscreenchange","webkitfullscreenerror"],["mozRequestFullScreen","mozCancelFullScreen","mozFullScreenElement","mozFullScreenEnabled","mozfullscreenchange","mozfullscreenerror"],["msRequestFullscreen","msExitFullscreen","msFullscreenElement","msFullscreenEnabled","MSFullscreenChange","MSFullscreenError"]],r=0,a=n.length,s={};r<a;r++)if((e=n[r])&&e[1]in t){for(r=0;r<e.length;r++)s[n[0][r]]=e[r];return s}return!1}(),a={change:r.fullscreenchange,error:r.fullscreenerror},s={request:function(e){return new Promise(function(n,a){var s=function(){this.off("change",s),n()}.bind(this);this.on("change",s);var i=(e=e||t.documentElement)[r.requestFullscreen]();i instanceof Promise&&i.then(s).catch(a)}.bind(this))},exit:function(){return new Promise(function(e,n){if(this.isFullscreen){var a=function(){this.off("change",a),e()}.bind(this);this.on("change",a);var s=t[r.exitFullscreen]();s instanceof Promise&&s.then(a).catch(n)}else e()}.bind(this))},toggle:function(e){return this.isFullscreen?this.exit():this.request(e)},onchange:function(e){this.on("change",e)},onerror:function(e){this.on("error",e)},on:function(e,n){var r=a[e];r&&t.addEventListener(r,n,!1)},off:function(e,n){var r=a[e];r&&t.removeEventListener(r,n,!1)},raw:r};r?(Object.defineProperties(s,{isFullscreen:{get:function(){return Boolean(t[r.fullscreenElement])}},element:{enumerable:!0,get:function(){return t[r.fullscreenElement]}},isEnabled:{enumerable:!0,get:function(){return Boolean(t[r.fullscreenEnabled])}}}),n?e.exports=s:window.screenfull=s):n?e.exports={isEnabled:!1}:window.screenfull={isEnabled:!1}}()}(a={path:r,exports:{},require:function(e,t){return function(){throw new Error("Dynamic requires are not currently supported by @rollup/plugin-commonjs")}(null==t&&a.path)}},a.exports),a.exports);function i(e){e.fullscreen=()=>{s.isEnabled&&s.toggle(document.body)},document.addEventListener("keydown",t=>{70!==t.which&&122!==t.which||t.altKey||t.ctrlKey||t.metaKey||!s.isEnabled||(e.fullscreen(),t.preventDefault())})}function o(e=2e3){return t=>{let n;function r(){n&&clearTimeout(n),n=setTimeout(()=>{t.parent.classList.add("bespoke-marp-inactive"),t.fire("marp-inactive")},e),t.parent.classList.contains("bespoke-marp-inactive")&&(t.parent.classList.remove("bespoke-marp-inactive"),t.fire("marp-active"))}document.addEventListener("mousedown",r),document.addEventListener("mousemove",r),document.addEventListener("touchend",r),setTimeout(r,0)}}const l=["AUDIO","BUTTON","INPUT","SELECT","TEXTAREA","VIDEO"];function c(e){e.parent.addEventListener("keydown",e=>{if(!e.target)return;const t=e.target;(l.includes(t.nodeName)||"true"===t.contentEditable)&&e.stopPropagation()})}function d(e){window.addEventListener("load",()=>{for(const t of e.slides){const e=t.querySelector("[data-marp-fitting]")?"":"hideable";t.setAttribute("data-bespoke-marp-load",e)}})}var u;function f({interval:e=200}={}){return t=>{document.addEventListener("keydown",e=>{if(32===e.which&&e.shiftKey)t.prev();else if(33===e.which||37===e.which||38===e.which)t.prev({fragment:!e.shiftKey});else if(32!==e.which||e.shiftKey)if(34===e.which||39===e.which||40===e.which)t.next({fragment:!e.shiftKey});else if(35===e.which)t.slide(t.slides.length-1,{fragment:-1});else{if(36!==e.which)return;t.slide(0)}else t.next();e.preventDefault()});let n,r,a=0;t.parent.addEventListener("wheel",s=>{let i=!1;const o=(e,t)=>{e&&(i=i||function(e,t){return function(e,t){const n=t===u.X?"Width":"Height";return e["client"+n]<e["scroll"+n]}(e,t)&&function(e,t){const{overflow:n}=e,r=e["overflow"+t];return"auto"===n||"scroll"===n||"auto"===r||"scroll"===r}(getComputedStyle(e),t)}(e,t)),(null==e?void 0:e.parentElement)&&o(e.parentElement,t)};if(0!==s.deltaX&&o(s.target,u.X),0!==s.deltaY&&o(s.target,u.Y),i)return;s.preventDefault(),r&&clearTimeout(r),r=setTimeout(()=>{n=0},e);const l=Date.now()-a<e,c=Math.sqrt(Math.pow(s.deltaX,2)+Math.pow(s.deltaY,2)),d=c<=n;if(n=c,l||d)return;let f;(s.deltaX>0||s.deltaY>0)&&(f="next"),(s.deltaX<0||s.deltaY<0)&&(f="prev"),f&&(t[f](),a=Date.now())})}}!function(e){e.X="X",e.Y="Y"}(u||(u={}));const m=(...e)=>history.replaceState(...e),p="data-bespoke-view";var h;!function(e){e.Normal="",e.Presenter="presenter",e.Next="next"}(h||(h={}));const g=(e,{protocol:t,host:n,pathname:r,hash:a}=location)=>{const s=e.toString();return`${t}//${n}${r}${s?"?":""}${s}${a}`},v=()=>{switch(document.body.getAttribute(p)){case h.Normal:return h.Normal;case h.Presenter:return h.Presenter;case h.Next:return h.Next;default:throw new Error("View mode is not assigned.")}},b=e=>new URLSearchParams(location.search).get(e),w=(e,t={})=>{const n=Object.assign({location:location,setter:m},t),r=new URLSearchParams(n.location.search);for(const t of Object.keys(e)){const n=e[t];"string"==typeof n?r.set(t,n):r.delete(t)}try{n.setter(null,document.title,g(r,n.location))}catch(e){console.error(e)}},y={available:(()=>{try{return localStorage.setItem("bespoke-marp","bespoke-marp"),localStorage.removeItem("bespoke-marp"),!0}catch(e){return console.warn("Warning: Using localStorage is restricted in the current host so some features may not work."),!1}})(),get:e=>{try{return localStorage.getItem(e)}catch(e){return null}},set:(e,t)=>{try{return localStorage.setItem(e,t),!0}catch(e){return!1}},remove:e=>{try{return localStorage.removeItem(e),!0}catch(e){return!1}}};function x(e=".bespoke-marp-osc"){const t=document.querySelector(e);if(!t)return()=>{};const n=(e,n)=>{t.querySelectorAll(`[data-bespoke-marp-osc=${JSON.stringify(e)}]`).forEach(n)};return s.isEnabled||n("fullscreen",e=>e.style.display="none"),y.available||n("presenter",e=>{e.disabled=!0,e.title="Presenter view is disabled due to restricted localStorage."}),e=>{t.addEventListener("click",t=>{if(t.target instanceof HTMLElement){const{bespokeMarpOsc:n}=t.target.dataset;switch(n&&t.target.blur(),n){case"next":e.next({fragment:!t.shiftKey});break;case"prev":e.prev({fragment:!t.shiftKey});break;case"fullscreen":"function"==typeof e.fullscreen&&s.isEnabled&&e.fullscreen();break;case"presenter":e.openPresenterView()}}}),e.parent.appendChild(t),e.on("activate",({index:t})=>{n("page",n=>n.textContent=`Page ${t+1} of ${e.slides.length}`)}),e.on("fragment",({index:t,fragments:r,fragmentIndex:a})=>{n("prev",e=>e.disabled=0===t&&0===a),n("next",n=>n.disabled=t===e.slides.length-1&&a===r.length-1)}),e.on("marp-active",()=>t.removeAttribute("aria-hidden")),e.on("marp-inactive",()=>t.setAttribute("aria-hidden","true")),s.isEnabled&&s.onchange(()=>n("fullscreen",e=>e.classList.toggle("exit",s.isEnabled&&s.isFullscreen)))}}function E(){const e=Math.max(Math.floor(.85*window.innerWidth),640),t=Math.max(Math.floor(.85*window.innerHeight),360);return window.open(this.presenterUrl,"bespoke-marp-presenter-"+this.syncKey,`width=${e},height=${t},menubar=no,toolbar=no`)}function k(){const e=new URLSearchParams(location.search);return e.set("view","presenter"),e.set("sync",this.syncKey),g(e)}var L=["area","base","br","col","command","embed","hr","img","input","keygen","link","meta","param","source","track","wbr"];let S=e=>String(e).replace(/[&<>"']/g,e=>`&${I[e]};`),I={"&":"amp","<":"lt",">":"gt",'"':"quot","'":"apos"},P="dangerouslySetInnerHTML",M={className:"class",htmlFor:"for"},N={};function F(e,t){let n=[],r="";t=t||{};for(let e=arguments.length;e-- >2;)n.push(arguments[e]);if("function"==typeof e)return t.children=n.reverse(),e(t);if(e){if(r+="<"+e,t)for(let e in t)!1!==t[e]&&null!=t[e]&&e!==P&&(r+=` ${M[e]?M[e]:S(e)}="${S(t[e])}"`);r+=">"}if(-1===L.indexOf(e)){if(t[P])r+=t[P].__html;else for(;n.length;){let e=n.pop();if(e)if(e.pop)for(let t=e.length;t--;)n.push(e[t]);else r+=!0===N[e]?e:S(e)}r+=e?`</${e}>`:""}return N[r]=!0,r}const O=({children:e})=>F(null,null,...e),q="bespoke-marp-presenter-container",C="bespoke-marp-presenter-next",T="bespoke-marp-presenter-next-container",A="bespoke-marp-presenter-note-container",K="bespoke-marp-presenter-info-container",$="bespoke-marp-presenter-info-page",j="bespoke-marp-presenter-info-page-text",D="bespoke-marp-presenter-info-page-prev",R="bespoke-marp-presenter-info-page-next",U="bespoke-marp-presenter-info-time",V="bespoke-marp-presenter-info-timer";function X(e){const{title:t}=document;document.title="[Presenter view]"+(t?" - "+t:"");const n={},r=e=>(n[e]=n[e]||document.querySelector("."+e),n[e]);document.body.appendChild((e=>{const t=document.createElement("div");return t.className=q,t.appendChild(e),t.insertAdjacentHTML("beforeend",F(O,null,F("div",{class:T},F("iframe",{class:C,src:"?view=next"})),F("div",{class:A}),F("div",{class:K},F("div",{class:$},F("button",{class:D,tabindex:"-1",title:"Previous"},"Previous"),F("span",{class:j}),F("button",{class:R,tabindex:"-1",title:"Next"},"Next")),F("time",{class:U,title:"Current time"}),F("div",{class:V})))),t})(e.parent)),(e=>{r(T).addEventListener("click",()=>e.next());const t=r(C),n=(a=t,(e,t)=>{var n;return null===(n=a.contentWindow)||void 0===n?void 0:n.postMessage(`navigate:${e},${t}`,"null"===window.origin?"*":window.origin)});var a;t.addEventListener("load",()=>{r(T).classList.add("active"),n(e.slide(),e.fragmentIndex),e.on("fragment",({index:e,fragmentIndex:t})=>n(e,t))});const s=document.querySelectorAll(".bespoke-marp-note");s.forEach(e=>{e.addEventListener("keydown",e=>e.stopPropagation()),r(A).appendChild(e)}),e.on("activate",()=>s.forEach(t=>t.classList.toggle("active",t.dataset.index==e.slide()))),e.on("activate",({index:t})=>{r(j).textContent=`${t+1} / ${e.slides.length}`});const i=r(D),o=r(R);i.addEventListener("click",t=>{i.blur(),e.prev({fragment:!t.shiftKey})}),o.addEventListener("click",t=>{o.blur(),e.next({fragment:!t.shiftKey})}),e.on("fragment",({index:t,fragments:n,fragmentIndex:r})=>{i.disabled=0===t&&0===r,o.disabled=t===e.slides.length-1&&r===n.length-1});const l=()=>r(U).textContent=(new Date).toLocaleTimeString();l(),setInterval(l,250)})(e)}function Y(e){const t=v();return t===h.Next&&e.appendChild(document.createElement("span")),e=>{t===h.Normal&&function(e){if(!(e=>e.syncKey&&"string"==typeof e.syncKey)(e))throw new Error("The current instance of Bespoke.js is invalid for Marp bespoke presenter plugin.");Object.defineProperties(e,{openPresenterView:{enumerable:!0,value:E},presenterUrl:{enumerable:!0,get:k}}),y.available&&document.addEventListener("keydown",t=>{80!==t.which||t.altKey||t.ctrlKey||t.metaKey||(t.preventDefault(),e.openPresenterView())})}(e),t===h.Presenter&&X(e),t===h.Next&&function(e){const t=t=>{if(t.origin!==window.origin)return;const[n,r]=t.data.split(":");if("navigate"===n){const[t,n]=r.split(",");let a=Number.parseInt(t,10),s=Number.parseInt(n,10)+1;s>=e.fragments[a].length&&(a+=1,s=0),e.slide(a,{fragment:s})}};window.addEventListener("message",t),e.on("destroy",()=>window.removeEventListener("message",t))}(e)}}function B(e){e.on("activate",t=>{document.querySelectorAll(".bespoke-progress-bar").forEach(n=>{n.style.flexBasis=100*t.index/(e.slides.length-1)+"%"})})}const z=e=>{const t=Number.parseInt(e,10);return Number.isNaN(t)?null:t};function H(e={}){const t=Object.assign({history:!0},e);return e=>{let n=!0;const r=e=>{const t=n;try{return n=!0,e()}finally{n=t}},a=(t={fragment:!0})=>{((t,n)=>{const{fragments:r,slides:a}=e,s=Math.max(0,Math.min(t,a.length-1)),i=Math.max(0,Math.min(n||0,r[s].length-1));s===e.slide()&&i===e.fragmentIndex||e.slide(s,{fragment:i})})((z(location.hash.slice(1))||1)-1,t.fragment?z(b("f")||""):null)};e.on("fragment",({index:e,fragmentIndex:r})=>{n||w({f:0===r||r.toString()},{location:Object.assign(Object.assign({},location),{hash:"#"+(e+1)}),setter:(...e)=>t.history?history.pushState(...e):history.replaceState(...e)})}),setTimeout(()=>{a(),window.addEventListener("hashchange",()=>r(()=>{a({fragment:!1}),w({f:void 0})})),window.addEventListener("popstate",()=>{n||r(()=>a())}),n=!1},0)}}function W(e={}){const t=e.key||((e=21)=>{let t="",n=crypto.getRandomValues(new Uint8Array(e));for(;e--;){let r=63&n[e];t+=r<36?r.toString(36):r<62?(r-26).toString(36).toUpperCase():r<63?"_":"-"}return t})(),n="bespoke-marp-sync-"+t,r=()=>{const e=y.get(n);return e?JSON.parse(e):Object.create(null)},a=e=>{const t=r(),a=Object.assign(Object.assign({},t),e(t));return y.set(n,JSON.stringify(a)),a};return a(e=>({reference:(e.reference||0)+1})),e=>{Object.defineProperty(e,"syncKey",{value:t,enumerable:!0});let s=!0;setTimeout(()=>{e.on("fragment",e=>{s&&a(()=>({index:e.index,fragmentIndex:e.fragmentIndex}))})},0),window.addEventListener("storage",t=>{if(t.key===n&&t.oldValue&&t.newValue){const n=JSON.parse(t.oldValue),r=JSON.parse(t.newValue);if(n.index!==r.index||n.fragmentIndex!==r.fragmentIndex)try{s=!1,e.slide(r.index,{fragment:r.fragmentIndex})}finally{s=!0}}}),e.on("destroy",()=>{const{reference:e}=r();void 0===e||e<=1?y.remove(n):a(()=>({reference:e-1}))})}}function J({slope:e=Math.tan(-35*Math.PI/180),swipeThreshold:t=30}={}){return n=>{let r;const a=n.parent,s=e=>{const t=a.getBoundingClientRect();return{x:e.pageX-(t.left+t.right)/2,y:e.pageY-(t.top+t.bottom)/2}};a.addEventListener("touchstart",e=>{r=1===e.touches.length?s(e.touches[0]):void 0},{passive:!0}),a.addEventListener("touchmove",e=>{if(r)if(1===e.touches.length){e.preventDefault();const t=s(e.touches[0]),n=t.x-r.x,a=t.y-r.y;r.delta=Math.sqrt(Math.pow(Math.abs(n),2)+Math.pow(Math.abs(a),2)),r.radian=Math.atan2(n,a)}else r=void 0}),a.addEventListener("touchend",a=>{if(r){if(r.delta&&r.delta>=t&&r.radian){let t=r.radian-e;t=(t+Math.PI)%(2*Math.PI)-Math.PI,n[t<0?"next":"prev"](),a.stopPropagation()}r=void 0}},{passive:!0})}}
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */function _(e,t,n,r){return new(n||(n=Promise))((function(a,s){function i(e){try{l(r.next(e))}catch(e){s(e)}}function o(e){try{l(r.throw(e))}catch(e){s(e)}}function l(e){var t;e.done?a(e.value):(t=e.value,t instanceof n?t:new n((function(e){e(t)}))).then(i,o)}l((r=r.apply(e,t||[])).next())}))}let G=void 0;const Q=()=>(void 0===G&&(G="wakeLock"in navigator&&navigator.wakeLock),G),Z=()=>_(void 0,void 0,void 0,(function*(){const e=Q();if(e)try{const t=yield e.request("screen");return t.addEventListener("release",()=>{console.debug("[Marp CLI] Wake Lock was released")}),console.debug("[Marp CLI] Wake Lock is active"),t}catch(e){console.warn(e)}return null}));function ee(){return _(this,void 0,void 0,(function*(){if(!Q())return;let e;const t=()=>{e&&"visible"===document.visibilityState&&Z()};return document.addEventListener("visibilitychange",t),document.addEventListener("fullscreenchange",t),e=yield Z(),e}))}const te=[h.Normal,h.Presenter,h.Next];!function(r=document.getElementById("p")){document.body.setAttribute(p,(()=>{switch(b("view")){case"next":return h.Next;case"presenter":return h.Presenter;default:return h.Normal}})());const a=(e=>{const t=b(e);return w({[e]:void 0}),t})("sync")||void 0,s=!1,l=!0,u=e(r,((...e)=>{const t=te.findIndex(e=>v()===e);if(t<0)throw new Error("Invalid view");return e.map(([e,n])=>e[t]&&n).filter(e=>e)})([[l,l,s],W({key:a})],[[l,l,l],Y(r)],[[l,l,s],c],[[l,l,l],t],[[l,s,s],o()],[[l,l,l],d],[[l,l,l],H({history:!1})],[[l,l,s],f()],[[l,l,s],i],[[l,s,s],B],[[l,l,s],J()],[[l,s,s],x()],[[l,l,l],n],[[l,l,s],ee]));window.addEventListener("beforeunload",()=>w({sync:u.syncKey})),window.addEventListener("unload",()=>u.destroy())}()}();</script></body></html>

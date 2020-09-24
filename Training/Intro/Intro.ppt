@@ -1,0 +1,347 @@
+<h1 id="how-to-install-python3">How to install Python3</h1>
+<hr />
+<h1 id="for-windows-width40px">For Windows <img src="https://icons.iconarchive.com/icons/martz90/circle/256/windows-8-icon.png" alt="width:40px" /></h1>
+<ul>
+<li>Download the latest Python release installer for your OS from <a href="https://www.python.org/downloads/">here</a></li>
+<li>Launch the installer</li>
+<li><strong>Pay Attention to select add Python to path</strong><br />
+<img src="images/pythonpath.png" alt="Python path bg right 100%" /></li>
+<li>Wait until it’s done :sweat_smile:</li>
+</ul>
+<hr />
+<h1 id="for-macos-width40px">For macOS <img src="https://icons.iconarchive.com/icons/danleech/simple/256/apple-icon.png" alt="width:40px" /></h1>
+<p>You’ve two alternatives:</p>
+<ol type="1">
+<li>Proceed as indicated with windows (but obviously download the installer for mac)</li>
+<li>If you’ve brew installed just open a terminal and write “<em>brew install python3</em>”</li>
+</ol>
+<h1 id="readycheck">ReadyCheck</h1>
+<p>In any case to check Python wheter has been correctly installed open a terminal and type “<em>python3</em>” you should see something like this</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">matteo@matteo-desktop</span> ~<span class="op">&gt;</span> python3</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="ex">Python</span> 3.6.8 (default, Aug 20 2019, 17:12:48) </a>
+<a class="sourceLine" id="cb1-3" title="3">[<span class="ex">GCC</span> 8.3.0] on linux</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="ex">Type</span> <span class="st">&quot;help&quot;</span>, <span class="st">&quot;copyright&quot;</span>, <span class="st">&quot;credits&quot;</span> or <span class="st">&quot;license&quot;</span> for more information.</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="op">&gt;&gt;&gt;</span></a></code></pre></div>
+<hr />
+<h1 id="how-to-install-vs-code-width40px">How to install VS Code <img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_vscode_icon_130084.png" alt="width:40px" /></h1>
+<p>Go on the <a href="https://code.visualstudio.com/">VS Code website</a> and follow the installation guide for your OS</p>
+<p><strong>Optional</strong></p>
+<p>In the <em>Extensions</em> tab ( on the left side ) search for “python” an install the extension</p>
+<hr />
+<h1 id="how-to-launch-a-python-script">How to launch a Python script</h1>
+<p>Launching a Python script is quite easy, these are the steps to follow:</p>
+<ol type="1">
+<li>Open a new terminal (Command line for Windows)</li>
+<li>Navigate to the folder , “<em>cd name of the folder</em>” to open a folder , “<em>dir</em>” to list the file in the folder (“<em>ls</em>” for MacOS and Linux)</li>
+<li>type “<em>python |name of the file|.py</em>”</li>
+</ol>
+<p>For the rest of the course we will always launch our Python scripts in this way</p>
+<hr />
+<h1 id="exercise-0">Exercise 0</h1>
+<p>Before anything you want to define the “main” as you would do in C. In Python we can do this like it’s shown below</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1"><span class="cf">if</span> <span class="va">__name__</span><span class="op">==</span><span class="st">&quot;__main__&quot;</span>:</a>
+<a class="sourceLine" id="cb2-2" title="2">    <span class="co">#This is the main</span></a>
+<a class="sourceLine" id="cb2-3" title="3">    <span class="cf">pass</span></a></code></pre></div>
+<p><strong>Remember that in Python indentation take places of the bracket</strong>, we will see going on with the exercise what this means</p>
+<hr />
+<h1 id="main-example">Main example</h1>
+<p><strong>Print</strong><br />
+Printing in python is really easy, you’ve just to type</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1"><span class="bu">print</span> (<span class="st">&quot;what you want to print&quot;</span>)</a></code></pre></div>
+<p>An example is shown below</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1"><span class="cf">if</span> <span class="va">__name__</span><span class="op">==</span><span class="st">&quot;__main__&quot;</span>:</a>
+<a class="sourceLine" id="cb4-2" title="2">    <span class="co">#This is the main</span></a>
+<a class="sourceLine" id="cb4-3" title="3">    <span class="bu">print</span> (<span class="st">&quot;Sentence to print&quot;</span>)</a></code></pre></div>
+<h1 id="print-with-python">Print with Python</h1>
+<p><strong>Print with placeholder</strong><br />
+In a lot of case you want to print things like</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">the</span> average of the values is: 5.4</a></code></pre></div>
+<p>In general you would like to print a string and the value of a variable or multiple variable. There a lot of way to print in Python, we will see just 2 of them.</p>
+<hr />
+<h1 id="first-method">First Method</h1>
+<p>The first method consists in using placeholder with “%” like you would do in C, there are different type of plceholder, you will mainly use the following:</p>
+<ul>
+<li>%s to print string</li>
+<li>%d to print integer</li>
+<li>%f to print float</li>
+<li>%e to print in exponential form</li>
+</ul>
+<p>So an example could be:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" title="1"><span class="bu">print</span>(<span class="st">&quot;My name is </span><span class="sc">%s</span><span class="st">&quot;</span> <span class="op">%</span>myName)</a></code></pre></div>
+<hr />
+<h1 id="special-cases">Special cases</h1>
+<p>In case of floating point number you can specify the number of digits after the comma by writing “<em>%.<strong>n</strong>f</em>” where n is the number of digits so for example if we want to have 3 digits we would write “%.3f”. This method will work also with “%s” but in that case the number will specify the number of <strong>characters</strong> that will be used (including the “.”). If you want to specify multiple variable you will write</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" title="1"><span class="bu">print</span>(<span class="st">&quot; </span><span class="sc">%s</span><span class="st">  </span><span class="sc">%d</span><span class="st"> </span><span class="sc">%f</span><span class="st">&quot;</span> <span class="op">%</span>(a,b,c))</a></code></pre></div>
+<hr />
+<h1 id="second-method">Second method</h1>
+<p>The second method use the letter “f”, in this case the placeholder is the same for every type of variable and is “<em>{variable}</em>”, so the example we saw before would become:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb8-1" title="1"><span class="bu">print</span>(<span class="ss">f&quot;My name is </span><span class="sc">{</span>myname<span class="sc">}</span><span class="ss">&quot;</span>)</a></code></pre></div>
+<p>In this case if we want to print multiple variable we would write:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb9-1" title="1"><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{a}</span><span class="ss"> </span><span class="sc">{b}</span><span class="ss"> </span><span class="sc">{c}</span><span class="ss">&quot;</span>)</a></code></pre></div>
+<hr />
+<h1 id="special-cases-1">Special cases</h1>
+<p>With this method you can also specify the total number of digits by writing “<em>{:.<strong>n</strong>}</em>” where n is the <strong>total</strong> number of digits so if for example we want to write pi with 3 decimal digits we would write</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb10-1" title="1">pi<span class="op">=</span><span class="fl">3.15169265</span></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{pi:.4}</span><span class="ss">&quot;</span>).  </a></code></pre></div>
+<hr />
+<h1 id="exercise-2">Exercise 2</h1>
+<p>Now try to use both this method to write a Python script that give as output your nam, your age and your birthday in this way:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1"><span class="ex">My</span> name is Python and I<span class="st">&#39;m 28 years old, I was born the 20/02/1991</span></a></code></pre></div>
+<hr />
+<h1 id="exercise-3">Exercise 3</h1>
+<p><strong>Math operators</strong><br />
+In python we can use a lot of mathematical operators let’s check which they are :arrow_right:</p>
+<figure>
+<img src="images/operators.png" alt="operators bg right height:80%" /><figcaption>operators bg right height:80%</figcaption>
+</figure>
+<hr />
+<h1 id="section"></h1>
+<p>To try to understand what they do let’s write a python script with one operation for each of them, something like the one below:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb12-1" title="1"><span class="cf">if</span> <span class="va">__name__</span><span class="op">==</span><span class="st">&quot;__main__&quot;</span>:</a>
+<a class="sourceLine" id="cb12-2" title="2">    <span class="bu">print</span> (<span class="ss">f&quot;2+3=</span><span class="sc">{</span><span class="dv">2</span><span class="op">+</span><span class="dv">3</span><span class="sc">}</span><span class="ss">&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1">    <span class="ex">2+3</span>=5</a></code></pre></div>
+<h1 id="how-to-work-on-files">How to work on files</h1>
+<p>Reading and writing file in Python is really easy, the function you need are the following:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb14-1" title="1"><span class="bu">open</span>()</a>
+<a class="sourceLine" id="cb14-2" title="2">read()</a>
+<a class="sourceLine" id="cb14-3" title="3">readline()</a>
+<a class="sourceLine" id="cb14-4" title="4">write()</a>
+<a class="sourceLine" id="cb14-5" title="5">close()</a></code></pre></div>
+<hr />
+<h1 id="open-a-file">Open a file</h1>
+<p><strong><em>open()</em></strong><br />
+this function returns an oject of the type file</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb15-1" title="1"><span class="co">#Open file in reading mode</span></a>
+<a class="sourceLine" id="cb15-2" title="2">f<span class="op">=</span><span class="bu">open</span>(<span class="st">&#39;myFile.txt&#39;</span>)</a>
+<a class="sourceLine" id="cb15-3" title="3"></a>
+<a class="sourceLine" id="cb15-4" title="4"><span class="co">#Open file in writing mode</span></a>
+<a class="sourceLine" id="cb15-5" title="5">f<span class="op">=</span><span class="bu">open</span>(<span class="st">&#39;myFile.txt&#39;</span>,<span class="st">&#39;w&#39;</span>)</a>
+<a class="sourceLine" id="cb15-6" title="6"></a>
+<a class="sourceLine" id="cb15-7" title="7"><span class="co">#Open file in append mode</span></a>
+<a class="sourceLine" id="cb15-8" title="8">f<span class="op">=</span><span class="bu">open</span>(<span class="st">&#39;myFile.txt&#39;</span>,<span class="st">&#39;a&#39;</span>)</a></code></pre></div>
+<hr />
+<h1 id="read-a-file">Read a file</h1>
+<p><strong><em>read()</em></strong><br />
+this function return the whole content of the file as a string</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb16-1" title="1"></a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="co">#Open and read the content of the file &quot;myFile.txt&quot;</span></a>
+<a class="sourceLine" id="cb16-3" title="3">f<span class="op">=</span><span class="bu">open</span>(<span class="st">&#39;myFile.txt&#39;</span>)</a>
+<a class="sourceLine" id="cb16-4" title="4">fileContent<span class="op">=</span>f.read()</a></code></pre></div>
+<hr />
+<h1 id="read-a-line">Read a line</h1>
+<p><strong><em>readline()</em></strong><br />
+this function return one line of the file as a string</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb17-1" title="1"></a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="co">#Open the file &quot;myFile.txt&quot; and read one line</span></a>
+<a class="sourceLine" id="cb17-3" title="3">f<span class="op">=</span><span class="bu">open</span>(<span class="st">&#39;myFile.txt&#39;</span>)</a>
+<a class="sourceLine" id="cb17-4" title="4">fileLine<span class="op">=</span>f.readline()</a></code></pre></div>
+<hr />
+<h1 id="write-a-file">Write a file</h1>
+<p><strong><em>write()</em></strong> this function write on a file</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb18-1" title="1"><span class="co">#Open the file &quot;myFile.txt&quot; and write one line</span></a>
+<a class="sourceLine" id="cb18-2" title="2">f<span class="op">=</span><span class="bu">open</span>(<span class="st">&#39;myFile.txt&#39;</span>,<span class="st">&#39;w&#39;</span>)</a>
+<a class="sourceLine" id="cb18-3" title="3">f.write(<span class="st">&#39;line to write&#39;</span>)</a></code></pre></div>
+<hr />
+<h1 id="close-a-file">Close a file</h1>
+<p><strong><em>close()</em></strong> this function closes the file</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb19-1" title="1"><span class="co">#Open the file &quot;myFile.txt&quot;, write one line and close the file</span></a>
+<a class="sourceLine" id="cb19-2" title="2">f<span class="op">=</span><span class="bu">open</span>(<span class="st">&#39;myFile.txt&#39;</span>,<span class="st">&#39;w&#39;</span>)</a>
+<a class="sourceLine" id="cb19-3" title="3">f.write(<span class="st">&#39;line to write&#39;</span>)</a>
+<a class="sourceLine" id="cb19-4" title="4">f.close()</a></code></pre></div>
+<hr />
+<h1 id="exercise-5">Exercise 5</h1>
+<p>As exercise create 2 file: “original.txt” with some random conten and an empty file called “copy.txt”, then write a python script to open the first file, shows its content on the terminal and write the content of “original.txt” in “copy.txt” but add at the beginning “the content of the original file is:”. So the result should look like this.</p>
+<hr />
+<h1 id="section-1"></h1>
+<p><em>original.txt</em></p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+<p><em>copyt.txt</em></p>
+<p>“The content of the original file is:<br />
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”</p>
+<hr />
+<h1 id="if-elif-else">If-elif-else</h1>
+<p>The easiest way to show how <em>if-elif-else</em> works is by making an example. So let’s see a script that asks to the user two number and tells if the first is greater, smaller or equal to the second</p>
+<hr />
+<h1 id="section-2"></h1>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb20-1" title="1"><span class="cf">if</span> <span class="va">__name__</span><span class="op">==</span><span class="st">&quot;__main__&quot;</span>:</a>
+<a class="sourceLine" id="cb20-2" title="2">    <span class="co">#Receive two number as input</span></a>
+<a class="sourceLine" id="cb20-3" title="3">    a<span class="op">=</span><span class="bu">int</span>(<span class="bu">input</span>(<span class="st">&#39;Write a number</span><span class="ch">\n</span><span class="st">&#39;</span>))</a>
+<a class="sourceLine" id="cb20-4" title="4">    b<span class="op">=</span><span class="bu">int</span>(<span class="bu">input</span>(<span class="st">&#39;Write another number</span><span class="ch">\n</span><span class="st">&#39;</span>))</a>
+<a class="sourceLine" id="cb20-5" title="5">    <span class="co">#First case a&gt;b</span></a>
+<a class="sourceLine" id="cb20-6" title="6">    <span class="cf">if</span> a<span class="op">&gt;</span>b:</a>
+<a class="sourceLine" id="cb20-7" title="7">        <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{a}</span><span class="ss"> is greater than </span><span class="sc">{b}</span><span class="ss">&quot;</span>)</a>
+<a class="sourceLine" id="cb20-8" title="8">    <span class="co">#Second case a&lt;b</span></a>
+<a class="sourceLine" id="cb20-9" title="9">    <span class="cf">elif</span> a<span class="op">&lt;</span>b:</a>
+<a class="sourceLine" id="cb20-10" title="10">        <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{a}</span><span class="ss"> is smaller than </span><span class="sc">{b}</span><span class="ss">&quot;</span>)</a>
+<a class="sourceLine" id="cb20-11" title="11">    <span class="co">#All the other case</span></a>
+<a class="sourceLine" id="cb20-12" title="12">    <span class="cf">else</span>:</a>
+<a class="sourceLine" id="cb20-13" title="13">        <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{a}</span><span class="ss"> equals </span><span class="sc">{b}</span><span class="ss">&quot;</span>)</a></code></pre></div>
+<hr />
+<h1 id="exercise-6">Exercise 6</h1>
+<p>We can annidate multiple <em>if-elif-else</em> just remember to use the correct indentation, most code editors will do it for you but pay attention to it. You can create complex condition with “and” and “or”.<br />
+As exercise write a script that takes as input a number and chech whether it’s a multiple of 2 and 3.</p>
+<hr />
+<h1 id="list-for-loop-while-loop">List, for-loop, while-loop</h1>
+<p>As you’ve seen in the slides in python the “array” type is called “list” and there it has some particular function related to it:</p>
+<hr />
+<h1 id="list-functions-13">List functions 1/3</h1>
+<ul>
+<li><p><em>list[i]</em><br />
+Return the i-th element of the list</p></li>
+<li><p><em>list.append(x)</em><br />
+Add an item to the end of the list.</p></li>
+<li><p><em>list.insert(i, x)</em><br />
+Insert an item at a given position. The first argument is the index of the element before which to insert</p></li>
+</ul>
+<hr />
+<h1 id="list-functions-23">List functions 2/3</h1>
+<ul>
+<li><p><em>list.remove(x)</em><br />
+Remove the first item from the list whose value is x. It is an error if there is no such item.</p></li>
+<li><p><em>list.pop([i])</em><br />
+Remove the item at the given position in the list, and return it. If no index is specified, a.pop() removes and returns the last item in the list.</p>
+<hr /></li>
+</ul>
+<h1 id="list-functions-33">List functions 3/3</h1>
+<ul>
+<li><p><em>list.index(x)</em><br />
+Return the index in the list of the first item whose value is x. It is an error if there is no such item.</p></li>
+<li><p><em>list.count(x)</em><br />
+Return the number of times x appears in the list.</p></li>
+<li><p><em>len(list)</em><br />
+Return the number of element in the list</p></li>
+</ul>
+<hr />
+<h1 id="section-3"></h1>
+<h2 id="warning-remember-that-list-in-python-start-at-0">:warning: Remember that list in python start at 0</h2>
+<hr />
+<h1 id="how-to-use-the-lists">How to use the lists?</h1>
+<p>The easiest way to show how the <em>for-loop</em> and the <em>while-loop</em> works is by making an example. So let’s see a script that creates a list with some number and calculates their sum and their product:</p>
+<hr />
+<h1 id="for-loop">For-loop</h1>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb21-1" title="1"><span class="cf">if</span> <span class="va">__name__</span><span class="op">==</span><span class="st">&quot;__main__&quot;</span>:</a>
+<a class="sourceLine" id="cb21-2" title="2">    numbers<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb21-3" title="3">    list_len<span class="op">=</span><span class="bu">len</span>(numbers)</a>
+<a class="sourceLine" id="cb21-4" title="4">    </a>
+<a class="sourceLine" id="cb21-5" title="5">    <span class="co">##For-loop for the sum</span></a>
+<a class="sourceLine" id="cb21-6" title="6">    <span class="co">#set sum to 0</span></a>
+<a class="sourceLine" id="cb21-7" title="7">    sum_of_numbers<span class="op">=</span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb21-8" title="8">    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(list_len):</a>
+<a class="sourceLine" id="cb21-9" title="9">        <span class="co">#takes the previous value of the sum and add the number at the place i</span></a>
+<a class="sourceLine" id="cb21-10" title="10">        sum_of_numbers<span class="op">=</span>sum_of_numbers<span class="op">+</span>numbers[i]</a>
+<a class="sourceLine" id="cb21-11" title="11">        <span class="co">#the more &quot;pythonic&quot; way to do it is</span></a>
+<a class="sourceLine" id="cb21-12" title="12">        <span class="co">#sum_of_numbers+=numbers[i]</span></a>
+<a class="sourceLine" id="cb21-13" title="13">    <span class="bu">print</span>(<span class="ss">f&quot;The sum of the numbers in the list is </span><span class="sc">{</span>sum_of_numbers<span class="sc">}</span><span class="ss">&quot;</span>)</a></code></pre></div>
+<hr />
+<h1 id="while-loop">While-loop</h1>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb22-1" title="1"><span class="cf">if</span> <span class="va">__name__</span><span class="op">==</span><span class="st">&quot;__main__&quot;</span>:</a>
+<a class="sourceLine" id="cb22-2" title="2">    numbers<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb22-3" title="3">    list_len<span class="op">=</span><span class="bu">len</span>(numbers)</a>
+<a class="sourceLine" id="cb22-4" title="4">    <span class="co">#set counter to 0 an product to 1</span></a>
+<a class="sourceLine" id="cb22-5" title="5">    i<span class="op">=</span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb22-6" title="6">    product_of_numbers<span class="op">=</span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb22-7" title="7">    <span class="cf">while</span> i<span class="op">&lt;</span>list_len:</a>
+<a class="sourceLine" id="cb22-8" title="8">        <span class="co">#Multiply the old value for the number at place i</span></a>
+<a class="sourceLine" id="cb22-9" title="9">        product_of_numbers<span class="op">=</span>product_of_numbers<span class="op">*</span>numbers[i]</a>
+<a class="sourceLine" id="cb22-10" title="10">        <span class="co">#the more &quot;pythonic&quot; way to do it is</span></a>
+<a class="sourceLine" id="cb22-11" title="11">        <span class="co">#product_of_numbers*=numbers[i]</span></a>
+<a class="sourceLine" id="cb22-12" title="12">        <span class="co">#Update counter</span></a>
+<a class="sourceLine" id="cb22-13" title="13">        i<span class="op">=</span>i<span class="op">+</span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb22-14" title="14">    <span class="bu">print</span>(<span class="ss">f&quot;The product of the numbers in the list in </span><span class="sc">{</span>product_of_numbers<span class="sc">}</span><span class="ss">&quot;</span>)</a></code></pre></div>
+<hr />
+<h1 id="for-in-the-pythonic-way">For in the “pythonic” way</h1>
+<p>There is another method to write the <em>for-loop</em> that is a little easier that is</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb23-1" title="1"><span class="cf">for</span> item <span class="kw">in</span> <span class="bu">list</span>:</a></code></pre></div>
+<p>Using this method for the previous example it becomes</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb24-1" title="1"><span class="cf">if</span> <span class="va">__name__</span><span class="op">==</span><span class="st">&quot;__main__&quot;</span>:</a>
+<a class="sourceLine" id="cb24-2" title="2">    numbers<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb24-3" title="3">    sum_of_numbers<span class="op">=</span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb24-4" title="4">    <span class="cf">for</span> item <span class="kw">in</span> numbers:</a>
+<a class="sourceLine" id="cb24-5" title="5">        sum_of_numbers<span class="op">+=</span>item</a>
+<a class="sourceLine" id="cb24-6" title="6">    <span class="bu">print</span>(<span class="ss">f&quot;The sum of the numbers in the list is </span><span class="sc">{</span>sum_of_numbers<span class="sc">}</span><span class="ss">&quot;</span>)</a></code></pre></div>
+<hr />
+<h1 id="exercise-7">Exercise 7</h1>
+<p>As exercise write a script to calculate the average, the max and the min of a list of number</p>
+<hr />
+<h1 id="dictionaries">Dictionaries</h1>
+<p>An really useful datatype of python is “dict”. Dictionaries are collections of couples of key/value, key are of type string and they are unique for each dict, the value of a dict can be of whatever type :int,float,string,list or even other dict. Let’s see an example of dict and what function can be used on a dict.</p>
+<hr />
+<h1 id="section-4"></h1>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb25-1" title="1"><span class="cf">if</span> <span class="va">__name__</span><span class="op">==</span><span class="st">&quot;__main__&quot;</span>:</a>
+<a class="sourceLine" id="cb25-2" title="2">    building<span class="op">=</span>{ <span class="st">&quot;type&quot;</span>: <span class="st">&quot;House&quot;</span>, </a>
+<a class="sourceLine" id="cb25-3" title="3">              <span class="st">&quot;properties&quot;</span>: {</a>
+<a class="sourceLine" id="cb25-4" title="4">                  <span class="st">&quot;id&quot;</span>: <span class="dv">1</span>, </a>
+<a class="sourceLine" id="cb25-5" title="5">                  <span class="st">&quot;RCODE&quot;</span>: <span class="st">&quot;RM3&quot;</span>, </a>
+<a class="sourceLine" id="cb25-6" title="6">                  <span class="st">&quot;NAME&quot;</span>: <span class="st">&quot;Mezzanone&quot;</span>, </a>
+<a class="sourceLine" id="cb25-7" title="7">                  <span class="st">&quot;TOWN&quot;</span>: <span class="st">&quot;Borgo Mezzanone&quot;</span>,</a>
+<a class="sourceLine" id="cb25-8" title="8">                  <span class="st">&quot;website&quot;</span>: <span class="st">&quot;https://www.ruritage.eu/RHH/Apulia&quot;</span>,</a>
+<a class="sourceLine" id="cb25-9" title="9">              },</a>
+<a class="sourceLine" id="cb25-10" title="10">              <span class="st">&quot;geometry&quot;</span>: { </a>
+<a class="sourceLine" id="cb25-11" title="11">                  <span class="st">&quot;type&quot;</span>: <span class="st">&quot;Point&quot;</span>, </a>
+<a class="sourceLine" id="cb25-12" title="12">                  <span class="st">&quot;coordinates&quot;</span>:[ <span class="fl">15.7094462</span>, <span class="fl">41.4205881</span> ] </a>
+<a class="sourceLine" id="cb25-13" title="13">              } </a>
+<a class="sourceLine" id="cb25-14" title="14">             }</a>
+<a class="sourceLine" id="cb25-15" title="15">    <span class="co">#Get the building type</span></a>
+<a class="sourceLine" id="cb25-16" title="16">    building_type<span class="op">=</span>building[<span class="st">&#39;type&#39;</span>]</a>
+<a class="sourceLine" id="cb25-17" title="17">    <span class="co">#or</span></a>
+<a class="sourceLine" id="cb25-18" title="18">    building_type<span class="op">=</span>building.get(<span class="st">&#39;type&#39;</span>)</a>
+<a class="sourceLine" id="cb25-19" title="19"></a>
+<a class="sourceLine" id="cb25-20" title="20">    <span class="bu">print</span>(<span class="ss">f&quot;The building type is </span><span class="sc">{</span>building_type<span class="sc">}</span><span class="ss">&quot;</span>)</a>
+<a class="sourceLine" id="cb25-21" title="21"></a>
+<a class="sourceLine" id="cb25-22" title="22">    <span class="co">#Get the properties of the building</span></a>
+<a class="sourceLine" id="cb25-23" title="23">    building_properties<span class="op">=</span>building[<span class="st">&#39;properties&#39;</span>]</a>
+<a class="sourceLine" id="cb25-24" title="24">    <span class="bu">print</span>(<span class="ss">f&quot;building properties:</span><span class="sc">{</span>building_properties<span class="sc">}</span><span class="ss">&quot;</span>)</a>
+<a class="sourceLine" id="cb25-25" title="25">    <span class="co">#to print it pretty you can  do</span></a>
+<a class="sourceLine" id="cb25-26" title="26">    <span class="co">#print(&quot;Building properties&quot;)</span></a>
+<a class="sourceLine" id="cb25-27" title="27">    <span class="co">#for key,value in building_properties.items():</span></a>
+<a class="sourceLine" id="cb25-28" title="28">    <span class="co">#    print(f&quot;\t{key}: {value}&quot;)</span></a>
+<a class="sourceLine" id="cb25-29" title="29"></a>
+<a class="sourceLine" id="cb25-30" title="30">    <span class="co">#Get the coordinates of the building</span></a>
+<a class="sourceLine" id="cb25-31" title="31">    building_coordinates<span class="op">=</span>building[<span class="st">&#39;geometry&#39;</span>][<span class="st">&#39;coordinates&#39;</span>]</a>
+<a class="sourceLine" id="cb25-32" title="32">    <span class="bu">print</span>(<span class="ss">f&quot;The coordinates of the building are:</span><span class="ch">\n</span><span class="ss">X:</span><span class="sc">{</span>building_coordinates[<span class="dv">0</span>]<span class="sc">}</span><span class="ch">\n</span><span class="ss">Y:</span><span class="sc">{</span>building_coordinates[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">&quot;</span>)</a></code></pre></div>
+<hr />
+<h1 id="exercise-8">Exercise 8</h1>
+<p>As exercise write a script that ask as input the data needed to fill the dict defined below and print the dict as output</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb26-1" title="1">personal_data<span class="op">=</span>{<span class="st">&quot;Name&quot;</span>:<span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb26-2" title="2">              <span class="st">&quot;Surname&quot;</span>:<span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb26-3" title="3">              <span class="st">&quot;Birth&quot;</span>:{</a>
+<a class="sourceLine" id="cb26-4" title="4">                  <span class="st">&quot;Place of birth&quot;</span>:<span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb26-5" title="5">                  <span class="st">&quot;Birthday&quot;</span>:<span class="st">&quot;&quot;</span></a>
+<a class="sourceLine" id="cb26-6" title="6">              },</a>
+<a class="sourceLine" id="cb26-7" title="7">               <span class="st">&quot;age&quot;</span>:<span class="st">&quot;&quot;</span></a>
+<a class="sourceLine" id="cb26-8" title="8">              }</a></code></pre></div>
+<hr />
+<h1 id="json-files">JSON files</h1>
+<p>For all te course we will use <em>.json</em> files a json is essentialy a dictionary saved on a file, it is easy for humans to read and write. It is easy for machines to parse and generate. Python has a module (i.e. library) called <em>json</em> that contains all the function we need to read and write json files. The function we will use are</p>
+<hr />
+<h1 id="json.loadfp">json.load(fp)</h1>
+<p>the output is a dictionary that filled with the content of from te file pointer fp (fp is the result ofthe function open(“<name_of_the_file>.json”)). What we will usually write is <code>dictionaryName=json.load(open("&lt;name_of_the_file&gt;.json"))</code></p>
+<hr />
+<h1 id="json.dumpdfp">json.dump(d,fp)</h1>
+<p>this is used to write the dictionary <em>d</em> on the file pointer fp. What we uually write could be <code>json.dump(dictionaryName,open("&lt;name_of_the_file&gt;.json","w"))</code></p>
+<hr />
+<h1 id="json.loadsmystring">json.loads(myString)</h1>
+<p>this will return a dictionary obtained by converting the string <em>myString</em>. We eill use this function later in the course</p>
+<hr />
+<h1 id="json.dumpd">json.dump(d)</h1>
+<p>this will return a string by converting the dictionary <em>d</em>. Also this function will be useful later in the course</p>
+<hr />
+<h1 id="exercise-9">Exercise 9</h1>
+<p>As exercise try to save the variable <em>personal_data</em> from the exercise 8 into a json file</p>
+<hr />
+<h1 id="functions">Functions</h1>
+<p>Functions are usefule to repeat the same operation multiple times without writing the same code multiple times. Let’s see an example of a function</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb27-1" title="1"><span class="kw">def</span> useless_function(argument):</a>
+<a class="sourceLine" id="cb27-2" title="2">    argument_v2<span class="op">=</span>argument<span class="op">+</span>argument</a>
+<a class="sourceLine" id="cb27-3" title="3">    <span class="cf">return</span> argument_v2</a>
+<a class="sourceLine" id="cb27-4" title="4"><span class="cf">if</span> <span class="va">__name__</span><span class="op">==</span><span class="st">&quot;__main__&quot;</span>:</a>
+<a class="sourceLine" id="cb27-5" title="5">    x<span class="op">=</span>useless_function(<span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb27-6" title="6">    <span class="bu">print</span>(x)</a>
+<a class="sourceLine" id="cb27-7" title="7">    y<span class="op">=</span>useless_function(<span class="st">&quot;IoT&quot;</span>)</a>
+<a class="sourceLine" id="cb27-8" title="8">    <span class="bu">print</span>(y)</a>
+<a class="sourceLine" id="cb27-9" title="9">    z<span class="op">=</span>useless_function([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</a>
+<a class="sourceLine" id="cb27-10" title="10">    <span class="bu">print</span>(z)</a></code></pre></div>
+<hr />
+<h1 id="exercise-10">Exercise 10</h1>
+<p>As we see in this example we don’t need to specify the type of the input of the function, python will understand it by itself (by the way this is a special case due to the fact that int,string and list all support the operator “+” in does <strong>not</strong> work)</p>
+<p>As exercise write 4 function to: add, subtract, multiply and divide two given numbers and print the result</p>
