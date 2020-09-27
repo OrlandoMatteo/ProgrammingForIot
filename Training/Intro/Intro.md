@@ -141,13 +141,7 @@ The first method consists in using placeholder with "%" like you would do in C, 
  - %s to print string
  - %d to print integer
  - %f to print float
- - %e to print in exponential form  
-
-So an example could be:  
-
-``` python
-print("My name is %s" %myName)
-```
+ - %e to print in exponential form
 
 ---
 
@@ -478,11 +472,7 @@ if __name__=="__main__":
 
 # For in the "pythonic" way
 
-There is another method to write the _for-loop_ that is a little easier that is  
-
-``` python
-for item in list:
-```  
+There is another method to write the _for-loop_ that is a little easier that is : ``` for item in list:```  
 
 Using this method for the previous example it becomes
 
@@ -492,7 +482,6 @@ if __name__=="__main__":
     sum_of_numbers=0
     for item in numbers:
         sum_of_numbers+=item
-    print(f"The sum of the numbers in the list is {sum_of_numbers}")
 ```
 
 ---
@@ -513,37 +502,22 @@ An really useful datatype of python is "dict". Dictionaries are collections of c
 
 ```python
 if __name__=="__main__":
-    building={ "type": "House", 
-              "properties": {
-                  "id": 1, 
-                  "RCODE": "RM3", 
-                  "NAME": "Mezzanone", 
-                  "TOWN": "Borgo Mezzanone",
-                  "website": "https://www.ruritage.eu/RHH/Apulia",
-              },
-              "geometry": { 
-                  "type": "Point", 
-                  "coordinates":[ 15.7094462, 41.4205881 ] 
-              } 
-             }
-    #Get the building type
-    building_type=building['type']
-    #or
-    building_type=building.get('type')
-
-    print(f"The building type is {building_type}")
-
-    #Get the properties of the building
-    building_properties=building['properties']
-    print(f"building properties:{building_properties}")
-    #to print it pretty you can  do
-    #print("Building properties")
-    #for key,value in building_properties.items():
-    #    print(f"\t{key}: {value}")
-
-    #Get the coordinates of the building
-    building_coordinates=building['geometry']['coordinates']
-    print(f"The coordinates of the building are:\nX:{building_coordinates[0]}\nY:{building_coordinates[1]}")
+    config={
+    "lastUpdate": "2020-7-25-22:46",
+    "devicesList": [
+            {
+                "deviceID": "BOX1_A_FAN_1",
+                "availableResources": "Fan",
+                "IP": "192.168.1.254",
+                "port": 49160,
+                "endPoints": {
+                    "REST": "http://192.168.1.254:49160/greenhouse/box_1/actuators/fan",
+                    "MQTT": "greenhouse/box_1/actuators/fan"
+                },
+                "insertTimestamp": 1595709994.0579066
+            }
+        ]
+    }
 ```
 
 ---
@@ -553,14 +527,16 @@ if __name__=="__main__":
 As exercise write a script that ask as input the data needed to fill the dict defined below and print the dict as output
 
 ```python
-personal_data={"Name":"",
-              "Surname":"",
-              "Birth":{
-                  "Place of birth":"",
-                  "Birthday":""
-              },
-               "age":""
-              }
+personal_data={
+"projectName":"",
+              "company":"",
+              "deviceList":[
+                    {
+                        "deviceID":""
+                        "deviceName":""
+                        "deviceType":""
+                    }
+                ]}
 ```
 
 ---
@@ -610,8 +586,6 @@ def useless_function(argument):
     argument_v2=argument+argument
     return argument_v2
 if __name__=="__main__":
-    x=useless_function(0)
-    print(x)
     y=useless_function("IoT")
     print(y)
     z=useless_function([1,2,3])
