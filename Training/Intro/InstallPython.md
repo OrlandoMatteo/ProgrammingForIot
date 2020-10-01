@@ -66,5 +66,3 @@ Go on the [VS Code website](https://code.visualstudio.com/) and follow the insta
 **Optional**
 
 In the _Extensions_ tab ( on the left side ) search for "python" an install the extension
-
----

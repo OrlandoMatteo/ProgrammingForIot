@@ -104,7 +104,8 @@ if __name__=="__main__":
 **Tips and tricks**  
 
 * The formula to obtain the equation from 2 points is 
-$$y=(y_2-y_1)/(x_2-x_1)x-(y_2-y_1)/(x_2-x_1)x_1+y_1$$
+
+$$y=x(y_2-y_1)/(x_2-x_1)-x_1(y_2-y_1)/(x_2-x_1)+y_1$$
 
 * The formula for the distance between a line and a point is 
 $$d(P,r)=\frac{|ax_P+by_P+c|}{\sqrt{a^2+b^2}}$$  
@@ -181,7 +182,7 @@ Create the classes "Contact" that must be able to store the contact presents in 
 
 # Exercise 5
 
-Using the class "Contact@ fromt he previous exercise and "AddressBook".
+Using the class "Contact" fromt he previous exercise and "AddressBook".
 The "AddressBook" class must be able to read the content of the file and perform CRUD (Create,Read,Update,Delete). The Update is the most difficult so i suggest to begin with the other. Below you can find an example
 
 ---
