@@ -15,11 +15,17 @@ style: |
 ---
 
 
-# How to install Python3
+# Get ready for Python developement
+
+In these slides we will see:
+
+- how to install the Python 3.X interpreter
+- how to install an IDE (VS Code) to write our code
+- how to use a version control tool (Git)
 
 ---
 
-# For Windows ![width:40px](https://icons.iconarchive.com/icons/martz90/circle/256/windows-8-icon.png)
+# Install python on Windows ![width:40px](https://icons.iconarchive.com/icons/martz90/circle/256/windows-8-icon.png)
 
 - Download the latest Python release installer for your OS  from [here](https://www.python.org/downloads/)
 - Launch the installer
@@ -30,7 +36,7 @@ style: |
 ---
 
 
-# For macOS ![width:40px](https://icons.iconarchive.com/icons/danleech/simple/256/apple-icon.png)
+# Install python on macOS ![width:40px](https://icons.iconarchive.com/icons/danleech/simple/256/apple-icon.png)
 
 You've two alternatives:  
 
@@ -38,7 +44,7 @@ You've two alternatives:
 2. If you've brew installed just open a terminal and write "*brew install python3*"
 
 ---
-# For Linux![width:40px](https://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Folders-OS-Linux-Metro-icon.png)
+# Install python on Linux![width:40px](https://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Folders-OS-Linux-Metro-icon.png)
 
 Python3 should be already available on most Linux of distribution, in the rare case you don't have it you can install it by writing on a terminal "*sudo |name of the packet manager| install python3*" (For example in Ubuntu "*sudo apt-get install python3*")
 
@@ -66,3 +72,7 @@ Go on the [VS Code website](https://code.visualstudio.com/) and follow the insta
 **Optional**
 
 In the _Extensions_ tab ( on the left side ) search for "python" an install the extension
+
+---
+
+# How to install git ![width:40px](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/1024px-Git_icon.svg.png)
