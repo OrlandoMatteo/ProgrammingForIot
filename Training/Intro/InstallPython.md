@@ -75,4 +75,15 @@ In the _Extensions_ tab ( on the left side ) search for "python" an install the 
 
 ---
 
-# How to install git ![width:40px](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/1024px-Git_icon.svg.png)
+# What is Git? ![width:60px](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/1024px-Git_icon.svg.png)
+
+Don’t confuse Git with GitHub
+- Git is a version control tool
+- GitHub provides cloud services using Git (remote repositories, bug tracking, wiki page...)
+
+Git is not like Dropbox or Google Drive
+- True version control, not just file history
+- Need to resort to console sooner or later
+
+---
+# How to install git ![width:60px](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/1024px-Git_icon.svg.png)
