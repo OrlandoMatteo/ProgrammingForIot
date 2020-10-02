@@ -64,12 +64,23 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 ---
 
-# How to install VS Code ![width:40px](https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_vscode_icon_130084.png)
+# How to install and IDE
+
+#### VS Code![width:40px](https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_vscode_icon_130084.png)
 
 
-Go on the [VS Code website](https://code.visualstudio.com/) and follow the installation guide for your OS. I will use this IDE during the lesson but you can use others if you're already familiarity with it (in that case we may not be able to solve all the IDE related issues :sweat_smile:)
+Go on the [VS Code website](https://code.visualstudio.com/) and follow the installation guide for your OS.
 
-**Optional**
+#### SublimeText![width:40px](https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_vscode_icon_130084.png)
+
+
+Go on the [SublimeText](https://www.sublimetext.com/) and follow the installation guide for your OS. 
+
+---
+
+I will mainly use VS Code during the lesson but you can use others if you're already familiarity with it (in that case we may not be able to solve all the IDE related issues :sweat_smile:)
+
+**Optional for VS Code**
 
 In the _Extensions_ tab ( on the left side ) search for "python" an install the extension
 
