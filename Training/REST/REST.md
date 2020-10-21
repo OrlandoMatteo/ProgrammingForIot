@@ -153,3 +153,72 @@ latest:latest change rate
 history: historic exchange rates
 quit:exit
 ```
+
+---
+
+# Use static file for style and interactions (a.k.a. css and js)
+
+Right now all the result we have returned to the user were quite ugly and not interactive at all. To give nicer result to the user and make the page interactive we need to use <b style="color:red;">css</b> files for the style and <b style="color:red;">js</b> for the interactions. Let's see how to do that with cherrypy
+
+---
+
+## The objective 
+We would like to obtain the result shown on the right. In that page the user can click on a button and set the color of the top rectangle. ![cool page bg 80% right](images/correctPage.png)
+
+---
+
+## Check the file needed
+
+``` html
+ <head> 
+     ...
+ 	<link rel="stylesheet" type="text/css" href="/css/myButton.css">
+     <script type="text/javascript" src="/js/myButton.js"></script>
+     ...
+ </head> 
+```
+the tag `<link>` is related to the css files while the tag `<script>` is related to js files.
+
+---
+
+## The folder structure
+
+![folder structure ](images/folderstructure.png)
+
+---
+
+## The class
+``` python
+import cherrypy
+import os
+
+class Example(object):
+	"""docstring for Reverser"""
+	exposed=True
+	def __init__(self):
+		self.id=1
+	def GET(self):
+		return open("index.html")
+```
+
+---
+
+## The conf
+
+```python
+	conf={
+		'/':{
+				'request.dispatch':cherrypy.dispatch.MethodDispatcher(),
+				'tools.staticdir.root': os.path.abspath(os.getcwd()),
+			},
+		 '/css':{
+		 'tools.staticdir.on': True,
+		 'tools.staticdir.dir':'./css'
+		 },
+		 '/js':{
+		 'tools.staticdir.on': True,
+		 'tools.staticdir.dir':'./js'
+		 },
+	}		
+
+```
