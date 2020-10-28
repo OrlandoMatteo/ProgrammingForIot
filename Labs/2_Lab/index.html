@@ -8,45 +8,56 @@
 </header>
 
 <body>
-    <div class="">
+    <div class="container-fluid">
         <div class="row justify-content-center">
-            <form onsubmit="sendPOSTrequest()">
-                <div class="form-group">
-                    <label for="deviceID">Device ID</label>
-                    <input type="text" class="form-control" id="deviceID">
+            <div class="col-xl-4 col-xs-12 mx-auto my-3">
+                <form onsubmit="sendPOSTrequest()">
+                    <div class="form-group">
+                        <label for="deviceID">Device ID</label>
+                        <input type="text" class="form-control" id="deviceID">
 
-                </div>
-                <div class="form-group">
-                    <label for="deviceName">Device name</label>
-                    <input type="text" class="form-control" id="deviceName">
-                </div>
-                <div class="form-group">
-                    <label for="measureType">Measure type</label>
-                    <input type="text" class="form-control" id="measureType">
-                </div>
-                <div class="form-group">
-                    <label for="unit">Unit</label>
-                    <input type="text" class="form-control" id="unit">
-                </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="deviceName">Device name</label>
+                        <input type="text" class="form-control" id="deviceName">
+                    </div>
+                    <div class="form-group">
+                        <label for="measureType">Measure type</label>
+                        <input type="text" class="form-control" id="measureType">
+                    </div>
+                    <div class="form-group">
+                        <label for="unit">Unit</label>
+                        <input type="text" class="form-control" id="unit">
+                    </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
         </div>
-    </div>
-    <div>
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Device name</th>
-                <th scope="col">Measure type</th>
-                <th scope="col">Unit</th>
-              </tr>
-            </thead>
-            <tbody id="tableBody">
-              <tr>
-              </tr>
-            </tbody>
-          </table>
+        <div class="row justify-content-center">
+            <div class="col-xl-4 col-xs-12 mx-auto my-3">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Device name</th>
+                            <th scope="col">Measure type</th>
+                            <th scope="col">Unit</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+
+                        {% for device in devicesList %}
+                        <tr>
+                            <td>{{device.deviceID}}</td>
+                            <td>{{device.deviceName}}</td>
+                            <td>{{device.measureType}}</td>
+                            <td>{{device.unit}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </body>

@@ -1,5 +1,4 @@
 function sendPOSTrequest(){
-    event.preventDefault();
     deviceID=$('#deviceID').val()
     deviceName=$('#deviceName').val()
     measureType=$('#measureType').val()
@@ -11,7 +10,10 @@ function sendPOSTrequest(){
         data: JSON.stringify({'deviceID':deviceID,'deviceName':deviceName,"measureType":measureType,"unit":unit}),
         dataType: 'json',
         success:function(response){
-          updateTable(response);
+          // jinja
+          // location.reload()
+          // console.log("Updated")
+          updatedTable(response)
         }
       });
 }
@@ -29,4 +31,5 @@ function updateTable(data){
     }
     
     $("#tableBody").html(updatedTableBody);
+
 }

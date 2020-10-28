@@ -1,6 +1,8 @@
 import cherrypy
 import os
 import json
+from jinja2 import Environment, FileSystemLoader
+env = Environment(loader=FileSystemLoader('templates'))
 class Server(object):
 	exposed=True
 	def __init__(self,name,filename):
@@ -8,21 +10,16 @@ class Server(object):
 		self.devicesList=json.load(open(filename))["devicesList"]
 		self.name=name
 
-	def GET(self, *uri):
-		if len(uri)==0:
-			return (open('index.html'))
-		elif uri[0]=="devicesList":
-			return self.devicesList
-		else:
-			return "404"
+	def GET(self):
+		tmpl = env.get_template('index.html')
+		return tmpl.render(devicesList=self.devicesList)
 
 	def POST(self,*uri,**params):
 		body=cherrypy.request.body.read()
 		device=json.loads(body)
 		self.devicesList.append(device)
-		self.save()
-		return self.devicesList
-	
+		tmpl = env.get_template('index.html')
+		return tmpl.render(devicesList=self.devicesList)
 	def save(self):
 		with open(self.filename,'w') as fp:
 			json.dump({"devicesList":self.devicesList},fp)

@@ -6,7 +6,7 @@ class MySubscriber:
 		def __init__(self, clientID,topic,broker):
 			self.clientID = clientID
 			# create an instance of paho.mqtt.client
-			self._paho_mqtt = PahoMQTT.Client(clientID, False) 
+			self._paho_mqtt = PahoMQTT.Client(clientID, True) 
 
 			# register the callback
 			self._paho_mqtt.on_connect = self.myOnConnect
@@ -36,13 +36,13 @@ class MySubscriber:
 
 
 
-if __name__ == "__main__":
-	test = MySubscriber("MySubscriber 1","#",'localhost')
-	test.start()
+# if __name__ == "__main__":
+# 	test = MySubscriber("MySubscriber 1","#",'localhost')
+# 	test.start()
 
-	a = 0
-	while (a < 30):
-		a += 1
-		time.sleep(1)
+# 	a = 0
+# 	while (a < 30):
+# 		a += 1
+# 		time.sleep(1)
 
-	test.stop()
+# 	test.stop()
