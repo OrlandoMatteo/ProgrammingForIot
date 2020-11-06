@@ -36,13 +36,14 @@ class MySubscriber:
 
 
 
-# if __name__ == "__main__":
-# 	test = MySubscriber("MySubscriber 1","#",'localhost')
-# 	test.start()
 
-# 	a = 0
-# 	while (a < 30):
-# 		a += 1
-# 		time.sleep(1)
+if __name__ == "__main__":
+	test = MySubscriber("mysub 1","IoT/Orlando/led",'mqtt.eclipse.org')
+	test.start()
 
-# 	test.stop()
+	a = 0
+	while (a < 30):
+		a += 1
+		time.sleep(1)
+
+	test.stop()

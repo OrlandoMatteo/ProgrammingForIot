@@ -17,11 +17,13 @@ class Server(object):
 			return "404"
 
 	def POST(self,*uri,**params):
-		body=cherrypy.request.body.read()
+		body=cherrypy.request.body.read('')
+		print(body)
 		device=json.loads(body)
+		print(device)
 		self.devicesList.append(device)
 		self.save()
-		return self.devicesList
+		return json.dumps({"devicesList":self.devicesList})
 	
 	def save(self):
 		with open(self.filename,'w') as fp:

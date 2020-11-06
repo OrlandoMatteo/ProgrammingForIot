@@ -40,5 +40,6 @@ if __name__ == "__main__":
 	while (a < 30):
 		a += 1
 		test.myPublish(str(a))
+		time.sleep(1)
 
 	test.stop()

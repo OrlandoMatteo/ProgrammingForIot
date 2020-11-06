@@ -4,13 +4,16 @@ from Exercise1 import *
 class LightREST(object):
 	exposed=True
 	def __init__(self):
-		self.led_client=LedCommander('LedCommander','ledCommand','127.0.0.1')
+		conf=json.load(open("settings.json"))
+		broker=conf["broker"]
+		port=conf["port"]
+		self.led_client=LedManager("LedCommander","IoT/Orlando/led",broker,port)
 		self.led_client.start()
 	def GET(self):
 		return open('index.html')
 	def PUT(self, *uri):
 		command=uri[0]
-		self.led_client.myPublish(command)
+		self.led_client.publish(command)
 		
 
 if __name__ == '__main__':

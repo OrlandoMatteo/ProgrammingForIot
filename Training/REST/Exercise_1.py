@@ -22,6 +22,6 @@ if __name__ == '__main__':
                 'tool.session.on': True
         }
     }
-    cherrypy.tree.mount(UriReverser(), '/', conf)
+    cherrypy.tree.mount(UriReverser(), '/rev', conf)
     cherrypy.engine.start()
     cherrypy.engine.block()

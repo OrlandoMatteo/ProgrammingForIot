@@ -1,41 +1,36 @@
-import paho.mqtt.client as PahoMQTT
+from MyMQTT import *
 import time
 import json
-class LedCommander:
-	def __init__(self, clientID, topic,broker):
-		self.clientID = clientID
+class LedManager:
+	def __init__(self, clientID, topic,broker,port):
 		self.topic=topic
+		self.__message={'client': clientID,'n':'switch','value':None, 'timestamp':'','unit':"bool"}
 
-		# create an instance of paho.mqtt.client
-		self._paho_mqtt = PahoMQTT.Client(self.clientID, False) 
-		# register the callback
-		self._paho_mqtt.on_connect = self.myOnConnect
-		self.message={'client': clientID,'n':'switch','value':'', 'timestamp':''}
-		#self.messageBroker = 'iot.eclipse.org'
-		self.messageBroker =broker
+		self.client=MyMQTT(clientID,broker,port,None)
+		self.statusToBool={"on":1,"off":0}
+
 
 	def start (self):
-		#manage connection to broker
-		self._paho_mqtt.connect(self.messageBroker, 1883)
-		self._paho_mqtt.loop_start()
+		self.client.start()
 
 	def stop (self):
-		self._paho_mqtt.loop_stop()
-		self._paho_mqtt.disconnect()
+		self.client.stop()
 
-	def myPublish(self,value):
-		self.message['timestamp']=str(time.time())
-		self.message['value']=value
-		self._paho_mqtt.publish(self.topic, json.dumps(self.message), 2)
-
-	def myOnConnect (self, paho_mqtt, userdata, flags, rc):
-		print ("Connected to %s with result code: %d" % (self.messageBroker, rc))
+	def publish(self,value):
+		message=self.__message
+		message['timestamp']=str(time.time())
+		message['value']=self.statusToBool[value]
+		self.client.myPublish(self.topic,message)
+		print("published")
 
 
 
 if __name__ == "__main__":
-	led_client = LedCommander("LedCommander",'ledCommand','mqtt.eclipse.org')
-	led_client.start()
+	conf=json.load(open("settings.json"))
+	broker=conf["broker"]
+	port=conf["port"]
+	ledManager = LedManager("LedCommander","IoT/Orlando/led",broker,port)
+	ledManager.client.start()
 
 	print('Welcome to the client to switch on/off the lamp\n')
 	done=False
@@ -43,14 +38,12 @@ if __name__ == "__main__":
 	while not done:
 		print(command_list)
 		user_input=input()
-		if user_input=="on":
-			led_client.myPublish(user_input)
-		elif user_input=="off":
-			led_client.myPublish(user_input)
+		if user_input=="on" or user_input=="off":
+			ledManager.publish(user_input)
 		elif user_input=='q':
 			done=True
 		else:
 			print('Unknown command')
-	led_client.stop()   
+	ledManager.client.stop()   
 
 
