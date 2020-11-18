@@ -1,0 +1,103 @@
+% Created 2020-11-12 gio 11:01
+% Intended LaTeX compiler: pdflatex
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[sfdefault]{cabin}
+\usepackage[T1]{fontenc}
+\author{Matteo Orlando}
+\date{}
+\title{Programming for Iot - Lab 4}
+\hypersetup{
+ pdfauthor={Matteo Orlando},
+ pdftitle={Programming for Iot - Lab 4},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.3 (Org mode 9.4)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Intrduction}
+\label{intrduction}
+In this lab we will try to develop different kind of sensor simulator
+that use the MQTT protocol
+
+Remember to always use SenML as data format:
+
+\begin{verbatim}
+    {
+        "bn": "http://example.org/sensor1/", 
+        "e": [
+                {
+                    "n": "temperature", 
+                    "u": "Cel", 
+                    "t": 1234, 
+                    "v":22.5 
+                } 
+             ]
+    }
+\end{verbatim}
+
+\subsection{Exercise 1}
+\label{exercise-1}
+Develop an MQTT publisher to emulate a temperature sensor that publish
+random values in the range [--10,39] every 5 seconds for 2 minutes.
+Develop also an MQTT subscriber that receives these values, prints these
+on screen and save these on a json file called \emph{temp\textsubscript{log.json}}. To
+generate the values, you can use one of the functions of the library
+random listed below:
+
+\begin{itemize}
+\item random.randint(a,b)
+
+\item random.random()
+
+\item random.uniform(a,b)
+\end{itemize}
+
+\subsection{Exercise 2}
+\label{exercise-2}
+Develop an MQTT publisher to emulate an heartrate sensor that publish
+random values in the range [55,180] every 5 seconds for 2 minutes.
+Develop also an MQTT subscriber that receives these values, prints these
+on screen and save these on a json file called \emph{hr\textsubscript{log.json}}. To
+generate the values, you can use one of the functions of the library
+numpy listed at
+\href{https://docs.scipy.org/doc/numpy-1.15.0/reference/routines.random.html}{this
+link}, try with different functions to evaluate which is the one that
+has the most realistic result. You can find a visualization of some of
+this generator
+\href{https://colab.research.google.com/drive/1JsxjaRDYnoMb6dQ5MZsLKH7ZDy7QzH9O?usp=sharing}{here}
+(you can even make your test there before writing your code)
+
+\subsection{Exercise 3}
+\label{exercise-3}
+Using the file \emph{hr\textsubscript{log.json}} created in the exercise before, develop an
+MQTT publisher to emulate a heartrate sensor that publish on by one the
+data in that file
+
+\subsection{Exercise 4}
+\label{exercise-4}
+Develop an MQTT publisher to emulate a sensor of your choice that
+publish random values in the 3 possible ranges. For example for an
+heartrate sensor we could define 3 ranges as [resting,sport,danger].
+Then create a simple terminal client for this MQTT publisher to select
+the range to be used to send the data. Develop also an MQTT subscriber
+to receive those data and in case of data in a warning range provide a
+visual feedback.
+\end{document}

@@ -38,7 +38,7 @@ class MySubscriber:
 
 
 if __name__ == "__main__":
-	test = MySubscriber("mysub 1","IoT/Orlando/led",'mqtt.eclipse.org')
+	test = MySubscriber("mysub 1","IOT/beatricezanchi/TEMPERATURA",'mqtt.eclipse.org')
 	test.start()
 
 	a = 0
