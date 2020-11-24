@@ -1,5 +1,6 @@
 ---
 marp: true
+autoscale: true
 paginate: true
 footer: 'programming for iot'
 theme: dracula
@@ -59,9 +60,9 @@ import json
 import requests
 
 class MyBot:
-    def __init__(self):
+    def __init__(self,token):
         # Local token
-        self.tokenBot=json.load(open("settings.json"))["telegramToken"]
+        self.tokenBot=token
         # Catalog token
         #self.tokenBot=requests.get("http://catalogIP/telegram_token").json()["telegramToken"]
         self.bot=telepot.Bot(self.tokenBot)
@@ -81,3 +82,98 @@ class MyBot:
 
         self.bot.sendMessage(chat_ID,text="You sent:\n"+message)
 ```
+
+---
+
+# Commands
+
+Usually Telegram bot accept some specific commands in the chat given in the format **/command**. With BotFather we can add some hints for the user but then we need to specify inside the code how this command will be handled
+
+![bg right:30%](https://core.telegram.org/file/811140029/1/s5zv4fbWdhw/a04aefa0ee0557f16a)
+
+---
+<!--code:invert -->
+# Bot + actuation via MQTT
+
+Now we will see how to send command using MQTT to switch on/off the simulated led we used in the previous exercises.
+
+<div style="font-size:20px">
+
+```python
+class Led:
+	def __init__(self, clientID, topic,broker,port):
+		self.client=MyMQTT(clientID,broker,port,self)
+		self.topic=topic
+		self.status=None
+
+	def start (self):
+		self.client.start()
+		self.client.mySubscribe(self.topic)
+
+	def stop (self):
+		self.client.stop()
+			
+	def notify(self,topic,msg):
+		d=json.loads(msg)
+		self.status=d['e'][0]['v']
+		client=d['bn']
+		timestamp=d['e'][0]['t']
+		print(f'The led has been set to {self.status} at time {timestamp} by the client {client}')
+
+```
+</div>
+
+---
+# Bot + actuation via MQTT
+
+The steps we need to success are 2:
+
+1. Adding an instance of the class *MyMQTT* to enable our bot to be a publisher
+2. Handle the command sent from the user to switch the led on or off
+   
+---
+# Bot + actuation via MQTT
+## enable MQTT
+
+``` python
+class SimpleSwitchBot:
+        #....
+        self.client=MyMQTT("telegramBot",broker,port,None)
+        self.client.start()
+        self.topic=topic
+        self.__message={'bn':"telegramBot",
+			'e':
+				[
+					{'n':'switch','v':'', 't':'','u':'bool'},
+					]
+			}
+      #....
+```
+
+---
+# Bot + actuation via MQTT
+## Manage commands
+
+<div style="font-size:24px">
+
+``` python
+def on_chat_message(self,msg):
+        content_type, chat_type ,chat_ID = telepot.glance(msg)
+        message=msg['text']
+        if message=="/switch-on":
+            payload=self.__message.copy()
+            payload['e'][0]['v']="on"
+            payload['e'][0]['t']=time.time()
+            self.client.myPublish(self.topic,payload)
+            self.bot.sendMessage(chat_ID,text="Led switched on")
+        elif message=="/switch-off":
+            payload=self.__message.copy()
+            payload['e'][0]['v']="on"
+            payload['e'][0]['t']=time.time()
+            self.client.myPublish(self.topic,payload)
+            self.bot.sendMessage(chat_ID,text="Led switched off")
+        else:
+            self.bot.sendMessage(chat_ID,text="Command not supported")
+```
+</div>
+

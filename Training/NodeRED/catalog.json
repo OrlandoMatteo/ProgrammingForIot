@@ -1,0 +1,28 @@
+{
+  "projectID":"p4iot",
+  "brokerIP":"test.mosquitto.org",
+  "brokerPort":1883,
+  "baseTopic":"p4iot",
+  "users": [
+    {
+      "ID": "pippo",
+      "userTopic": "pippo",
+      "resources": {
+        "led": {
+          "resourceTopic": "led",
+          "devices": [{ "ID": 1, "deviceTopic": "1" }]
+        }
+      }
+    },
+    {
+        "ID": "pluto",
+        "userTopic": "pluto",
+        "resources": {
+          "led": {
+            "resourceTopic": "led",
+            "devices": [{ "ID": 1, "deviceTopic": "1" }]
+          }
+        }
+      }
+  ]
+}
