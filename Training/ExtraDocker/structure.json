@@ -1,0 +1,15 @@
+{
+  "globalServices": [
+    { "serviceName": "catalog" }
+  ],
+  "users": [
+    {
+        "userID":"matteo",
+        "sensor": [
+        {
+          "deviceName": "sensor1"
+        }
+      ]
+    }
+  ]
+}

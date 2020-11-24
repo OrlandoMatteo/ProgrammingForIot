@@ -1,0 +1,109 @@
+nginx:
+      image: nginx
+      container_name: nginx
+      ports:
+        - "80:80"
+      volumes:
+        - nginx-conf:/etc/nginx/conf.d
+      depends_on: 
+        - dockergen
+    dockergen:
+      image: jwilder/docker-gen
+      command: -notify-sighup nginx -watch /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf
+      volumes:
+        - /var/run/docker.sock:/tmp/docker.sock:ro
+        - ./nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl
+        - nginx-conf:/etc/nginx/conf.d
+
+
+
+version: '3.5'
+services:
+    catalog:
+      build: ./catalog
+      image: catalog
+      expose:
+        - "80"
+      ports: 
+        - "8080:80"
+      depends_on:
+        - reverse-proxy
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.catalog.rule=Path(`/catalog`)"
+    sensor:
+      build: ./sensor
+      container_name: sensor1
+      image: sensor
+      expose:
+        - "80"
+      ports: 
+        - "9080:80"    
+      links:
+        - catalog
+      depends_on:
+        - catalog
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.sensor.rule=PathPrefix(`/{{.Name}}`)"
+        - "traefik.http.middlewares.test-replacepathregex.stripprefixregex.regex=^/sensor[a-z0-9]+"
+    reverse-proxy:
+      # The official v2 Traefik docker image
+      image: traefik:v2.3
+      # Enables the web UI and tells Traefik to listen to docker
+      command: --api.insecure=true --providers.docker
+      ports:
+        # The HTTP port
+        - "80:80"
+        # The Web UI (enabled by --api.insecure=true)
+        - "8000:8080"
+      volumes:
+        # So that Traefik can listen to the Docker events
+        - /var/run/docker.sock:/var/run/docker.sock
+
+
+server {
+    listen 80;
+    # Web service proxy
+    location /sensor1 {
+        proxy_pass http://sensor1:80;
+    }
+    location /catalog {
+        proxy_pass http://catalog:80;
+    }
+}
+
+version: '3.5'
+services:
+    catalog:
+      build: ./catalog
+      image: catalog
+      environment: 
+        - URI=/catalog
+      expose:
+        - "80"
+      ports: 
+        - "8080:80"
+    sensor1:
+      build: ./sensor
+      container_name: sensor1
+      image: sensor
+      environment: 
+        - URI=/sensor1
+      expose:
+        - "80"
+      ports: 
+        - "9080:80"    
+      links:
+        - catalog
+      depends_on:
+        - catalog
+    nginx:
+      image: nginx:latest
+      ports:
+        - "80:80"
+      volumes:
+        - ./default.conf:/etc/nginx/conf.d/default.conf
+      depends_on:
+          - catalog
+          - sensor1
