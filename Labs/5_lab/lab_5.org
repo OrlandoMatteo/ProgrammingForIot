@@ -1,0 +1,83 @@
+#+AUTHOR: Matteo Orlando
+#+latex_class: article
+#+latex_class_options:
+#+latex_header:\usepackage[sfdefault]{cabin}
+#+latex_header:\usepackage[T1]{fontenc}
+#+latex_header: \usepackage[margin=1in]{geometry}
+#+description:
+#+keywords:
+#+subtitle:
+#+latex_compiler: pdflatex
+#+TITLE:Programming for Iot - Lab 5
+#+OPTIONS: toc:nil
+#+OPTIONS: date:nil
+
+
+* Exercise 1
+Develop a RESTful style Catalog of a distributed platform for general purpose services. Identify the most suitable HTTP methods (among GET, POST, PUT and DELETE) and develop the web services to:
+
+1. Retrieve information about IP address and port of the message broker
+   in the platform
+
+2. Add a new device with the following information
+
+   - unique deviceID
+
+   - end-points (i.e. Rest Web Services and/or MQTT topics)
+
+   - available resources (e.g. Temperature, Humidity and Motion sensor)
+
+   - “insert-timestamp” when this device was added
+
+#+BEGIN_QUOTE
+  (*SUGGESTION:* to avoid synchronization issues, this attribute is
+  managed and updated only by the Catalog according to its system clock)
+#+END_QUOTE
+
+4. Update the information of a device
+
+5. Retrieve all the registered devices
+
+6. Retrieve a specific device with a deviceID
+
+7. Register a new user with the following information
+
+   - unique userID
+
+   - name
+
+   - surname
+
+   - email address(es)
+
+8. Retrieve all the registered users
+
+9. Retrieve a specific user with a certain userID
+
+#+BEGIN_QUOTE
+  *This information is stored in a JSON file and all the information
+  among the actors in the platform must be exchanged in JSON*
+
+  Implement an additional feature of the Catalog to remove all the
+  devices with “insert-timestamp” higher than two minutes. The Catalog
+  has to take this action periodically (for example every 1 minute).
+#+END_QUOTE
+
+* Exercise 2
+Develop or modify a temperature sensor simulator and a led simulator to invoke the RESTful Catalog developed in /Exercise_1/. These devices have to  to periodically (for example every 1 minute) either registers as new devices or refresh the old registration by updating theirs “insert-timestamp”. During the refresh of an old device registration, the Catalog has to update also the “insert-timestamp”.
+
+* Exercise 3
+ Develop a control application to monitor if the temperature values, coming from a sensor like the one used in the exercise before, is above or below a given threshold. In case the temperature value is outside the given threshold the application will store these values somewhere. When this application starts, it has to connect to the catalog in order to obtain all the MQTT topic related to the temperatures sensors and subrscibe to those topics.
+
+* Exercise 4
+
+Using the application developed in all the exercise before try to deploy a simple simulation like the one described below
+
+#+BEGIN_QUOTE
+You have developed a system that allows your clients to monitor the temperature in their houses and to switch on and off the light. In your system there are 2 houses with one user each. Each one of this houses has a led and a temperature sensor. In your system there is also a controll application to logs for each user the temperature values outside a common threshold. Each user must be able to obtain his own log of the temperatures and must be able to see the status of his light.
+#+END_QUOTE
+
+** Bonus improvements
+- each user has it's own custom treshold for the temperatures
+- there is another application that allows each user to turn on or off his light
+- each user has more than one temperature sensor and light

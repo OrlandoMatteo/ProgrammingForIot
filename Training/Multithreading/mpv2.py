@@ -13,7 +13,7 @@ def list_append(count, id, out_list):
 
 if __name__ == "__main__":
 	size = 10000000   # Number of random numbers to add
-	procs = 8   # Number of processes to create
+	procs = 6   # Number of processes to create
 
 	# Create a list of jobs and then iterate through
 	# the number of processes appending each process to

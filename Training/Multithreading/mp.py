@@ -29,7 +29,7 @@ if __name__ == '__main__':
 		s.join()
 
 	toc=time.time()
-	print(f"Execution time mt = {toc-tic}")
+	print(f"Execution time mp = {toc-tic}")
 
 
 

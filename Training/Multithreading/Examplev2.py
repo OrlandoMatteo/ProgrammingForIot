@@ -4,8 +4,9 @@ import threading
 import random
 from helpingFunctions import *
 from multiprocessing import Process
-nOfArrays=3
-VARIABLE=10**4
+nOfArrays=20
+VARIABLE=10**3
+
 ARRAY=[[random.randint(1,VARIABLE) for i in range(VARIABLE)] for i in range ( nOfArrays )]
 POSITIONS=[None for i in range(nOfArrays)]
 
@@ -65,7 +66,7 @@ if __name__ == '__main__':
 		position=binarySearch(tofind,array2[i])
 
 	toc=time.time()
-	print(f"Execution time = {toc-tic}")
+	print(f"Execution time  for-loop = {toc-tic}")
 
 	
 	
