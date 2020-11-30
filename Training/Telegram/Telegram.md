@@ -157,18 +157,18 @@ class SimpleSwitchBot:
 <div style="font-size:24px">
 
 ``` python
-def on_chat_message(self,msg):
+    def on_chat_message(self,msg):
         content_type, chat_type ,chat_ID = telepot.glance(msg)
         message=msg['text']
-        if message=="/switch-on":
+        if message=="/switchOn":
             payload=self.__message.copy()
             payload['e'][0]['v']="on"
             payload['e'][0]['t']=time.time()
             self.client.myPublish(self.topic,payload)
             self.bot.sendMessage(chat_ID,text="Led switched on")
-        elif message=="/switch-off":
+        elif message=="/switchOff":
             payload=self.__message.copy()
-            payload['e'][0]['v']="on"
+            payload['e'][0]['v']="off"
             payload['e'][0]['t']=time.time()
             self.client.myPublish(self.topic,payload)
             self.bot.sendMessage(chat_ID,text="Led switched off")
@@ -177,3 +177,51 @@ def on_chat_message(self,msg):
 ```
 </div>
 
+---
+
+# Bot callback and keyboards
+## Keyboard tools
+
+```python
+from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton
+```
+## query callback
+```python
+MessageLoop(self.bot, {'chat': self.on_chat_message,
+                  'callback_query': self.on_callback_query}).run_as_thread()
+```
+
+---
+
+# Bot callback and keyboards
+In the method to handle the incoming messages we need to create the keyboard and set the callback data which will be used to determine the behaviour of the buttons
+
+```python
+def on_chat_message(self, msg):
+        content_type, chat_type, chat_ID = telepot.glance(msg)
+        message = msg['text']
+        if message == "/switch":
+            buttons = [[InlineKeyboardButton(text=f'ON 🟡', callback_data=f'on'), 
+                    InlineKeyboardButton(text=f'OFF ⚪', callback_data=f'off')]]
+            keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
+            self.bot.sendMessage(chat_ID, text='What do you want to do', reply_markup=keyboard)
+        else:
+            self.bot.sendMessage(chat_ID, text="Command not supported")
+```
+
+---
+
+# Bot callback and keyboards
+In the callback query we will define the behaviour to follow according to the value of **callback_data**
+
+```python
+    def on_callback_query(self,msg):
+        query_ID , chat_ID , query_data = telepot.glance(msg,flavor='callback_query')
+
+        
+        payload = self.__message.copy()
+        payload['e'][0]['v'] = query_data
+        payload['e'][0]['t'] = time.time()
+        self.client.myPublish(self.topic, payload)
+        self.bot.sendMessage(chat_ID, text=f"Led switched {query_data}")
+```
