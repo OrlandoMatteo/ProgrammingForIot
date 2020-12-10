@@ -4,7 +4,7 @@ import threading
 import random
 from helpingFunctions import *
 from multiprocessing import Process
-nOfArrays=20
+nOfArrays=5
 VARIABLE=10**3
 
 ARRAY=[[random.randint(1,VARIABLE) for i in range(VARIABLE)] for i in range ( nOfArrays )]

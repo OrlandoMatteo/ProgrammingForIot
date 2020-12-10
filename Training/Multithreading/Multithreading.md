@@ -118,7 +118,7 @@ In this exercise we want to simulate the queue for that we can find in a lot of 
 ---
 
 We want to create a list of customers that has their own serve-time that is random number (you can use numpy.random to generate random numbers with particular distributions) and a list of cash desk. 
-We want to analyze the result of the simulation so we want to know the total time needed to serve all the customers, the average time and the number of customer served by each cash desk
+We want to analyze the result of the simulation so we want to know the total time needed to serve all the customers, the average time for each desk and the number of customer served by each cash desk
 
 <div style='text-align:center;position:center'>
 

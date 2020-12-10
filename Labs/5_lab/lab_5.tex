@@ -1,4 +1,4 @@
-% Created 2020-11-26 gio 15:55
+% Created 2020-12-10 gio 10:06
 % Intended LaTeX compiler: pdflatex
 \documentclass{article}
 \usepackage[utf8]{inputenc}
@@ -33,7 +33,7 @@
 
 
 \section{Exercise 1}
-\label{sec:org7de7149}
+\label{sec:orgfde38f2}
 Develop a RESTful style Catalog of a distributed platform for general purpose services. Identify the most suitable HTTP methods (among GET, POST, PUT and DELETE) and develop the web services to:
 
 \begin{enumerate}
@@ -92,27 +92,26 @@ has to take this action periodically (for example every 1 minute).
 \end{quote}
 
 \section{Exercise 2}
-\label{sec:org3da5a37}
+\label{sec:orge3d413d}
 Develop or modify a temperature sensor simulator and a led simulator to invoke the RESTful Catalog developed in \emph{Exercise\textsubscript{1}}. These devices have to  to periodically (for example every 1 minute) either registers as new devices or refresh the old registration by updating theirs “insert-timestamp”. During the refresh of an old device registration, the Catalog has to update also the “insert-timestamp”.
 
 \section{Exercise 3}
-\label{sec:org1c44cec}
+\label{sec:org60240aa}
 Develop a control application to monitor if the temperature values, coming from a sensor like the one used in the exercise before, is above or below a given threshold. In case the temperature value is outside the given threshold the application will store these values somewhere. When this application starts, it has to connect to the catalog in order to obtain all the MQTT topic related to the temperatures sensors and subrscibe to those topics.
 
 \section{Exercise 4}
-\label{sec:org54c4adf}
+\label{sec:orgd170162}
 
 Using the application developed in all the exercise before try to deploy a simple simulation like the one described below
 
 \begin{quote}
-You have developed a system that allows your clients to monitor the temperature in their houses and to switch on and off the light. In your system there are 2 houses with one user each. Each one of this houses has a led and a temperature sensor. In your system there is also a controll application to logs for each user the temperature values outside a common threshold. Each user must be able to obtain his own log of the temperatures and must be able to see the status of his light.
+You have developed a system that allows your clients to monitor the temperature in their houses and to switch on and off the light. In your system there are 2 houses with one user each. Each one of this houses has a led and a temperature sensor. In your system there is also a controll application to logs for each user the temperature values outside a common threshold. Each user must be able to obtain his own log of the temperatures and must be able to see and set the status of his light.
 \end{quote}
 
 \subsection{Bonus improvements}
-\label{sec:org72b3caf}
+\label{sec:orgd3017bd}
 \begin{itemize}
 \item each user has it's own custom treshold for the temperatures
-\item there is another application that allows each user to turn on or off his light
 \item each user has more than one temperature sensor and light
 \end{itemize}
 \end{document}

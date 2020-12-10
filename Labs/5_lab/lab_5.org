@@ -74,10 +74,9 @@ Develop or modify a temperature sensor simulator and a led simulator to invoke t
 Using the application developed in all the exercise before try to deploy a simple simulation like the one described below
 
 #+BEGIN_QUOTE
-You have developed a system that allows your clients to monitor the temperature in their houses and to switch on and off the light. In your system there are 2 houses with one user each. Each one of this houses has a led and a temperature sensor. In your system there is also a controll application to logs for each user the temperature values outside a common threshold. Each user must be able to obtain his own log of the temperatures and must be able to see the status of his light.
+You have developed a system that allows your clients to monitor the temperature in their houses and to switch on and off the light. In your system there are 2 houses with one user each. Each one of this houses has a led and a temperature sensor. In your system there is also a controll application to logs for each user the temperature values outside a common threshold. Each user must be able to obtain his own log of the temperatures and must be able to see and set the status of his light.
 #+END_QUOTE
 
 ** Bonus improvements
 - each user has it's own custom treshold for the temperatures
-- there is another application that allows each user to turn on or off his light
 - each user has more than one temperature sensor and light
