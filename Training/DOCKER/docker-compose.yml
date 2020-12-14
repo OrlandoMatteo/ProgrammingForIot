@@ -11,6 +11,8 @@ services:
       expose:
         - "80"
       ports: 
-        - "9080-9090:80"    
+        - "9080-9090:80"
+      depends_on: 
+        - catalog    
       links:
         - catalog

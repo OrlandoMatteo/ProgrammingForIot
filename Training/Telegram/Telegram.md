@@ -225,3 +225,20 @@ In the callback query we will define the behaviour to follow according to the va
         self.client.myPublish(self.topic, payload)
         self.bot.sendMessage(chat_ID, text=f"Led switched {query_data}")
 ```
+
+---
+
+# Exercise 1
+
+Create a telegram bot with a REST interface that is able to receive POST requests with a body like ```{"alert":"...","action":"..."}```
+ and sends a message to an user.
+ ## Tip
+In your project the body should contain also something that identifies the user so that the bot can ask to the catalog which is the chati id corresponding to that user. Just or this exercise you can obtain the chat id from the */start* message
+
+---
+# Exercise 2
+
+Create a telegram bot with an MQTT interface, the bot should be sunscribed to a topic like "MyProject/alert/#", it should receive messages like ```{"alert":"...","action":"..."}```
+ and sends a message to an user.
+ ## Tip
+In your project the body should contain also something that identifies the user so that the bot can ask to the catalog which is the chati id corresponding to that user. Just or this exercise you can obtain the chat id from the */start* message

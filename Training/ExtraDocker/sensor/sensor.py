@@ -4,33 +4,56 @@ import json
 import random
 import time
 import os
+from MyMQTT import *
+import threading
 
-class SensorREST(object):
+
+class SensorREST(threading.Thread):
     exposed = True
 
     def __init__(self):
+        threading.Thread.__init__(self)
+        self.__deviceTemplate = {
+            "userID": "", "deviceID": "", "ip": "", "mqtt": [], "rest": []}
+        self.userID = os.getenv("userID")
+        self.deviceID = os.getenv("deviceID")
         self.settings = json.load(open('settings.json'))
-        self.settings['ID'] = random.randint(1, 1000)
-        self.settings['commands'] = ['hum', 'temp']
-        requests.put(self.settings['catalog'], data=json.dumps(self.settings))
+        self.topic=self.userID+"/"+"/"+"temp"
+        self.__deviceTemplate = {
+            "userID": self.userID, "deviceID": self.deviceID, "ip": "", "mqtt": self.topic, "rest": ["/temp"]}
+        self.__message = {
+            'bn': self.deviceID,
+            'e':
+                [
+                    {'n': 'temperature', 'value': '', 'timestamp': '', 'unit': 'C'}
+                ]
+            }
+        
+        time.sleep(10)
+        infoFromCatalog=requests.post(self.settings['catalog'], data=json.dumps(self.__deviceTemplate)).json()
+        self.client=MyMQTT(self.userID+"_"+self.deviceID,infoFromCatalog["brokerIP"],infoFromCatalog["brokerPort"],None)
+        self.start()
+
+    def sendData(self):
+        message = self.__message
+        message['e'][0]['value'] = random.randint(10, 30)
+        message['e'][0]['timestamp'] = str(time.time())
+        self.lastMessage=message
+        self.client.myPublish(self.topic,message)
+
+    def startMQTT (self):
+        self.client.start()
+
+    def stop (self):
+        self.client.stop()
+
+    def run(self):
+        while True:
+            time.sleep(5)
+            s.sendData()
 
     def GET(self, *uri, **params):
-        print(uri)
-        if len(uri) != 0:
-            if uri[0] == 'hum':
-                value = random.randint(60, 80)
-                output = {'deviceID': self.settings['ID'], str(uri[0]): value}
-            elif uri[0] == 'temp':
-                value = random.randint(10, 25)
-                output = {'deviceID': self.settings['ID'], str(uri[0]): value}
-            else:
-                output=self.settings
-            return json.dumps(output)
-        else:
-            return json.dumps(self.settings)
-
-    def pingCatalog(self):
-        requests.put(self.settings['catalog'], data=json.dumps(self.settings))
+        return json.dumps(self.lastMessage)
 
 
 if __name__ == '__main__':
@@ -45,8 +68,6 @@ if __name__ == '__main__':
         {'server.socket_host': '0.0.0.0', 'server.socket_port': 80})
     cherrypy.tree.mount(s,'/', conf)
     cherrypy.engine.start()
-    while True:
-        print('sleeping')
-        time.sleep(20)
-        s.pingCatalog()
+    s.startMQTT()
+    cherrypy.engine.block()
     cherrypy.engine.exit()

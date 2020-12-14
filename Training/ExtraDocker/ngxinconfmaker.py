@@ -29,19 +29,20 @@ if __name__ == "__main__":
 
     for user in structure['users']:
         userID = user["userID"]
-        for device in user["sensor"]:
+        for device in user["devices"]:
             deviceName = device['deviceName']
-            dockerCompose['services'][deviceName] = {"build": "./sensor",
+            dockerCompose['services'][userID+"_"+deviceName] = {"build": "./sensor",
                                                     "container_name": userID+"_"+deviceName,
                                                      "image": deviceName,
                                                      "expose": ["80"],
+                                                     "environment":{"userID":userID,"deviceID":deviceName},
                                                      "ports": [str(port)+":80"],
                                                      "links": [gs["serviceName"] for gs in globalServices],
                                                      "depends_on": [gs["serviceName"] for gs in globalServices]
                                                      }
             nginxConf += f"\n\tlocation /{userID}/{deviceName}/ {{\n\t\tproxy_pass http://{userID}_{deviceName}:80/;\n\t}}"
             port += delta
-            dockerCompose["services"]["nginx"]["depends_on"].append(deviceName)
+            dockerCompose["services"]["nginx"]["depends_on"].append(userID+"_"+deviceName)
 
     with open('docker-compose.yml', 'w', encoding='utf8') as outfile:
         yaml.dump(dockerCompose, outfile, sort_keys=False)

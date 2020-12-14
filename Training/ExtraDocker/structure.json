@@ -5,11 +5,19 @@
   "users": [
     {
         "userID":"matteo",
-        "sensor": [
+        "devices": [
         {
           "deviceName": "sensor1"
         }
       ]
-    }
+    },
+      {
+          "userID":"pippo",
+          "devices": [
+          {
+            "deviceName": "sensor1"
+          }
+        ]
+      }
   ]
 }
