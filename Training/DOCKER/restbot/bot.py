@@ -39,6 +39,9 @@ class RESTBot:
         else:
             self.bot.sendMessage(chat_ID, text="Command not supported")
 
+    def GET(self):
+        return open('index.html')
+
     def POST(self,*uri):
         tosend=''
         output={"status":"not-sent","message":tosend}
@@ -55,14 +58,16 @@ class RESTBot:
         return json.dumps(output)
 
 if __name__ == "__main__":
-    conf = json.load(open("../settings.json"))
+    conf = json.load(open("settings.json"))
     token = conf["telegramToken"]
     cherryConf={
 		'/':{
 				'request.dispatch':cherrypy.dispatch.MethodDispatcher(),
 				'tool.session.on':True
 		}
-	}	
+	}
+    cherrypy.config.update(
+        {'server.socket_host': '0.0.0.0', 'server.socket_port': 80})	
     bot=RESTBot(token)
     cherrypy.tree.mount(bot,'/',cherryConf)
     cherrypy.engine.start()

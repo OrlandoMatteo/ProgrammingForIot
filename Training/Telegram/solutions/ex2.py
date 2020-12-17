@@ -40,10 +40,9 @@ class MQTTbot:
         
         alert=msg["alert"]
         action=msg["action"]
-        tosend=f"*ATTENTION*!!!\n{alert}, you should {action}"
+        tosend=f"ATTENTION!!!\n{alert}, you should {action}"
         for chat_ID in self.chatIDs:
-            #self.bot.sendMessage(chat_ID, text=tosend)
-            self.bot.sendMessage(chat_ID, text=tosend,parse_mode='Markdown')
+            self.bot.sendMessage(chat_ID, text=tosend)
 
 if __name__ == "__main__":
     conf = json.load(open("../settings.json"))
