@@ -20,7 +20,8 @@ class RESTBot:
 
     def on_chat_message(self, msg):
         content_type, chat_type, chat_ID = telepot.glance(msg)
-        self.chatIDs.append(chat_ID)
+        if chat_ID not in self.chatIDs:
+            self.chatIDs.append(chat_ID)
         message = msg['text']
         if message == "/switchOn":
             payload = self.__message.copy()
@@ -36,7 +37,7 @@ class RESTBot:
             self.bot.sendMessage(chat_ID, text="Led switched off")
         elif message=="/start":
             self.bot.sendMessage(chat_ID, text="Welcome")
-        else:
+        elif message.startswith('/'):
             self.bot.sendMessage(chat_ID, text="Command not supported")
 
     def GET(self):
