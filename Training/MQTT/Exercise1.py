@@ -1,4 +1,4 @@
-from .MyMQTT import *
+from MyMQTT import *
 import time
 import json
 class LedManager:

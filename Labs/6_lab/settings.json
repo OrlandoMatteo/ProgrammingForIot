@@ -1,0 +1,6 @@
+{
+    "broker": "test.mosquitto.org",
+    "port": 1883,
+    "baseTopic": "IoT_project",
+    "apikey":"KPK4N4XRALC9KLRM"
+}
