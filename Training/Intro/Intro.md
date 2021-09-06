@@ -21,7 +21,7 @@ Launching a Python script is quite easy, these are the steps to follow:
 
 1. Open a new terminal (Command line for Windows)
 2. Navigate to the folder , "_cd name of the folder_" to open a folder , "_dir_" to list the file in the folder ("_ls_" for MacOS and Linux)
-3. type "_python |name of the file|.py_"  
+3. type "_python 'name of the file'.py_"(for example "python myScript.py")  
 
 For the rest of the course we will always launch our Python scripts in this way
 
@@ -133,8 +133,8 @@ print(f"{pi:.4}").
 
 Now try to use both this method to write a Python script that give as output your nam, your age and your birthday in this way:  
 
-``` bash
-My name is Python and I'm 28 years old, I was born the 20/02/1991
+```
+My name is Python and I'm 30 years old, I was born the 20/02/1991
 ```
 
 ---
@@ -184,12 +184,12 @@ So you're Mt. Everest you're 60000 years old and you're tall 8848 m...
 
 Reading and writing file in Python is really easy, the function you need are the following:
 
-``` python
-open()
-read()
-readline()
-write()
-close()
+```
+    open()
+    read()
+    readline()
+    write()
+    close()
 ```
 
 ---
@@ -226,20 +226,6 @@ fileContent=f.read()
 
 ---
 
-# Read a line
-
-___readline()___  
-this function return one line of the file as a string  
-
-``` python
-
-#Open the file "myFile.txt" and read one line
-f=open('myFile.txt')
-fileLine=f.readline()
-```  
-
----
-
 # Write a file
 
 ___write()___
@@ -268,6 +254,7 @@ f.close()
 ---
 
 # Exercise 5
+**In python you can sum strings! (one+one=oneone)**
 
 As exercise create 2 file: "original.txt" with some random conten and an empty file called "copy.txt", then write a python script to open the first file, shows its content on the terminal and write the content of "original.txt" in "copy.txt" but add at the beginning "the content of the original file is:". So the result should look like this.  
 

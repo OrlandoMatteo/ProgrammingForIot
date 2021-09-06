@@ -69,5 +69,7 @@ if __name__ == '__main__':
     cherrypy.tree.mount(s,'/', conf)
     cherrypy.engine.start()
     s.startMQTT()
+    while True:
+        
     cherrypy.engine.block()
     cherrypy.engine.exit()
