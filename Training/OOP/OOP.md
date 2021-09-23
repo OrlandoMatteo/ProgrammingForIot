@@ -17,7 +17,9 @@ style: |
     ol > li > p {
     margin: 0.2em 0 0 0;
     }
-    
+  section b{
+      color:red
+  }
 
 ---
 
@@ -46,10 +48,12 @@ Implement a "Point" class that is able to represent 2-D points.  The class must 
 ```python
 from Exercise_1 import *
 if __name__=="__main__":
+    # create 2 points and calculate distance among them
     a=Point(7,1)
     b=Point(1,1)
     print(a.distance(b))
 
+    # move a point according to a vector (x,y)
     a.move(2,2)
     print(a)
 ```
@@ -84,14 +88,17 @@ Using the class "Points" of the previous exercise and this one try to obtain the
 ```python
 from Exercise_2 import *
 if __name__=="__main__":
-    l=Line(3,2)
-    print(l)
-
+    # 1 Simple creation
+    l1=Line(m=3,q=2)
+    print(l1)
+    #2 Create from 2 points
     a=Point(0,1)
     b=Point(2,2)
+    l2=Line()
     l.line_from_points(a,b)
-
-    l=Line(1,0)
+    print(l2)
+    #3 Function for distrance from point and intersection with another line
+    l=Line(m=1,1=0)
     a=Point(1,5)
     print(l.distance(a))   
     m=Line(-1,0)
@@ -115,9 +122,9 @@ $$P\left({\frac {q_2-q_1}{m_1-m_2}},m_1{\frac {q_2-q_1}{m_1-m_2}}+q_1\right)$$
 
 ---
 
-# Create a "client" for your main
+# Interact with your script
 
-In all the exercises we made before we were able to run the main just once but in most cases that's not really useful, we would like to create a client-style main to be able to execute the same code in different ways according to some commands and then quit when we've finished.
+In all the exercises we made before we were able to run the main just once but in most cases that's not really useful, we would like to create a menu for our main  n order to be able to execute the same code in different ways according to some commands and then quit when we've finished.
 An easy method to do this is shown below for the Exercise 1.
 <b style="color:crimson">This we'll be useful in the next exercises!</b>
 
@@ -167,6 +174,7 @@ In this exercise we wanto to create a "Deck" class and a "Card" class to represe
 ---
 
 # Exercise 4
+<b>Do this exercise after the  theory lesson on the dataformat</b>
 
 Create the classes "Contact" that must be able to store the contact presents in the file _"contacts.json"_
 
@@ -181,6 +189,7 @@ Create the classes "Contact" that must be able to store the contact presents in 
 ---
 
 # Exercise 5
+<b>Do this exercise after the  theory lesson on the dataformat</b>
 
 Using the class "Contact" fromt he previous exercise and "AddressBook".
 The "AddressBook" class must be able to read the content of the file and perform CRUD (Create,Read,Update,Delete). The Update is the most difficult so i suggest to begin with the other. Below you can find an example

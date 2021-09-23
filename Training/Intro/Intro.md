@@ -12,6 +12,9 @@ style: |
   section{
         font-family: Ubuntu
     }
+    section b{
+      color: red
+  }
 ---
 
 
@@ -462,20 +465,23 @@ As exercise write a script that ask as input the data needed to fill the dict de
 
 ```python
 personal_data={
-"projectName":"",
-              "company":"",
-              "deviceList":[
-                    {
-                        "deviceID":""
-                        "deviceName":""
-                        "deviceType":""
-                    }
-                ]}
+    "projectName":"",
+    "company":"",
+    "deviceList":[
+        {
+            "deviceID":""
+            "deviceName":""
+            "deviceType":""
+        }
+    ]
+}
 ```
 
 ---
 
 # JSON files
+
+<b>Do this exercise after the  theory lesson on the dataformat</b>
 
 For all te course we will use _.json_ files a json is essentialy a dictionary saved on a file, it is easy for humans to read and write. It is easy for machines to parse and generate. Python has a module (i.e. library) called _json_ that contains all the function we need to read and write json files.
 The function we will use are 
