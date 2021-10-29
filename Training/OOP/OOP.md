@@ -20,6 +20,14 @@ style: |
   section b{
       color:red
   }
+    section.centered h1{
+        position: absolute;
+        top: 30%;
+        text-align:center
+    }
+---
+<!-- _class: centered -->
+# Object Oriented Programming in Python
 
 ---
 
@@ -91,13 +99,13 @@ if __name__=="__main__":
     # 1 Simple creation
     l1=Line(m=3,q=2)
     print(l1)
-    #2 Create from 2 points
+    #2 Create line from 2 points
     a=Point(0,1)
     b=Point(2,2)
     l2=Line()
     l.line_from_points(a,b)
     print(l2)
-    #3 Function for distrance from point and intersection with another line
+    #3 Function for distance from point and intersection with another line
     l=Line(m=1,1=0)
     a=Point(1,5)
     print(l.distance(a))   
@@ -220,6 +228,8 @@ Press 'q' to quit
 ---
 
 # Exercise 6
+
+<b>Do this exercise after the  theory lesson on the dataformat</b>
 
 Create the function to evaluate:
    1. The average **ratings** among the players
@@ -353,7 +363,7 @@ if __name__=="__main__":
 ---
 
 # Exercise 7
-===
+
 As exercise on polymorpishm and inheritance you can create the parent-class "Circle"and the child-class "Cylinder". The Circle class must have the methods to calculate area and perimeter while the Cylinder class must have the method to calculate area and volume
 
 ---

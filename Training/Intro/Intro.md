@@ -12,9 +12,21 @@ style: |
   section{
         font-family: Ubuntu
     }
-    section b{
-      color: red
+  section b{
+      color:orange
   }
+  em{
+      color: salmon
+  }
+  strong{
+      color:orange
+  }
+  footer{
+      text-align: center;
+  }
+  section.smallcode code{
+      font-size:20px
+      }
 ---
 
 
@@ -80,34 +92,10 @@ In a lot of case you want to print things like
 the average of the values is: 5.4
 ```
 
-In general you would like to print a string and the value of a variable or multiple variable. There a lot of way to print in Python, we will see just 2 of them.  
+In general you would like to print a string and the value of a variable or multiple variable. There a lot of way to print in Python, we will see just one of them.  
 
 ---
-
-# First Method
-
-The first method consists in using placeholder with "%" like you would do in C, there are different type of plceholder, you will mainly use the following:  
-
- - %s to print string
- - %d to print integer
- - %f to print float
- - %e to print in exponential form
-
----
-
-# Special cases
-
-In case of floating point number you can specify the number of digits after the comma by writing "_%.**n**f_" where n is the number of digits so for example if we want to have 3 digits we would write "%.3f". This method will work also with "%s" but in that case the number will specify the number of **characters** that will be used (including the "."). If you want to specify multiple variable you will write  
-
-``` python
-print(" %s  %d %f" %(a,b,c))
-```
-
----
-
-# Second method
-
-The second method use the letter "f", in this case the placeholder is the same for every type of variable and is "_{variable}_", so the example we saw before would become:  
+To use placeholder we need to add the letter _"f"_ before the string, in this case the placeholder is the same for every type of variable and is "_{variable}_", so the example we saw before would become:  
 
 ``` python
 print(f"My name is {myname}")
@@ -134,7 +122,7 @@ print(f"{pi:.4}").
 
 # Exercise 2
 
-Now try to use both this method to write a Python script that give as output your nam, your age and your birthday in this way:  
+Now try to use both this method to write a Python script that give as output your name, your age and your birthday in this way:  
 
 ```
 My name is Python and I'm 30 years old, I was born the 20/02/1991
@@ -175,7 +163,7 @@ The function to ask inputs from user in Python is simply "_input()_". For exampl
 number=input(" Please write a number")
 ```  
 
-That is quite easy so let's try to write a script that ask the user his name and his age and his height and reply somthing like:  
+That is quite easy so let's try to write a script that ask the user his name, his age and his height and replies something like:  
 
 ``` Markdown
 So you're Mt. Everest you're 60000 years old and you're tall 8848 m...
@@ -190,7 +178,6 @@ Reading and writing file in Python is really easy, the function you need are the
 ```
     open()
     read()
-    readline()
     write()
     close()
 ```
@@ -302,10 +289,12 @@ if __name__=="__main__":
 
 ---
 
-# Exercise 6
+# Exercise 6 (a.k.a. FizzBuzz)
 
 We can annidate multiple _if-elif-else_ just remember to use the correct indentation, most code editors will do it for you but pay attention to it. You can create complex condition with "and" and "or".  
-As exercise write a script that takes as input a number and chech whether it's a multiple of 2 and 3.
+
+
+Write a program that prints the numbers from 1 to 100. But for multiples of three print “Fizz” instead of the number and for the multiples of five print “Buzz”. For numbers which are multiples of both three and five print “FizzBuzz”
 
 ---
 
@@ -337,7 +326,7 @@ As you've seen in the slides in python the "array" type is called "list" and the
 - _list.pop([i])_  
   Remove the item at the given position in the list, and return it. If no index is specified, a.pop() removes and returns the last item in the list.
 
-  ---
+---
 
 # List functions 3/3
 
@@ -407,7 +396,7 @@ if __name__=="__main__":
 
 ---
 
-# For in the "pythonic" way
+# For-loop in the "pythonic" way
 
 There is another method to write the _for-loop_ that is a little easier that is : ``` for item in list:```  
 
@@ -431,7 +420,7 @@ As exercise write a script to calculate the average, the max and the min of a li
 
 # Dictionaries
 
-An really useful datatype of python is "dict". Dictionaries are collections of couples of key/value, key are of type string and they are unique for each dict, the value of a dict can be of whatever type :int,float,string,list or even other dict. Let's see an example of dict and what function can be used on a dict.
+An really useful datatype of python are _dictionaries_. Dictionaries are collections of couples of key/value, key are of type string and they are unique for each dict, the value of a dict can be of whatever type :int,float,string,list or even other dictionary. Let's see an example of dict and what function can be used on a dictionary.
 
 ---
 
@@ -458,30 +447,31 @@ if __name__=="__main__":
 ```
 
 ---
-
+<!-- _class: smallcode -->
 # Exercise 8
 
-As exercise write a script that ask as input the data needed to fill the dict defined below and print the dict as output
+As exercise write a script that ask as input the data needed to fill the dictionary defined below and print the dict as output
 
 ```python
-personal_data={
-    "projectName":"",
-    "company":"",
-    "deviceList":[
-        {
-            "deviceID":""
-            "deviceName":""
-            "deviceType":""
-        }
-    ]
-}
+config={
+    "lastUpdate": "2020-7-25-22:46",
+    "devicesList": [
+            {
+                "deviceID": "BOX1_A_FAN_1",
+                "availableResources": "Fan",
+                "IP": "192.168.1.254",
+                "port": 49160,
+                "insertTimestamp": 1595709994.0579066
+            }
+        ]
+    }
 ```
 
 ---
 
 # JSON files
 
-<b>Do this exercise after the  theory lesson on the dataformat</b>
+**Do this exercise after the  theory lesson on the dataformat**
 
 For all te course we will use _.json_ files a json is essentialy a dictionary saved on a file, it is easy for humans to read and write. It is easy for machines to parse and generate. Python has a module (i.e. library) called _json_ that contains all the function we need to read and write json files.
 The function we will use are 
@@ -513,7 +503,7 @@ this will return a string by converting the dictionary _d_. Also this function w
 
 # Exercise 9
 
-As exercise try to save the variable _personal\_data_ from the exercise 8 into a json file
+As exercise try to save the variable _config_ from the exercise 8 into a json file
 
 ---
 

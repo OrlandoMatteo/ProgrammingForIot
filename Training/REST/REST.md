@@ -97,7 +97,7 @@ Now let's create a web service similar to the one before but instead we want to 
 
 ---
 
-![echo bg  70%](images/echo.png)
+![echo bg  70%](images/paramReverser.png)
 
 ---
 # 
