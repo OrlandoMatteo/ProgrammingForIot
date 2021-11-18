@@ -25,7 +25,7 @@ class Server(object):
 		print(body)
 		device=json.loads(body)
 		print(device)
-		self.devicesList.append(device)
+		self.devicesList['devicesList'].append(device)
 		self.save()
 		return json.dumps(self.devicesList)
 
