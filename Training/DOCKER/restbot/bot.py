@@ -36,6 +36,8 @@ class RESTBot:
             self.client.myPublish(self.topic, payload)
             self.bot.sendMessage(chat_ID, text="Led switched off")
         elif message=="/start":
+            if chat_ID not in self.chatIDs:
+                self.chatIDs.append(chat_ID)
             self.bot.sendMessage(chat_ID, text="Welcome")
         elif message.startswith('/'):
             self.bot.sendMessage(chat_ID, text="Command not supported")
@@ -68,7 +70,7 @@ if __name__ == "__main__":
 		}
 	}
     cherrypy.config.update(
-        {'server.socket_host': '0.0.0.0', 'server.socket_port': 80})	
+        {'server.socket_host': '0.0.0.0', 'server.socket_port': conf["port"]})	
     bot=RESTBot(token)
     cherrypy.tree.mount(bot,'/',cherryConf)
     cherrypy.engine.start()

@@ -12,27 +12,27 @@ style: |
   section li,ul,p{
     margin: 0 0 0 0;
     } 
-    section ul > li > p,
+  section ul > li > p,
     ol > li > p {
     margin: 0.2em 0 0 0;
     }
-    div.colwrap {
+  div.colwrap {
     background-color: inherit;
     color: inherit;
     width: 100%;
     height: 100%;
     }
 
-    div.colwrap div.left, div.colwrap div.right {
+  div.colwrap div.left, div.colwrap div.right {
     position: absolute;
     padding-right:30px;
     padding-left:30px;
     }
-    div.colwrap div.left {
+  div.colwrap div.left {
     right: 50%;
     left: 0;
     }
-    div.colwrap div.right {
+  div.colwrap div.right {
     left: 50%;
     right: 0;
     }
@@ -44,7 +44,7 @@ style: |
 ---
 We could briefly resume the structure of the MQTT communication paradigm in this way, there are 3 type of actors:***Publisher***,***Subscriber***,***Broker***.  
 * The ***Publisher*** is the actor that wants to send messages tagged by a *topic*
-* The ***Subsciber*** is the actor that wants to receive messages that belong to variable number of topic. 
+* The ***Subsrciber*** is the actor that wants to receive messages that belong to variable number of topic. 
 * The ***Broker*** is the actor in the middle: it receives the messages from all the publisher and forwards each of them to the suscriber according to the *topic*.
   
 Here below you can find the examples for the implementation of a publisher and a subscriber
@@ -230,7 +230,7 @@ buildingID/floorID/roomID/sensorID
 
 so for example the sensor on the room 2 of the 3rd floor would publish it on :  
 
-```
+``` bash
 IoT_project/2/3/dht_025
 ```
 We want to create a client that give the possibility to choose how what data to retrieve according to three options

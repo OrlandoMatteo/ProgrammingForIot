@@ -1,28 +1,88 @@
 #+AUTHOR: Matteo Orlando
+#+LATEX_COMPILER: xelatex
 #+latex_class: article
-#+latex_class_options:
-#+latex_header:\usepackage[sfdefault]{cabin}
-#+latex_header:\usepackage[T1]{fontenc}
-#+description:
-#+keywords:
-#+subtitle:
-#+latex_compiler: pdflatex
+#+latex_class_options:[a4paper]
+#+latex_header: \usepackage{fontspec}
+#+latex_header:\setmainfont{Cabin}
+#+LaTeX_HEADER: \usepackage[margin=1.25in]{geometry}
+#+LaTeX_HEADER:\usepackage{minted}
 #+TITLE:Programming for Iot - Lab 4
 #+OPTIONS: date:nil
 
-* Intrduction
-  :PROPERTIES:
-  :CUSTOM_ID: intrduction
-  :END:
+* Introduction
 
+** Data format
 In this lab we will try to develop different kind of sensor simulator
-that use the MQTT protocol
+that use REST and MQTT.
 
-Remember to always use SenML as data format:
+Remember to lways use SenML as data format:
 
-#+BEGIN_EXAMPLE
+#+begin_export LaTeX
+\begin{minted}{javascript}
+{
+        "bn": "http://example.org/sensor1/",
+        "e": [
+                {
+                    "n": "temperature",
+                    "u": "Cel",
+                    "t": 1234,
+                    "v":22.5
+                }
+             ]
+    }
+\end{minted}
+#+end_export
+
+** Hardware connection
+To check that the sensor works fine you should connect the DHT 11 sensor as
+shown in the picture below
+
+#+attr_latex: :width 7cm
+[[./images/dht11.jpg]]
+
+Then you should run the test file located in the "Documents" folder of the
+Raspberry in order to check that the sensor is working.
+
+* Exercices
+
+** Exercise 1
+
+Using the Raspberry Pi develop a REST service for the temperature sensor.
+This sensor should provide a GET method to manage 3 different uri:
+
+- "/temperature" should return the measured temperature as a json in SenML
+  format
+- "/humidity" should return the measured humidity in the as a json in SenML
+  format
+- "/allSensor" should return the data from all the sensor as a json in SenML
+  format
+
+*Develop the script on your PC and check they work correctly on it before
+deploying it on the Raspberry.*
+
+** Exercise 2
+
+Using the Raspberry Pi develop an MQTT publisher and and MQTT subscriber
+This publisher should publish every 5 seconds a message in SenML format with the
+following information:
+
+- "/temperature" should provide the measured temperature as a json in SenML
+  format
+- "/humidity" should provide the measured humidity in the as a json in SenML
+  format
+- "/allSensor" should provide the data from all the sensor as a json in SenML
+  format
+
+
+The subscriber should be able to receive all the message from all the topics and
+print it on screen in an user friendly way that indicates also the topic that
+provide that message.
+
+Example:
+If the message below is received
+#+BEGIN_SRC python
     {
-        "bn": "http://example.org/sensor1/", 
+        "bn": "matteo/sensor1/temperature", 
         "e": [
                 {
                     "n": "temperature", 
@@ -32,61 +92,67 @@ Remember to always use SenML as data format:
                 } 
              ]
     }
-#+END_EXAMPLE
+#+END_SRC
 
-** Exercise 1
-   :PROPERTIES:
-   :CUSTOM_ID: exercise-1
-   :END:
+The publisher should print
+#+BEGIN_QUOTE
+matteo/sensor1 measured a temperature of 22.5 Cel at the time 1234
+#+END_QUOTE
 
-Develop an MQTT publisher to emulate a temperature sensor that publish
-random values in the range [--10,39] every 5 seconds for 2 minutes.
-Develop also an MQTT subscriber that receives these values, prints these
-on screen and save these on a json file called /temp_log.json/. To
-generate the values, you can use one of the functions of the library
-random listed below:
+*Develop the script on your PC and check they work correctly on it before
+deploying it on the Raspberry.*
 
-- random.randint(a,b)
+When you're ready try to run the publisher on the raspberry and the subscriber
+on your laptop to check if you developed a real IoT device.
 
-- random.random()
+** Exercise 3
 
-- random.uniform(a,b)
+In most of the cases we want to perform some kind of processing on the data we
+receive to have more significant information to show to the user or to take
+actions. In order to do this we need to develop script that are able to receive
+data and process it according to our needs.
 
-** Exercise 2
-   :PROPERTIES:
-   :CUSTOM_ID: exercise-2
-   :END:
+Therefore try to develop 2 post processing script as follow:
+
+- The first one should ask the temperature to the sensor developed in the first
+  exercise every x seconds (choose x as you prefer, 3 should be a feasible
+  value). Every 10 data aquisition it should calculate the average temperature
+  and printing it on screen.
+- The second script should be an MQTT subscriber that will recieve the humidity
+  measurements from the sensor developed in the second exercise. Every 10
+  measurements it should publish a message with the average humidity at a topic
+  of your choice.
+
+For the second script you can test that everything works using a subscriber with
+a wildcard that prints all the message received.
+
+
+** Exercise 4
+
+In some cases, for testing reason it could be useful to have virtual sensors
+that can emulate as much as possible the behaviour of a real one.
 
 Develop an MQTT publisher to emulate an heartrate sensor that publish
 random values in the range [55,180] every 5 seconds for 2 minutes.
+
 Develop also an MQTT subscriber that receives these values, prints these
-on screen and save these on a json file called /hr_log.json/. To
+on screen and save these on a json file called /hrLog.json/. To
 generate the values, you can use one of the functions of the library
 numpy listed at
-[[https://docs.scipy.org/doc/numpy-1.15.0/reference/routines.random.html][this link]], try with different functions to evaluate which is the one that
+[[https://docs.scipy.org/doc/numpy-1.15.0/reference/routines.random.html][this
+link]], try with different functions to evaluate which is the one that
 has the most realistic result. You can find a visualization of some of
 this generator
 [[https://colab.research.google.com/drive/1JsxjaRDYnoMb6dQ5MZsLKH7ZDy7QzH9O?usp=sharing][here]]
 (you can even make your test there before writing your code)
 
-** Exercise 3
-   :PROPERTIES:
-   :CUSTOM_ID: exercise-3
-   :END:
 
-Using the file /hr_log.json/ created in the exercise before, develop an
-MQTT publisher to emulate a heartrate sensor that publish on by one the
-data in that file
-
-** Exercise 4
-   :PROPERTIES:
-   :CUSTOM_ID: exercise-4
-   :END:
+** Exercise 5
 
 Develop an MQTT publisher to emulate a sensor of your choice that
 publish random values in the 3 possible ranges. For example for an
 heartrate sensor we could define 3 ranges as [resting,sport,danger].
 Then create a simple terminal client for this MQTT publisher to select
 the range to be used to send the data. Develop also an MQTT subscriber
-to receive those data and in case of data in a warning range provide a
-visual feedback.
+to receive those data and in case of data in a warning range provide some kind
+of feedback to the user.

@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{message}\PYG{o}{=}\PYG{p}{\PYGZob{}}
+        \PYG{l+s+s2}{\PYGZdq{}bn\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}http://example.org/sensor1/\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}e\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}
+                \PYG{p}{\PYGZob{}}
+                    \PYG{l+s+s2}{\PYGZdq{}n\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}temperature\PYGZdq{}}\PYG{p}{,}
+                    \PYG{l+s+s2}{\PYGZdq{}u\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Cel\PYGZdq{}}\PYG{p}{,}
+                    \PYG{l+s+s2}{\PYGZdq{}t\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{1234}\PYG{p}{,}
+                    \PYG{l+s+s2}{\PYGZdq{}v\PYGZdq{}}\PYG{p}{:}\PYG{l+m+mf}{22.5}
+                \PYG{p}{\PYGZcb{}}
+             \PYG{p}{]}
+    \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
