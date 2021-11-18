@@ -9,6 +9,9 @@ style: |
   section h1{
     color: orange
   }
+  section strong{
+      color:crimson
+  }
   section li,ul,p{
     margin: 0 0 0 0;
     } 
@@ -207,14 +210,25 @@ class MyMQTT:
 
 Try to create a script that mimics a light that is an MQTT subscriber for the topic **IoT/\<your-name>/led** and it has a status that can be on/off and . Then create a client that uses MQTT to set the status of the light from the terminal. USe the SenML format fro the MQTT payload.
 
+**In this case you will need to run both the script to make it work properly. In case you're connected to the Polito's network you need to run in on the same pc, otherwise this restriction does no apply.**
 
-![led client width:1000](images/ledClient.png)
+
+---
+<style>
+img[alt~="center"] {
+  display: block;
+  margin: 0 auto;
+}
+</style>
+![led client width:1000 center](images/ledExample.png)
 
 ---
 
 # Exercise 2
 
 Try to improve the previous exercise by creating a REST client to set the status of the light. You can use the file *'index.html'* as page for the GET request, when you will click on the button the page will execute a PUT request where the uri indicates the status we want to set (i.e. http://localhost:8080/on)
+
+So we need to create a web service able to handle a **GET** request and a **PUT** request. The **GET** should return the index while the **PUT** should send an MQTT message to the proper topic with the status indicated in the URI of the request
 
 ---
 

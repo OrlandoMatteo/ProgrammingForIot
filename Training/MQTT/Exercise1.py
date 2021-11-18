@@ -31,7 +31,7 @@ if __name__ == "__main__":
 	port=conf["port"]
 	ledManager = LedManager("LedCommander","IoT/Orlando/led",broker,port)
 	ledManager.client.start()
-
+	time.sleep(2)
 	print('Welcome to the client to switch on/off the lamp\n')
 	done=False
 	command_list='Type:\n"on" to set the light on\n"off" to set it off\n"q" to quit\n'
