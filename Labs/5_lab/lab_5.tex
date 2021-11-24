@@ -1,22 +1,20 @@
-% Created 2020-12-10 gio 10:06
-% Intended LaTeX compiler: pdflatex
-\documentclass{article}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+% Created 2021-11-18 gio 15:28
+% Intended LaTeX compiler: xelatex
+\documentclass[a4paper]{article}
 \usepackage{graphicx}
-\usepackage{grffile}
 \usepackage{longtable}
 \usepackage{wrapfig}
 \usepackage{rotating}
 \usepackage[normalem]{ulem}
 \usepackage{amsmath}
-\usepackage{textcomp}
 \usepackage{amssymb}
 \usepackage{capt-of}
 \usepackage{hyperref}
-\usepackage[sfdefault]{cabin}
-\usepackage[T1]{fontenc}
-\usepackage[margin=1in]{geometry}
+\usepackage{minted}
+\usepackage{fontspec}
+\setmainfont{Cabin}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{minted}
 \author{Matteo Orlando}
 \date{}
 \title{Programming for Iot - Lab 5}
@@ -25,7 +23,7 @@
  pdftitle={Programming for Iot - Lab 5},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 26.3 (Org mode 9.4)}, 
+ pdfcreator={Emacs 27.1 (Org mode 9.6)}, 
  pdflang={English}}
 \begin{document}
 
@@ -33,7 +31,7 @@
 
 
 \section{Exercise 1}
-\label{sec:orgfde38f2}
+\label{sec:org5609e63}
 Develop a RESTful style Catalog of a distributed platform for general purpose services. Identify the most suitable HTTP methods (among GET, POST, PUT and DELETE) and develop the web services to:
 
 \begin{enumerate}
@@ -92,15 +90,52 @@ has to take this action periodically (for example every 1 minute).
 \end{quote}
 
 \section{Exercise 2}
-\label{sec:orge3d413d}
-Develop or modify a temperature sensor simulator and a led simulator to invoke the RESTful Catalog developed in \emph{Exercise\textsubscript{1}}. These devices have to  to periodically (for example every 1 minute) either registers as new devices or refresh the old registration by updating theirs “insert-timestamp”. During the refresh of an old device registration, the Catalog has to update also the “insert-timestamp”.
+\label{sec:org4103cd5}
+Modify one of the sensor developed in the previous lab (lab 4 exercises 1 and 2)
+in order to be able to to invoke the RESTful Catalog developed
+in Exercise 1 to periodically (for example every 1 minute) :
+\begin{itemize}
+\item either registers as new devices or
+\item refresh the old registration by updating theirs “insert-timestamp”.
+\end{itemize}
+
+During the refresh of an old device registration,the Catalog has to update also
+the “insert-timestamp”.
 
 \section{Exercise 3}
-\label{sec:org60240aa}
-Develop a control application to monitor if the temperature values, coming from a sensor like the one used in the exercise before, is above or below a given threshold. In case the temperature value is outside the given threshold the application will store these values somewhere. When this application starts, it has to connect to the catalog in order to obtain all the MQTT topic related to the temperatures sensors and subrscibe to those topics.
+\label{sec:org1ab8ae8}
+Develop a control application to monitor if the temperature values, coming from
+a sensor like the one used in the exercise before, is above or below a given
+threshold. In case the monitored value is outside the given threshold the
+application needs to perform one or more of the following actions:
+\begin{itemize}
+\item store the event details in a local file that is accessible through an HTTP GET
+request
+\item send and HTTP POST request with the event's details to some kind of service (you can fake the actual
+request but the general structure should make this possible with small future
+updates)
+\item send and MQTT message with the details of the event
+\end{itemize}
+
+When this application starts, it \textbf{\textbf{MUST}} connect to the catalog in order to
+obtain the information needed to retrieve the mesurements from the sensor (IP
+address or MQTT topic) and periodically contact the catalog to update the registration
 
 \section{Exercise 4}
-\label{sec:orgd170162}
+\label{sec:orgc06026f}
+\color{purple}
+\emph{
+This exercise could be quite useful for your final
+project, feel free to customize it according to the purpose of our project.
+The general challeges that needs to be assessed are:
+\begin{itemize}
+\item having multiple user for your project
+\item having multiple sensor for each user
+\item each user must be able to see his own information
+\end{itemize}
+}
+\color{black}
+
 
 Using the application developed in all the exercise before try to deploy a simple simulation like the one described below
 
@@ -109,7 +144,7 @@ You have developed a system that allows your clients to monitor the temperature 
 \end{quote}
 
 \subsection{Bonus improvements}
-\label{sec:orgd3017bd}
+\label{sec:org528677e}
 \begin{itemize}
 \item each user has it's own custom treshold for the temperatures
 \item each user has more than one temperature sensor and light

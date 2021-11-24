@@ -40,6 +40,15 @@ style: |
     right: 0;
     }
 ---
+# Polito giveth and Polito taketh
+
+For all this exercises you will need to use a free MQTT broker.
+Unfortunately if you are connected to the Polito wifi you are **NOT** able to reach it.
+To solve this issue **you need to connect your pc to your mobile phone hotspot**.
+This is not needed if you are at home, in that case you should not have any issue.
+In case a broker stops working you can try with another one from this [website](https://github.com/hobbyquaker/awesome-mqtt#broker) (use one that does not require nor authentication nor apikey)
+
+---
 # Introduction
 
 ![Example of MQTT ](images/MQTTexample.png)
@@ -229,6 +238,16 @@ img[alt~="center"] {
 Try to improve the previous exercise by creating a REST client to set the status of the light. You can use the file *'index.html'* as page for the GET request, when you will click on the button the page will execute a PUT request where the uri indicates the status we want to set (i.e. http://localhost:8080/on)
 
 So we need to create a web service able to handle a **GET** request and a **PUT** request. The **GET** should return the index while the **PUT** should send an MQTT message to the proper topic with the status indicated in the URI of the request
+
+---
+<style>
+img[alt~="center"] {
+  display: block;
+  margin: 0 auto;
+}
+</style>
+This is the page you will see at the local url, when you will press the button the page will sent a PUT request as explained above
+![led page width:1000 center](images/ledPage.png)
 
 ---
 

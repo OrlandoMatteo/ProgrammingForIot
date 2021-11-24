@@ -1,0 +1,288 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "3cc11d24.ff01a2",
+        "type": "comment",
+        "z": "f6f2187d.f17ca8",
+        "name": "WARNING: please check you have started this container with a volume that is mounted to /data\\n otherwise any flow changes are lost when you redeploy or upgrade the container\\n (e.g. upgrade to a more recent node-red docker image).\\n  If you are using named volumes you can ignore this warning.\\n Double click or see info side panel to learn how to start Node-RED in Docker to save your work",
+        "info": "\nTo start docker with a bind mount volume (-v option), for example:\n\n```\ndocker run -it -p 1880:1880 -v /home/user/node_red_data:/data --name mynodered nodered/node-red\n```\n\nwhere `/home/user/node_red_data` is a directory on your host machine where you want to store your flows.\n\nIf you do not do this then you can experiment and redploy flows, but if you restart or upgrade the container the flows will be disconnected and lost. \n\nThey will still exist in a hidden data volume, which can be recovered using standard docker techniques, but that is much more complex than just starting with a named volume as described above.",
+        "x": 350,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "539072ef0b69f0b1",
+        "type": "Stackhero-InfluxDB-v2-query",
+        "z": "f6f2187d.f17ca8",
+        "server": "a8a384425186d8fd",
+        "name": "iotTest",
+        "x": 710,
+        "y": 400,
+        "wires": [
+            [
+                "9c4e51f174514c17",
+                "5cdc1789bda3e16f"
+            ]
+        ]
+    },
+    {
+        "id": "5f7854f381fe32f8",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "'from(bucket: \"iot_center\") |> range(start: -1m)'",
+        "payloadType": "date",
+        "x": 250,
+        "y": 460,
+        "wires": [
+            [
+                "de6aae3d4417587d"
+            ]
+        ]
+    },
+    {
+        "id": "9c4e51f174514c17",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload[0]",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "de6aae3d4417587d",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "func": "msg.topic='from(bucket: \"iot_center\") |> range(start: -1y) |> filter(fn: (r) => r[\"clientId\"] == \"'+global.get(\"clientId\")+'\")';\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 340,
+        "wires": [
+            [
+                "539072ef0b69f0b1"
+            ]
+        ]
+    },
+    {
+        "id": "2a67850d83a03141",
+        "type": "ui_dropdown",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "label": "",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "e34bcd7b5b8eda52",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "T001",
+                "value": "T001",
+                "type": "str"
+            },
+            {
+                "label": "T002",
+                "value": "T002",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 790,
+        "y": 220,
+        "wires": [
+            [
+                "f7ecb636c82a9c82",
+                "de6aae3d4417587d"
+            ]
+        ]
+    },
+    {
+        "id": "f7ecb636c82a9c82",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "clientId",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1000,
+        "y": 240,
+        "wires": [
+            [
+                "8848b54b077dd8a1"
+            ]
+        ]
+    },
+    {
+        "id": "8848b54b077dd8a1",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "032715bf17ff369b",
+        "type": "ui_chart",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "group": "e34bcd7b5b8eda52",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1200,
+        "y": 540,
+        "wires": [
+            [
+                "161477411fc146f2"
+            ]
+        ]
+    },
+    {
+        "id": "5cdc1789bda3e16f",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "func": "\n_payload=[{\n\"series\": [\"A\"],\n\"data\": [\n    []],\n\"labels\": [\"temp\"]\n}]\n\nfor (var i=0;i<msg.payload[0].length;i++){\n    _payload[0].data[0].push({'x':i,'y':msg.payload[0][i]._value})\n}\n\nmsg.payload=_payload\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 970,
+        "y": 600,
+        "wires": [
+            [
+                "032715bf17ff369b"
+            ]
+        ]
+    },
+    {
+        "id": "161477411fc146f2",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1220,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "a8a384425186d8fd",
+        "type": "Stackhero-InfluxDB-v2-Server",
+        "name": "influx",
+        "host": "westeurope-1.azure.cloud2.influxdata.com",
+        "port": "443",
+        "tls": true
+    },
+    {
+        "id": "e34bcd7b5b8eda52",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "a37c765c5cea2161",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a37c765c5cea2161",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
