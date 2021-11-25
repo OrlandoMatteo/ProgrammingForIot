@@ -63,7 +63,7 @@ Develop a RESTful style Catalog of a distributed platform for general purpose se
 
 * Exercise 2
 Modify one of the sensor developed in the previous lab (lab 4 exercises 1 and 2)
-in order to be able to to invoke the RESTful Catalog developed
+in order to be able to invoke the RESTful Catalog developed
 in Exercise 1 to periodically (for example every 1 minute) :
 - either registers as new devices or
 - refresh the old registration by updating theirs “insert-timestamp”.
@@ -72,17 +72,7 @@ During the refresh of an old device registration,the Catalog has to update also
 the “insert-timestamp”.
 
 * Exercise 3
-Develop a control application to monitor if the temperature values, coming from
-a sensor like the one used in the exercise before, is above or below a given
-threshold. In case the monitored value is outside the given threshold the
-application needs to perform one or more of the following actions:
-- store the event details in a local file that is accessible through an HTTP GET
-  request
-- send and HTTP POST request with the event's details to some kind of service (you can fake the actual
-  request but the general structure should make this possible with small future
-  updates)
-- send and MQTT message with the details of the event
-
+Modify the exercise 3 of lab 4 in order to make it able to contatct the catalog developed in the first exercise.
 When this application starts, it **MUST** connect to the catalog in order to
 obtain the information needed to retrieve the mesurements from the sensor (IP
 address or MQTT topic) and periodically contact the catalog to update the registration
